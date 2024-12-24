@@ -1,0 +1,397 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": [],
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "No.151, Hoodi\nVillage, KR Puram hobli Bangalore, -560066, karnataka, None, India",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "GLODESI TECHNOLOGIES PRIVATE\nLIMITED",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2024-11-12",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "0171",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "BDRPK4890D",
+                    "pan_allotment_date": "2008-09-26",
+                    "pan_name": "SXXXXXXR SXXXXXXXXXA KXXXXD",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AB290724411793W",
+                        "dof": "24-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290424071487T",
+                        "dof": "20-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291024854949L",
+                        "dof": "18-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290924118769F",
+                        "dof": "18-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824852126W",
+                        "dof": "18-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524892304W",
+                        "dof": "18-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624830238Z",
+                        "dof": "16-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2910242182986",
+                        "dof": "08-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290724187738D",
+                        "dof": "07-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290424161510F",
+                        "dof": "07-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291124167025D",
+                        "dof": "06-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824168195Q",
+                        "dof": "06-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624192149R",
+                        "dof": "06-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924161706Q",
+                        "dof": "05-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524129278X",
+                        "dof": "03-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": true,
+                    "aadhaar_number": "XXXXXXXX6857",
+                    "address": {
+                        "building_name": "",
+                        "city": "",
+                        "country": "India",
+                        "locality": "",
+                        "pincode": "",
+                        "state": "",
+                        "street_name": ""
+                    },
+                    "dob": "22/07/1987",
+                    "email": "",
+                    "first_name": "SHRIDHAR",
+                    "fullname": "SHRIDHAR SHANKAREPPA KAGGOD",
+                    "gender": "male",
+                    "last_name": "KAGGOD",
+                    "middle_name": "SHANKAREPPA",
+                    "mobile": "",
+                    "pan": "BDRPK4890D",
+                    "pan_status": "Active",
+                    "pan_type": "Individual"
+                },
+                "customer_gst_data": {
+                    "address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "ctj": "RANGE-BED7",
+                    "ctjCd": "YT0702",
+                    "dty": "Regular",
+                    "einvoiceStatus": "Yes",
+                    "gstin": "29AAGCG0335D2ZX",
+                    "lgnm": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA119",
+                    "tradeNam": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "address": "20/2 , SAI FASTENERS , 14th E cross , Bengaluru Urban , Karnataka , 560044",
+                    "ctj": "RANGE-EWD2",
+                    "ctjCd": "YU0205",
+                    "dty": "Regular",
+                    "einvoiceStatus": "No",
+                    "gstin": "29BDRPK4890D1Z1",
+                    "lgnm": "SHRIDHAR SHANKAREPPA KAGGOD",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA020",
+                    "tradeNam": "SAI INDUSTRIES"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"MACHINED SHRINK BOOT\\nADAPTER\",\"item_quantity\":50.0,\"unit\":\"Nos\",\"unit_price\":113.0,\"product_code\":\"84879000\",\"tax\":\"\\u20b91017.0\",\"tax_rate\":18,\"amount\":6667.0,\"qty_unitprice\":5650.0,\"qty_unit+rate_qty_unit\":6667.0,\"qty_unit+2_rate_qty_unit\":7684.0,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "filled",
+                    "Invoice_data": " ",
+                    "status": "filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29BDRPK4890D1Z1",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29BDRPK4890D1Z1",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": true,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Regular",
+                    "Invoice_data": "-",
+                    "status": "Regular"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "INDUSTRIES",
+                "Bank_Account_No": "10080749937",
+                "Bank_Branch": "RAJAJINAGAR BRANCH",
+                "Bank_Name": "IDFC FIRST Bank",
+                "Email": null,
+                "IFSC_Code": "IDFB0080169",
+                "VendorAddress": "20/2, 14th E cross RAJAJINAGAR INDUSTRIAL TOWN,BANGALORE, None, None, None, None"
+            },
+            "BillingAddress": "No.151, Hoodi\nVillage, KR Puram hobli Bangalore, -560066, karnataka, None, India",
+            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE\nLIMITED",
+            "Currency": "INR",
+            "CustomerName": "GLODESI TECHNOLOGIES PRIVATE\nLIMITED",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "6667.0",
+                    "item_description": "MACHINED SHRINK BOOT\nADAPTER",
+                    "item_quantity": 50.0,
+                    "product_code": "84879000",
+                    "tax": "\u20b91017.0",
+                    "tax_rate": "(18%)",
+                    "unit": "Nos",
+                    "unit_price": "113.0"
+                }
+            },
+            "InvoiceDate": "2024-11-12",
+            "InvoiceId": "0171",
+            "InvoiceTotal": "6667.00",
+            "PurchaseOrder": "241000418",
+            "ShippingAddress": "survey No.\n151, Hoodi Village, KR Puram hobli\nBangalore, -560066, Karnataka, None, India",
+            "SubTotal": "5650.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": "508.50"
+                },
+                "SGST": {
+                    "amount": "508.50"
+                }
+            },
+            "TotalTax": 1017.0,
+            "Vendor Gst No.": "29BDRPK4890D1Z1",
+            "VendorAddress": "20/2, 14th E cross RAJAJINAGAR INDUSTRIAL TOWN,BANGALORE, None, None, None, None",
+            "VendorAddressRecipient": "SAI INDUSTRIES",
+            "VendorName": "INDUSTRIES"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Customer_Adress Not Matched"
+            ]
+        }
+    }
+}

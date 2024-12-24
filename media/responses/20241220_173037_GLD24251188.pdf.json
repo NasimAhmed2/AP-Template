@@ -1,0 +1,399 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": [],
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "None, KR PURAM WHITEFIELD,\nBANGALORE-560066, None, None, None, None",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "GLODESI TECHNOLOGIES PVT LTD",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2024-11-12",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "RSR2425INV1056",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "AAMCR0051M",
+                    "pan_allotment_date": "2022-07-05",
+                    "pan_name": "RXR AXXXXXXN SXXXXXXS PXXXXXE LXXXXXD",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AB270824716743V",
+                        "dof": "20-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2711246747405",
+                        "dof": "19-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB271024588200G",
+                        "dof": "19-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AC270924387793B",
+                        "dof": "19-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270724435495U",
+                        "dof": "19-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AC270624219972U",
+                        "dof": "19-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270524490585Q",
+                        "dof": "19-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270424482777L",
+                        "dof": "18-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA271024736909W",
+                        "dof": "11-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2711247159445",
+                        "dof": "10-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270824593568E",
+                        "dof": "10-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270724677174U",
+                        "dof": "10-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270624761591Z",
+                        "dof": "10-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270924507779J",
+                        "dof": "09-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270424533491B",
+                        "dof": "09-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2705243539222",
+                        "dof": "07-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
+                    "address": {
+                        "building_name": "",
+                        "city": "",
+                        "country": "India",
+                        "locality": "",
+                        "pincode": "",
+                        "state": "",
+                        "street_name": ""
+                    },
+                    "dob": "23/05/2022",
+                    "email": "",
+                    "first_name": "",
+                    "fullname": "RSR AVIATION SERVICES PRIVATE LIMITED",
+                    "gender": null,
+                    "last_name": "RSR AVIATION SERVICES PRIVATE LIMITED",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "AAMCR0051M",
+                    "pan_status": "Active",
+                    "pan_type": "Company"
+                },
+                "customer_gst_data": {
+                    "address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "ctj": "RANGE-BED7",
+                    "ctjCd": "YT0702",
+                    "dty": "Regular",
+                    "einvoiceStatus": "Yes",
+                    "gstin": "29AAGCG0335D2ZX",
+                    "lgnm": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA119",
+                    "tradeNam": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "address": "UNIT NO.: B-67/68, , Platinum Springs , Plot Number 6, G-20 to G 24 Part A , Raigad , Maharashtra , 410208",
+                    "ctj": "RANGE-V",
+                    "ctjCd": "VT0605",
+                    "dty": "Regular",
+                    "einvoiceStatus": "No",
+                    "gstin": "27AAMCR0051M1Z5",
+                    "lgnm": "RSR AVIATION SERVICES PRIVATE LIMITED",
+                    "nba": [
+                        "Retail Business",
+                        "Wholesale Business"
+                    ],
+                    "rgdt": "15/07/2022",
+                    "status": "Active",
+                    "stjCd": "MHCG1371",
+                    "tradeNam": "RSR AVIATION SERVICES PRIVATE LIMITED"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"EPOXY PRIMER\",\"item_quantity\":1.0,\"unit_price\":14800.0,\"product_code\":\"P-2020\\/771 (1\",\"amount\":14800.0,\"qty_unitprice\":14800.0,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "filled",
+                    "Invoice_data": " ",
+                    "status": "filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "27AAMCR0051M1Z5",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "27AAMCR0051M1Z5",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": null,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Regular",
+                    "Invoice_data": "-",
+                    "status": "Regular"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "RSR\nTM\nRSR AVIATION SERVICES PVT. LTD",
+                "Bank_Account_No": null,
+                "Email": null,
+                "VendorAddress": ""
+            },
+            "BillingAddress": "None, KR PURAM WHITEFIELD,\nBANGALORE-560066, None, None, None, None",
+            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PVT LTD",
+            "Currency": "INR",
+            "CustomerName": "GLODESI TECHNOLOGIES PVT LTD",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "14800.0",
+                    "item_description": "EPOXY PRIMER",
+                    "item_quantity": 1.0,
+                    "product_code": "P-2020/771 (1",
+                    "unit_price": "14800.0"
+                }
+            },
+            "InvoiceDate": "2024-11-12",
+            "InvoiceId": "RSR2425INV1056",
+            "InvoiceTotal": "17464.00",
+            "Payment_Term": "100% Advance",
+            "PurchaseOrder": "241000414",
+            "ShippingAddress": "None, None, None, None, None, None",
+            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PVT LTD",
+            "SubTotal": "14800.00",
+            "Tax Items": {
+                "IGST": {
+                    "amount": "2664.00",
+                    "rate": 0
+                }
+            },
+            "TotalTax": "2664.00",
+            "Vendor Gst No.": "27AAMCR0051M1Z5",
+            "VendorName": "RSR AVIATION SERVICES PVT. LTD"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Customer_Adress Not Matched"
+            ]
+        }
+    }
+}

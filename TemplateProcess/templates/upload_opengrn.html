@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Open GRN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;}
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+        nav button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .message {
+            color: red;
+            font-weight: bold;
+        }
+        .save-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .save-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="/" style="text-decoration: none; color: inherit;">My App</a>
+        </h1>
+        <nav>
+            <button onclick="window.location.href='/upload-invoice/'">Upload Invoice</button>
+            <button onclick="window.location.href='/upload-opengrn/'">Upload Open GRN</button>
+            <button onclick="window.location.href='/show-opengrn/'">Show Open GRN</button>
+            
+        </nav>
+    </header>
+    <h1>Upload Open GRN</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Select an Excel file:</label>
+        <input type="file" id="file" name="file" accept=".xlsx, .xls">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% elif data %}
+        <table>
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form action="" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="save_data" value="true">
+            <button type="submit" class="save-button">Save GRN Data</button>
+        </form>
+    {% endif %}
+
+    {% if message and message == "GRN DATA saved successfully!" %}
+        <div class="message" id="popup-message">{{ message }}</div>
+        <script>
+            setTimeout(function() {
+                const popup = document.getElementById('popup-message');
+                if (popup) {
+                    popup.style.display = 'none';
+                }
+            }, 900); // Popup hides after 900ms
+        </script>
+    {% endif %}
+</body>
+</html>

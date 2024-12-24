@@ -1,0 +1,418 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": [],
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "None, Mahadevapura, Bangalore, None, 560 048, None",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "Glodesi Technologies Pvt Ltd.,",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2024-11-14",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "3385/24-25",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "BCUPS8159M",
+                    "pan_allotment_date": "2005-12-19",
+                    "pan_name": "MXXXXXXN SXXXXXXXXR",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AA291124209008I",
+                        "dof": "07-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291024140761G",
+                        "dof": "06-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291024140990B",
+                        "dof": "06-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824144257W",
+                        "dof": "05-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2908241445306",
+                        "dof": "05-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290424108141N",
+                        "dof": "04-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2904241084780",
+                        "dof": "04-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2907241036280",
+                        "dof": "03-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290724103788S",
+                        "dof": "03-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624109952Z",
+                        "dof": "03-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624110262J",
+                        "dof": "03-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2905241232791",
+                        "dof": "03-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2905241233872",
+                        "dof": "03-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924099472K",
+                        "dof": "02-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924099530Q",
+                        "dof": "02-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": true,
+                    "aadhaar_number": "XXXXXXXX4334",
+                    "address": {
+                        "building_name": "",
+                        "city": "",
+                        "country": "India",
+                        "locality": "",
+                        "pincode": "",
+                        "state": "",
+                        "street_name": ""
+                    },
+                    "dob": "26/02/1971",
+                    "email": "",
+                    "first_name": "MADHAVAN",
+                    "fullname": "MADHAVAN SOMASHEKAR",
+                    "gender": "male",
+                    "last_name": "SOMASHEKAR",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "BCUPS8159M",
+                    "pan_status": "Active",
+                    "pan_type": "Individual"
+                },
+                "customer_gst_data": {
+                    "address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "ctj": "RANGE-BED7",
+                    "ctjCd": "YT0702",
+                    "dty": "Regular",
+                    "einvoiceStatus": "Yes",
+                    "gstin": "29AAGCG0335D2ZX",
+                    "lgnm": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA119",
+                    "tradeNam": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "address": "NO 21A  3RD CROSS  POTTI GARDEN ,  , S M ROAD , Bengaluru Urban , Karnataka , 560015",
+                    "ctj": "RANGE-CNWD3",
+                    "ctjCd": "YX0303",
+                    "dty": "Regular",
+                    "einvoiceStatus": "No",
+                    "gstin": "29BCUPS8159M1Z7",
+                    "lgnm": "MADHAVAN  SOMASHEKAR",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA018",
+                    "tradeNam": "AMITH INC"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"PRECOIL M2\\u00d70.4\\u00d71.5D (3mm)\",\"item_quantity\":700.0,\"unit\":\"nos\",\"unit_price\":4.25,\"product_code\":\"SDMC02.0150\\n73181190\",\"amount\":2975.0,\"qty_unitprice\":2975.0,\"check1\":\"correct\"},{\"item_description\":\"PRECOIL M3x0.5x1.5D (4.5mm)\",\"item_quantity\":300.0,\"unit\":\"nos\",\"unit_price\":2.3,\"product_code\":\"SDMC03.0150\\n73181190\",\"amount\":690.0,\"qty_unitprice\":690.0,\"check1\":\"correct\"},{\"item_description\":\"STI Tap M2x0.4 ET\",\"item_quantity\":1.0,\"unit\":\"nos\",\"unit_price\":690.0,\"product_code\":\"82074090\",\"amount\":690.0,\"qty_unitprice\":690.0,\"check1\":\"correct\"},{\"item_description\":\"PRECOIL Inserting Tool M2x0.4\",\"item_quantity\":1.0,\"unit\":\"nos\",\"unit_price\":500.0,\"product_code\":\"82041110\",\"amount\":500.0,\"qty_unitprice\":500.0,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "filled",
+                    "Invoice_data": " ",
+                    "status": "filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29BCUPS8159M1Z7",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29BCUPS8159M1Z7",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": true,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Regular",
+                    "Invoice_data": "-",
+                    "status": "Regular"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "AMITH INC.,",
+                "Bank_Account_No": null,
+                "Bank_Branch": "PEENYA INDUS  ESTATE BANGALORE",
+                "Bank_Name": "State Bank of India",
+                "Email": null,
+                "IFSC_Code": "SBIN0003024",
+                "VendorAddress": "#21A, 3rd a cross potti gardens s.m. road bangalore 560, None, None, None, None"
+            },
+            "BillingAddress": "None, Mahadevapura, Bangalore, None, 560 048, None",
+            "BillingAddressRecipient": "Glodesi Technologies Pvt Ltd.,",
+            "Currency": "INR",
+            "CustomerName": "Glodesi Technologies Pvt Ltd.,",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "2975.0",
+                    "item_description": "PRECOIL M2\u00d70.4\u00d71.5D (3mm)",
+                    "item_quantity": 700.0,
+                    "product_code": "SDMC02.0150\n73181190",
+                    "unit": "nos",
+                    "unit_price": "4.25"
+                },
+                "item#2": {
+                    "amount": "690.0",
+                    "item_description": "PRECOIL M3x0.5x1.5D (4.5mm)",
+                    "item_quantity": 300.0,
+                    "product_code": "SDMC03.0150\n73181190",
+                    "unit": "nos",
+                    "unit_price": "2.3"
+                },
+                "item#3": {
+                    "amount": "690.0",
+                    "item_description": "STI Tap M2x0.4 ET",
+                    "item_quantity": 1.0,
+                    "product_code": "82074090",
+                    "unit": "nos",
+                    "unit_price": "690.0"
+                },
+                "item#4": {
+                    "amount": "500.0",
+                    "item_description": "PRECOIL Inserting Tool M2x0.4",
+                    "item_quantity": 1.0,
+                    "product_code": "82041110",
+                    "unit": "nos",
+                    "unit_price": "500.0"
+                }
+            },
+            "InvoiceDate": "2024-11-14",
+            "InvoiceId": "3385/24-25",
+            "InvoiceTotal": "5729.00",
+            "PurchaseOrder": "241100417-\n24351025",
+            "SubTotal": "4855.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": "436.95"
+                },
+                "SGST": {
+                    "amount": "436.95"
+                }
+            },
+            "TotalTax": "873.90",
+            "Vendor Gst No.": "29BCUPS8159M1Z7",
+            "VendorAddress": "#21A, 3rd a cross potti gardens s.m. road bangalore 560, None, None, None, None",
+            "VendorAddressRecipient": "AMITH INC.,",
+            "VendorName": "AMITH INC.,"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Customer_Adress Not Matched"
+            ]
+        }
+    }
+}

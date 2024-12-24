@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Template</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;}
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+        nav button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+    <header>
+        <h1>
+            <a href="/" style="text-decoration: none; color: inherit;">My App</a>
+        </h1>
+        <nav>
+            <button onclick="window.location.href='/show-invoice/'">Show Uploaded Invoices</button>
+            <button onclick="window.location.href='/upload-invoice/'">Upload New Invoice</button>
+            <button onclick="window.location.href='/upload-opengrn/'">Upload Open GRN</button>
+            <button onclick="exportTemplates()">Export Templates</button>
+        </nav>
+    </header>
+    <h1>Save Template for This Invoice</h1>
+
+    <!-- Display the message passed from the view -->
+    {% if message %}
+    <ul>
+        {% for msg in message %}
+            <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No message available.</p>
+    {% endif %}
+
+    <!-- Display the first Excel sheet as a table -->
+    <h2>AP_INV__Header</h2>
+    <div>
+        {{ sheet_1_html|safe }}
+    </div>
+
+    <!-- Display the second Excel sheet as a table -->
+    <h2>PCH1</h2>
+    <div>
+        {{ sheet_2_html|safe }}
+    </div>
+
+    
+    <script>
+        function exportTemplates() {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            fetch('/export-templates/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob(); // Convert the response to a binary blob
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Error exporting templates.');
+                    });
+                }
+            })
+            .then(blob => {
+                // Create a link to download the file
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Aptemplate'; // Set a default file name
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                // Redirect to the home page after download
+                window.location.href = '/'; // Replace '/' with your home page URL if different
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        }
+    </script>
+</body>
+</html>

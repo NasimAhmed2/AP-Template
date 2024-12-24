@@ -1,0 +1,414 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": [
+                        "BillingAddress"
+                    ],
+                    "status": "NO"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "SURVEY NO. 151, HOODI VILLAGE, KR PURAM HOBLI,\nBANGALORE, None, None, None, None",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "M/s GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2024-11-15",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "77/24-25",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "AEDFS8589R",
+                    "pan_allotment_date": "2020-06-19",
+                    "pan_name": "SXI AXXXXXXXXXXU CXC TXXH",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AB291024205099B",
+                        "dof": "20-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290824013601B",
+                        "dof": "19-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290724030440E",
+                        "dof": "19-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2911249147428",
+                        "dof": "18-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290624093785H",
+                        "dof": "18-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290924010777R",
+                        "dof": "17-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2905248273607",
+                        "dof": "17-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290424674066Y",
+                        "dof": "15-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824487181T",
+                        "dof": "11-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524330906Z",
+                        "dof": "10-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2904243319218",
+                        "dof": "10-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924271056W",
+                        "dof": "08-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290724196371U",
+                        "dof": "07-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2911241735924",
+                        "dof": "06-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291024149559W",
+                        "dof": "06-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624159751V",
+                        "dof": "05-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
+                    "address": {
+                        "building_name": "",
+                        "city": "",
+                        "country": "India",
+                        "locality": "",
+                        "pincode": "",
+                        "state": "",
+                        "street_name": ""
+                    },
+                    "dob": "22/05/2020",
+                    "email": "",
+                    "first_name": "",
+                    "fullname": "SRI ALLAMAPRABHU CNC TECH",
+                    "gender": null,
+                    "last_name": "SRI ALLAMAPRABHU CNC TECH",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "AEDFS8589R",
+                    "pan_status": "Active",
+                    "pan_type": "Firm/Limited Liability Partnership"
+                },
+                "customer_gst_data": {
+                    "address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "ctj": "RANGE-BED7",
+                    "ctjCd": "YT0702",
+                    "dty": "Regular",
+                    "einvoiceStatus": "Yes",
+                    "gstin": "29AAGCG0335D2ZX",
+                    "lgnm": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "01/07/2017",
+                    "status": "Active",
+                    "stjCd": "KA119",
+                    "tradeNam": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "address": "PLOT NO.39/1, SHED NO.03 ,  , 3RD PHASE PEENYA INDUSTRIAL AREA, BANGALORE NORTH , Bengaluru Urban , Karnataka , 560058",
+                    "ctj": "RANGE-CNWD2",
+                    "ctjCd": "YX0203",
+                    "dty": "Regular",
+                    "einvoiceStatus": "No",
+                    "gstin": "29AEDFS8589R1ZM",
+                    "lgnm": "SRI ALLAMAPRABHU CNC TECH",
+                    "nba": [
+                        "Factory / Manufacturing"
+                    ],
+                    "rgdt": "06/07/2020",
+                    "status": "Active",
+                    "stjCd": "KA021",
+                    "tradeNam": "SRI ALLAMAPRABHU CNC TECH"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"MCND 13599-25-04 MACHINED CROWN CAP\",\"item_quantity\":60.0,\"unit_price\":85.0,\"product_code\":\"84879000\",\"amount\":5100.0,\"qty_unitprice\":5100.0,\"check1\":\"correct\"},{\"item_description\":\"MCND 13907-25-09 MACHINED M8 CROWN CAP MUR-2\",\"item_quantity\":25.0,\"unit_price\":85.0,\"product_code\":\"84879000\",\"amount\":2125.0,\"qty_unitprice\":2125.0,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "filled",
+                    "Invoice_data": " ",
+                    "status": "filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AEDFS8589R1ZM",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AEDFS8589R1ZM",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": null,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Regular",
+                    "Invoice_data": "-",
+                    "status": "Regular"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "SRI ALLAMAPRABHU CNC TECH",
+                "Bank_Account_No": "39549873983",
+                "Bank_Branch": "SSI PEENYA I.E, BANGALORE",
+                "Bank_Name": "State Bank of India",
+                "Email": null,
+                "IFSC_Code": "SBIN0006506",
+                "VendorAddress": "Plot No.39/1, Shed No.3, Ground Floor, 3rd Phase, 4th Main,\nPeenya Industrial Area, Bengaluru-560058, None, None, Karnataka-29, INDIA"
+            },
+            "Currency": "INR",
+            "CustomerAddress": "SURVEY NO. 151, HOODI VILLAGE, KR PURAM HOBLI,\nBANGALORE, None, None, None, None",
+            "CustomerAddressRecipient": "M/s GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "CustomerName": "M/s GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "5100.0",
+                    "item_description": "MCND 13599-25-04 MACHINED CROWN CAP",
+                    "item_quantity": 60.0,
+                    "product_code": "84879000",
+                    "unit_price": "85.0"
+                },
+                "item#2": {
+                    "amount": "2125.0",
+                    "item_description": "MCND 13907-25-09 MACHINED M8 CROWN CAP MUR-2",
+                    "item_quantity": 25.0,
+                    "product_code": "84879000",
+                    "unit_price": "85.0"
+                }
+            },
+            "InvoiceDate": "2024-11-15",
+            "InvoiceId": "77/24-25",
+            "InvoiceTotal": "8525.50",
+            "PurchaseOrder": "241000323",
+            "SubTotal": "7225.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": 650.25,
+                    "rate": 0
+                },
+                "SGST": {
+                    "amount": 650.25,
+                    "rate": 0
+                }
+            },
+            "TotalTax": 1300.5,
+            "Vendor Gst No.": "29AEDFS8589R1ZM",
+            "VendorAddress": "Plot No.39/1, Shed No.3, Ground Floor, 3rd Phase, 4th Main,\nPeenya Industrial Area, Bengaluru-560058, None, None, Karnataka-29, INDIA",
+            "VendorAddressRecipient": "SRI ALLAMAPRABHU CNC TECH",
+            "VendorName": "SRI ALLAMAPRABHU CNC TECH"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Not a Complete_Invoice",
+                "Customer_Adress Not Matched"
+            ]
+        }
+    }
+}
