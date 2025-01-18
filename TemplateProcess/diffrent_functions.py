@@ -41,7 +41,7 @@ def filingstatus(data):
         result['month'] = top_3_rows_df_gstr3b.iloc[0]['status']
         result['month1'] = top_3_rows_df_gstr3b.iloc[1]['status']
         result['month2'] = top_3_rows_df_gstr3b.iloc[2]['status']
-    return result, result1
+    return result, result1, df_gstr1, df_3b
 
 def Table_data(table,invoice_data):
     
@@ -68,7 +68,7 @@ def Table_data(table,invoice_data):
         new_row = {col: '' for col in df.columns}
         new_row.update(sums)
         if left_of_first:
-            new_row[left_of_first] = 'Total--->'
+            new_row[left_of_first] = 'Total->'
 
         # Append the new row
         df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
@@ -149,7 +149,8 @@ def InvoiceTable_vs_GrnTable(invoice_data):
         df_ =  [200,df1]
     else:
         df_ =  [400,'No Table items in invoice']
-    path = 'GRN_DATA/Open_GRN_Data.csv'
+    # path = 'GRN_DATA/Open_GRN_Data.csv'
+    path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
     # print('this---5')
     try:
         data = pd.read_csv(path)
@@ -157,13 +158,17 @@ def InvoiceTable_vs_GrnTable(invoice_data):
             invoice_id = str(invoice_id).lstrip('0')
         data = data[data['Supplier Ref No'] == invoice_id]
         if not data.empty:
+            # print('this---5')
             columns = ['Document Number','Supplier Ref No','Item No.', 'Item Description', 'Quantity', 'Price', 'Discount %', 'HSN/SAC', 'Total Before Discount']
             data = data[columns]
             # Convert back to a list of dictionaries
             data1 = data.to_dict(orient='records')
             data_ = [200,data1]
+        else:
+            data_ = [400,'Invoice Id did not match with any record from OPEN GRN , Please Check']
     except:
         data_ = [400,'Please Upload Open GRN reports , found No Reports']
+    # print(df_,data_)
     return df_,data_
 
 def Invoicetable_vs_Grntable_compare(invoice_data):
@@ -183,7 +188,8 @@ def Invoicetable_vs_Grntable_compare(invoice_data):
     if not Total_Paymt_Due:
         Total_Paymt_Due = total_amount
    
-    path = 'GRN_DATA/Open_GRN_Data.csv'
+    # path = 'GRN_DATA/Open_GRN_Data.csv'
+    path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
     # print('hello--2')
     try:
         data = pd.read_csv(path)
@@ -195,12 +201,17 @@ def Invoicetable_vs_Grntable_compare(invoice_data):
             invoice_id_grn = data_['Supplier Ref No']
             supplier_name_grn = data_['Customer/Supplier Name']
             Currency_Type_grn = data_['Currency Type']
-            Total_Paymt_Due_grn = data_['Total Paymt Due']
+            if Currency_Type_grn == 'INR':
+                Total_Paymt_Due_grn = data_['Total Payment Due']
+            else:
+                Total_Paymt_Due_grn = data_['Total Payment Due FC']
         #     print(Total_Paymt_Due_grn)
         #     print(Total_Paymt_Due)     
         #     print('hello--3')  
         # print('hello--2')
-    except:
+    except Exception as e:
+        # Print the error message
+        print(f"Error: {str(e)}")
         data_ = [400,'Please Upload Open GRN reports , found No Reports']
     invoice_dict = {}
     supplier_name_dict = {}
@@ -279,11 +290,17 @@ def all_okay(api_response):
         if api_response:
             
             result = api_response.get("result", {})
-            # print(result)
-            acount_check = result['CHECKS']['Account_check']
-            tax_check = result['CHECKS']['tax_check']
-            table_check = result['CHECKS']['table_data']['Table_Check_data']
-            invoice_data =  result['Invoice_data']
+            # # print(result)
+            # acount_check = result['CHECKS']['Account_check']
+            # tax_check = result['CHECKS']['tax_check']
+            # table_check = result['CHECKS']['table_data']['Table_Check_data']
+            # invoice_data =  result['Invoice_data']
+
+            # Safely get data, ensuring the expected types are returned
+            acount_check = result.get('CHECKS', {}).get('Account_check', {})
+            tax_check = result.get('CHECKS', {}).get('tax_check', {})
+            table_check = result.get('CHECKS', {}).get('table_data', {}).get('Table_Check_data', [])
+            invoice_data = result.get('Invoice_data', {})
 
             Complete_Invoice = acount_check['Complete_Invoice']['status']
             if Complete_Invoice == 'YES':
@@ -478,7 +495,7 @@ def all_okay(api_response):
             
     except Exception as e:
         print(f"An error occurred: {e}")
-        print('No Response ',api_response)
+        # print('No Response ',api_response)
     
     
 

@@ -1,0 +1,445 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "2nd Floor, Plot No SP1, Bangalore, Karnataka, 560048, India",
+                    "status": "Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "Glodesi Technologies Pvt Ltd DESI TECHNOLOGIES PV1",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2025-01-07",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "BLR102501IV0017",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "AAGCA1832M",
+                    "pan_allotment_date": "2007-03-16",
+                    "pan_name": "TXXXXXXXXXXP AXXXXXXXXXXXXA PXT LXD",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AB2911241715057",
+                        "dof": "20-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB291024310248G",
+                        "dof": "20-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290824274993D",
+                        "dof": "20-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290724193027U",
+                        "dof": "20-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2905243057608",
+                        "dof": "20-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290424185488K",
+                        "dof": "20-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290624301777V",
+                        "dof": "19-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2909241167021",
+                        "dof": "18-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2912246159052",
+                        "dof": "13-01-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "122024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2911246077719",
+                        "dof": "12-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291024494005B",
+                        "dof": "11-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924603736S",
+                        "dof": "11-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2908244975869",
+                        "dof": "11-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624511334B",
+                        "dof": "11-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290724483663N",
+                        "dof": "10-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524396690Q",
+                        "dof": "10-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290424388415U",
+                        "dof": "10-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
+                    "address": {
+                        "building_name": "",
+                        "city": "",
+                        "country": "India",
+                        "locality": "",
+                        "pincode": "",
+                        "state": "",
+                        "street_name": ""
+                    },
+                    "dob": "08/02/2007",
+                    "email": "",
+                    "first_name": "",
+                    "fullname": "THYSSENKRUPP AEROSPACEINDIA PVT LTD",
+                    "gender": null,
+                    "last_name": "THYSSENKRUPP AEROSPACEINDIA PVT LTD",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "AAGCA1832M",
+                    "pan_status": "Active",
+                    "pan_type": "Company"
+                },
+                "customer_gst_data": {
+                    "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Central tax Jurisdiction": "RANGE-BED7",
+                    "Central tax Jurisdiction Code": "YT0702",
+                    "Date of Registration": "01/07/2017",
+                    "Duty": "Regular",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAGCG0335D2ZX",
+                    "Legal Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Nature of Business Activity": [
+                        "Factory / Manufacturing"
+                    ],
+                    "State Jurisdiction Code": "KA119",
+                    "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "Address": "Plot No. 98 and 99 , Bengaluru Aerospace SEZ Park , Budigere, Sulibele Post , Bengaluru Urban , Karnataka , 562129",
+                    "Central tax Jurisdiction": "RANGE-EED9",
+                    "Central tax Jurisdiction Code": "YT0905",
+                    "Date of Registration": "01/07/2017",
+                    "Duty": "SEZ Unit",
+                    "E-Invoice Status": "No",
+                    "Gstin": "29AAGCA1832M2ZG",
+                    "Legal Name": "THYSSENKRUPP AEROSPACEINDIA PVT LTD",
+                    "Nature of Business Activity": [
+                        "Others"
+                    ],
+                    "State Jurisdiction Code": "KA133",
+                    "Trade Name": "THYSSENKRUPP AEROSPACE INDIA PVT LTD"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"AL PLT 7075 T7351\\n38.1\\u00d7177.8X242.57(GF)\\nAMS-QQ-A-250\\/12+BSS7\\n055 CLASS A\",\"item_quantity\":78.2,\"unit\":\"PCS\",\"unit_price\":53.0,\"product_code\":\"GR03-000150-000-\\n000.\",\"tax\":\"0.0\",\"tax_rate\":18,\"amount\":901.0,\"qty_unitprice\":4144.6,\"qty_unit+rate_qty_unit\":4890.628,\"qty_unit+2_rate_qty_unit\":5636.656,\"check1\":\"incorrect\"},{\"item_description\":\"AL PLT 7075 T7351\\n63.50\\u00d7210.06\\u00d7385.06(GF)\\nAMS-QQ-A-250\\/12\",\"item_quantity\":244.46,\"unit\":\"PCS\",\"unit_price\":152.0,\"product_code\":\"GA04-000005-000-\\n101.\",\"tax\":\"0.0\",\"tax_rate\":18,\"amount\":2584.0,\"qty_unitprice\":37157.92,\"qty_unit+rate_qty_unit\":43846.3456,\"qty_unit+2_rate_qty_unit\":50534.7712,\"check1\":\"incorrect\"},{\"item_description\":\"AL PLT 7075 T7351\\n25.4\\u00d7177.8\\u00d7431.80(GF)\\nAMS-QQ-A-250\\/12\",\"item_quantity\":70.98,\"unit\":\"PCS\",\"unit_price\":62.0,\"product_code\":\"GR03-000192-000-\\n000\",\"tax\":\"0.0\",\"tax_rate\":18,\"amount\":806.0,\"qty_unitprice\":4400.76,\"qty_unit+rate_qty_unit\":5192.8968,\"qty_unit+2_rate_qty_unit\":5985.0336,\"check1\":\"incorrect\"},{\"item_description\":\"AL PLT 7075 T7351\\n12.7\\u00d7457.2\\u00d7838.20(GF)\\nAMS-QQ-A-250\\/12\",\"item_quantity\":81.78,\"unit\":\"PCS\",\"unit_price\":253.0,\"product_code\":\"GR03-000164-000-\\n000\",\"tax\":\"0.0\",\"tax_rate\":18,\"amount\":1518.0,\"qty_unitprice\":20690.34,\"qty_unit+rate_qty_unit\":24414.6012,\"qty_unit+2_rate_qty_unit\":28138.8624,\"check1\":\"incorrect\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "",
+                    "Invoice_data": " ",
+                    "status": "Filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AAGCA1832M2ZG",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AAGCA1832M2ZG",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": null,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "Active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "SEZ Unit",
+                    "Invoice_data": "-",
+                    "status": "SEZ Unit"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "thyssenkrupp",
+                "Bank_Account_No": null,
+                "Email": null,
+                "VendorAddress": "98, 99 Bengaluru Aerospace, ,SEZ Park, KIADB Industrial\nArea ,Budigere, Sulibele Post,\n562129, Bengaluru, Karnataka, None, India"
+            },
+            "BillingAddress": "2nd Floor, Plot No SP1, Bangalore, Karnataka, 560048, India",
+            "BillingAddressRecipient": "Glodesi Technologies Pvt Ltd DESI TECHNOLOGIES PV1",
+            "Currency": "USD",
+            "CustomerId": "CDT0016",
+            "CustomerName": "Glodesi Technologies Pvt Ltd DESI TECHNOLOGIES PV1",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "901.0",
+                    "item_description": "AL PLT 7075 T7351\n38.1\u00d7177.8X242.57(GF)\nAMS-QQ-A-250/12+BSS7\n055 CLASS A",
+                    "item_quantity": 78.2,
+                    "product_code": "GR03-000150-000-\n000.",
+                    "tax": "0.0",
+                    "tax_rate": "18%",
+                    "unit": "PCS",
+                    "unit_price": "53.0"
+                },
+                "item#2": {
+                    "amount": "2584.0",
+                    "item_description": "AL PLT 7075 T7351\n63.50\u00d7210.06\u00d7385.06(GF)\nAMS-QQ-A-250/12",
+                    "item_quantity": 244.46,
+                    "product_code": "GA04-000005-000-\n101.",
+                    "tax": "0.0",
+                    "tax_rate": "18%",
+                    "unit": "PCS",
+                    "unit_price": "152.0"
+                },
+                "item#3": {
+                    "amount": "806.0",
+                    "item_description": "AL PLT 7075 T7351\n25.4\u00d7177.8\u00d7431.80(GF)\nAMS-QQ-A-250/12",
+                    "item_quantity": 70.98,
+                    "product_code": "GR03-000192-000-\n000",
+                    "tax": "0.0",
+                    "tax_rate": "18%",
+                    "unit": "PCS",
+                    "unit_price": "62.0"
+                },
+                "item#4": {
+                    "amount": "1518.0",
+                    "item_description": "AL PLT 7075 T7351\n12.7\u00d7457.2\u00d7838.20(GF)\nAMS-QQ-A-250/12",
+                    "item_quantity": 81.78,
+                    "product_code": "GR03-000164-000-\n000",
+                    "tax": "0.0",
+                    "tax_rate": "18%",
+                    "unit": "PCS",
+                    "unit_price": "253.0"
+                }
+            },
+            "InvoiceDate": "2025-01-07",
+            "InvoiceId": "BLR102501IV0017",
+            "InvoiceTotal": "5809.00",
+            "ShippingAddress": "None, EPIP Industrial Area, Road No 3, Whitefield, Karnataka, 560066, India",
+            "ShippingAddressRecipient": "Glodesi Technologies Pvt Ltd",
+            "SubTotal": "5809.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": 0.0,
+                    "rate": 0
+                },
+                "SGST": {
+                    "amount": 0.0,
+                    "rate": 0
+                }
+            },
+            "TotalTax": "0.00",
+            "Vendor Gst No.": "29AAGCA1832M2ZG",
+            "VendorAddress": "98, 99 Bengaluru Aerospace, ,SEZ Park, KIADB Industrial\nArea ,Budigere, Sulibele Post,\n562129, Bengaluru, Karnataka, None, India",
+            "VendorAddressRecipient": "thyssenkrupp Aerospace India Pvt Ltd",
+            "VendorName": "thyssenkrupp"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Vendor_Filing_status",
+                "Table_check1 not okay",
+                "Table_Check2 not okay"
+            ]
+        }
+    }
+}

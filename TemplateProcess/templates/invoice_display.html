@@ -321,7 +321,7 @@
     <div id="Table_data" class="tab-content">
         <h2 class="centered">Table Data</h3>
         <h3 class="centered">Table</h3>
-        <table>
+        <table class="narrow-table">
             <thead>
                 <tr>
                     {% if table_data %}
@@ -349,7 +349,7 @@
             </tbody>
         </table>
         <h3 class="centered">Check2</h3>
-        <table>
+        <table class="narrow-table">
             <tbody>
                 {% for key, value in table_data.check_2.items %}
                     <tr>
@@ -360,7 +360,7 @@
             </tbody>
         </table>
         <h3 class="centered">Check3</h3>
-        <table>
+        <table class="narrow-table">
             <tbody>
                 {% for key, value in table_data.check_3.items %}
                     <tr>
@@ -416,7 +416,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% if grn_vs_invoice.invoice_data %}
+                {% if grn_vs_invoice.grn_data %}
                     {% for row in grn_vs_invoice.grn_data %}
                         <tr>
                             {% for value in row.values %}
@@ -426,7 +426,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="10">Invoice Id did not matched on OPEN GRN data or not data available against invoice id</td>
+                        <td colspan="10">Invoice Id did not match any OPEN GRN data or no data available against invoice id</td>
                     </tr>
                 {% endif %}
             </tbody>
@@ -530,41 +530,59 @@
             </tbody>
         </table>
         
+        <h2 class="centered">Filing Status GST Portal</h2>
+        <h3 class="centered">GSTR-1 Data</h3>
+        <div class="narrow-table">
+            {% if df_gstr1_html %}
+                {{ df_gstr1_html|safe }}
+            {% else %}
+                <p>No GSTR-1 data available.</p>
+            {% endif %}
+        </div>
+
+        <h3 class="centered">GSTR-3B Data</h3>
+        <div class="narrow-table">
+            {% if df_3b_html %}
+                {{ df_3b_html|safe }}
+            {% else %}
+                <p>No GSTR-3B data available.</p>
+            {% endif %}
+        </div>
 
         <!-- Table for Filing Status Data -->
-        <h3 class="centered">Filing Status GST Portal</h3>
-        <table class="narrow-table">
-            <thead>
-                <tr>
-                    <th>valid</th>
-                    <th>mof</th>
-                    <th>dof</th>
-                    <th>rtntype</th>
-                    <th>ret_prd</th>
-                    <th>arn</th>
-                    <th>status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if Filinq_status %}
-                    {% for item in Filinq_status %}
-                        <tr>
-                            <td>{{ item.valid }}</td>
+        <!-- <h3 class="centered">Filing Status GST Portal</h3> -->
+        <!-- <table class="narrow-table"> -->
+            <!-- <thead> -->
+                <!-- <tr> -->
+                    <!-- <th>valid</th> -->
+                    <!-- <th>mof</th> -->
+                    <!-- <th>dof</th> -->
+                    <!-- <th>rtntype</th> -->
+                    <!-- <th>ret_prd</th> -->
+                    <!-- <th>arn</th> -->
+                    <!-- <th>status</th> -->
+                <!-- </tr> -->
+            <!-- </thead> -->
+            <!-- <tbody> -->
+                <!-- {% if Filinq_status %} -->
+                    <!-- {% for item in Filinq_status %} -->
+                        <!-- <tr> -->
+                            <!-- <td>{{ item.valid }}</td>
                             <td>{{ item.mof }}</td>
                             <td>{{ item.dof }}</td>
                             <td>{{ item.rtntype }}</td>
                             <td>{{ item.ret_prd }}</td>
                             <td>{{ item.arn }}</td>
-                            <td>{{ item.status }}</td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                <tr>
-                    <td colspan="2">No data available , Invalid GST NO or invoice does not have GST NO</td>
-                </tr>
-                {% endif %}
-            </tbody>
-        </table>
+                            <td>{{ item.status }}</td> -->
+                        <!-- </tr> -->
+                    <!-- {% endfor %} -->
+                <!-- {% else %} -->
+                <!-- <tr> -->
+                    <!-- <td colspan="2">No data available , Invalid GST NO or invoice does not have GST NO</td> -->
+                <!-- </tr> -->
+                <!-- {% endif %} -->
+            <!-- </tbody> -->
+        <!-- </table> -->
         <!-- Table for Vendor GST Data -->
         <h3 class="centered">Pan Details</h3>
         <table class="narrow-table">

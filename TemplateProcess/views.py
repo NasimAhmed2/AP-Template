@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 import requests
 import json
+import shutil
 import datetime
 from django.conf import settings
 from django.core.files.storage import default_storage
@@ -254,7 +255,7 @@ def invoice_display(request):
                     tax_check_vendorfilingstatus = {}
                     # print(Filinq_status_data)
                     # print('hello--1')
-                    filingstatus_rslt = filingstatus(Filinq_status_data)
+                    # filingstatus_rslt = filingstatus(Filinq_status_data)
                     # print(filingstatus_rslt)
                     tax_check_taxpayertype_filingfrequncy = {}
                     tax_check_correctgstcharged = {}
@@ -273,10 +274,10 @@ def invoice_display(request):
                     tax_check_vendorgst_mentioned['Is Vendor GST Status Active on GST Portal?'] = tax_check['Vendor_Gst_Active']['status']
                     tax_check_vendorgst_mentioned['Is GST Charged on invoice (when GST No. of vendor mentioned)?'] = YES_NO.get(gstcharge_stats) 
 
-                    tax_check_vendorfilingstatus['Is Vendor regular in filing GST(3B) Return?'] = filingstatus_rslt['status']
-                    tax_check_vendorfilingstatus['Filing Status of Previous month'] = filingstatus_rslt['month']
-                    tax_check_vendorfilingstatus['Filing Status - Earlier to Previous month1'] = filingstatus_rslt['month1']
-                    tax_check_vendorfilingstatus['Filing Status - Earlier to Previous month2'] = filingstatus_rslt['month2']
+                    # tax_check_vendorfilingstatus['Is Vendor regular in filing GST(3B) Return?'] = filingstatus_rslt['status']
+                    # tax_check_vendorfilingstatus['Filing Status of Previous month'] = filingstatus_rslt['month']
+                    # tax_check_vendorfilingstatus['Filing Status - Earlier to Previous month1'] = filingstatus_rslt['month1']
+                    # tax_check_vendorfilingstatus['Filing Status - Earlier to Previous month2'] = filingstatus_rslt['month2']
 
                     tax_check_taxpayertype_filingfrequncy['Vendor Tax Payer Type as per GST Portal'] = tax_check['Vendor_TaxPayer_type']['status']
                     tax_check_taxpayertype_filingfrequncy['Vendor Filing Frequency as per GST Portal'] = tax_check['Vendor_Taxfiliging_Frequency']['status']
@@ -476,7 +477,9 @@ def invoice_display(request):
                         except Exception as e:
                             print(f"Error while loading response: {str(e)}")
                         try:
-                            filingstatus_rslt_3b , filingstatus_rslt_gstr1 = filingstatus(Filinq_status_data)
+                            filingstatus_rslt_3b , filingstatus_rslt_gstr1, df_gstr1, df_3b = filingstatus(Filinq_status_data)
+                            df_gstr1_html= df_gstr1.to_html(index=False, classes="table table-bordered")
+                            df_3b_html= df_3b.to_html(index=False, classes="table table-bordered")
                             ##gstr3b
                             vendor_3B_filingstatus['parameter'] = 'Vendor GSTR 3B Filing Status'
                             vendor_3B_filingstatus['Result'] = ''
@@ -510,6 +513,7 @@ def invoice_display(request):
                             vendor_gstr1_filingstatus3['Result'] = filingstatus_rslt_gstr1['month2']
                             gst_portal_check['vendor_gstr1_filingstatus3'] = vendor_gstr1_filingstatus3
                         except Exception as e:
+                            gst_portal_check = {}
                             print(f"Error while loading response: {str(e)}")
                         
                         Checks['gst_portal_check'] = gst_portal_check
@@ -632,23 +636,46 @@ def invoice_display(request):
                     invoice_table_vs_grn_data = {}
                 # print('this---5')
                 # Pass data to context for rendering
+                
                 try:
+                    # context = {
+                    #     'active_tab': 'Invoice_data',
+                    #     'invoice_data': invoice_data,
+                    #     'Tax_check': tax_check_data,
+                    #     'gst_data': result.get('CHECKS', {}).get('data_from_gst', {}),
+                    #     'table_data' : Table_Data,
+                    #     'Checks': Checks,
+                    #     # 'Account_check':account_check_data,
+                    #     'Filinq_frequency' : result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Frequency', []),
+                    #     'Filinq_status' : Filinq_status_data,
+                    #     'df_gstr1_html' : df_gstr1_html,
+                    #     'df_3b_html': df_3b_html,
+                    #     'grn_vs_invoice' : grn_vs_inoice,
+                    #     'keys_with_tooltip': ['invoice_complete', 'invoice_valid'],
+                    #     '2b_olive_color' : ['YES', 'Filed', 'Regular', 'Monthly', 'Okay'],
+                    #     'Invoicetable_vs_Grntable_compare':invoice_table_vs_grn_data,
+                        
+
+                    #     # 'Filinq_status' : result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Status', [])
+                    # }
+
                     context = {
-                        'active_tab': 'Invoice_data',
-                        'invoice_data': invoice_data,
-                        'Tax_check': tax_check_data,
-                        'gst_data': result.get('CHECKS', {}).get('data_from_gst', {}),
-                        'table_data' : Table_Data,
-                        'Checks': Checks,
-                        # 'Account_check':account_check_data,
-                        'Filinq_frequency' : result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Frequency', []),
-                        'Filinq_status' : Filinq_status_data,
-                        'grn_vs_invoice' : grn_vs_inoice,
-                        'keys_with_tooltip': ['invoice_complete', 'invoice_valid'],
-                        '2b_olive_color' : ['YES', 'Filed', 'Regular', 'Monthly', 'Okay'],
-                        'Invoicetable_vs_Grntable_compare':invoice_table_vs_grn_data
-                        # 'Filinq_status' : result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Status', [])
-                    }
+    'active_tab': 'Invoice_data',
+    'invoice_data': invoice_data if 'invoice_data' in locals() else {},
+    'Tax_check': tax_check_data if 'tax_check_data' in locals() else {},
+    'gst_data': result.get('CHECKS', {}).get('data_from_gst', {}),
+    'table_data': Table_Data if 'Table_Data' in locals() else {},
+    'Checks': Checks if 'Checks' in locals() else {},
+    'Filinq_frequency': result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Frequency', {}),
+    'Filinq_status': Filinq_status_data if 'Filinq_status_data' in locals() else {},
+    'df_gstr1_html': df_gstr1_html if 'df_gstr1_html' in locals() else '',
+    'df_3b_html': df_3b_html if 'df_3b_html' in locals() else '',
+    'grn_vs_invoice': grn_vs_inoice if 'grn_vs_inoice' in locals() else {},
+    'keys_with_tooltip': ['invoice_complete', 'invoice_valid'],
+    '2b_olive_color': ['YES', 'Filed', 'Regular', 'Monthly', 'Okay'],
+    'Invoicetable_vs_Grntable_compare': invoice_table_vs_grn_data if 'invoice_table_vs_grn_data' in locals() else {},
+}
+
                     # print(context['Checks'])
                 except Exception as e:
                     print(f"Error while loading response: {str(e)}")
@@ -683,7 +710,7 @@ def upload_invoice(request):
         responses = []
         # print(uploaded_files)
         for uploaded_file in uploaded_files:
-            time.sleep(5)
+            time.sleep(0.5)
             try:
                 # print('hello--2')
                 # Generate a unique name with timestamp
@@ -728,9 +755,10 @@ def upload_invoice(request):
                     
                     # print("Calling the function to ensure table and update the database...")
                     ensure_table_and_update(file_name=unique_name, path=invoice_path, upload_date=timestamp, okay_status=okay_notokay, okay_message=okay_message_, status='waiting')
-                    # print("Function call finished.")
+                    print("Function call finished.")
                     responses.append(f"Processed {uploaded_file.name} successfully.")
                 else:
+                    print("Function call gaver errror")
                     responses.append(f"Error for {uploaded_file.name}: {response.status_code} - {response.text}")
             
             except Exception as e:
@@ -892,6 +920,59 @@ def show_invoices(request):
         'selected_status': status_filter,
     }
     return render(request, 'show_invoices.html', context)
+
+
+def reset_project(request):
+    # Only proceed if the password is provided and matches
+    if request.method == "POST":
+        password = request.POST.get('password')
+
+        # Check if the password is correct
+        if password != '4321@4321':
+            return HttpResponse('Incorrect password', status=403)
+
+        # Define directories to delete
+        invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices")
+        response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
+
+        # Delete all files in the 'invoices' folder
+        if os.path.exists(invoice_dir):
+            for filename in os.listdir(invoice_dir):
+                file_path = os.path.join(invoice_dir, filename)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)  # Permanently delete file
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)  # Permanently delete folder
+
+        # Delete all files in the 'responses' folder
+        if os.path.exists(response_dir):
+            for filename in os.listdir(response_dir):
+                file_path = os.path.join(response_dir, filename)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)  # Permanently delete file
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)  # Permanently delete folder
+
+        # Connect to SQLite database
+        db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Delete all entries from the 'invoice_detail' table
+        cursor.execute("DELETE FROM invoice_detail")
+        conn.commit()
+
+        # Close the database connection
+        conn.close()
+
+        # Show a success message
+        messages.success(request, 'Project has been reset to initial state.')
+
+        # Redirect to home page
+        return redirect('home')
+
+    # If GET request, show the password form
+    return render(request, 'reset_project.html')
 
 
 def upload_opengrn(request):

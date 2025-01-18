@@ -41,6 +41,7 @@ def template_formation(data):
                     result = api_response.get("result", {})
                     # Extract default data
                     invoice_data = result.get('Invoice_data', {})
+                    
                     # print('hello--1')
                     table_data_json = result.get('CHECKS', {}).get('table_data', {}).get('Table_Check_data', '[]')
                     table_data = json.loads(table_data_json) if isinstance(table_data_json, str) else table_data_json
@@ -49,14 +50,23 @@ def template_formation(data):
                     table_amount_sum = table_data_df['amount'].sum() or table_data_df['qty_unitprice'].sum()
                     total_amount_invoice = invoice_data.get('InvoiceTotal')
                     invoice_id = invoice_data.get('InvoiceId')
+                    # print(invoice_id)
                     invoice_date = invoice_data.get('InvoiceDate')
                     po_number = invoice_data.get('PurchaseOrder')
-                    po_number_ = re.sub(r'[^0-9]', '', po_number)
-                    if len(po_number_) > 8:
-                        po_number_ = po_number_[:8]
+                    # print('hello--3',po_number)
+                    if po_number is not None:
+                        po_number_ = re.sub(r'[^0-9]', '', po_number)
+                        if len(po_number_) > 8:
+                            po_number_ = po_number_[:8]
+                    
+                    # print('hello--4')
+                    
                     if invoice_id:
+                        # print(invoice_id)
                         invoice_id = str(invoice_id).lstrip('0')
                         filtered_row = data_grn[data_grn['Supplier Ref No'] == invoice_id]
+
+                        # print('this---1')
                         if filtered_row.empty:
                             message.append(f'No data found in open grn records against {invoice_id} for {invoice_name}')
                             
@@ -78,7 +88,7 @@ def template_formation(data):
                                 date1 = filtered_row.iloc[0]['Posting Date']
                                 date1_ = pd.to_datetime(date1)
                                 DocDate_formatted = date1_.strftime("%Y%m%d")
-                                print(date1)
+                                # print(date1)
                                 
                                 
                                 # print('this----3')
@@ -89,8 +99,9 @@ def template_formation(data):
                                 DocDate = DocDate_formatted
                                 DocDueDate = DocDueDate_formatted
                                 # taxdate = filtered_row.iloc[0]['Document Date']Posting Date
-                                # formatted_date_ = invoice_date.strftime("%Y%m%d")
-                                TaxDate = ' '
+                                invoice_date_obj = datetime.strptime(invoice_date, "%Y-%m-%d")
+                                invoice_formatted_date = invoice_date_obj.strftime("%Y%m%d")
+                                TaxDate = invoice_formatted_date
                                 DiscPrcnt = 0
                                 DocCur = filtered_row.iloc[0]['Currency Type']
                                 DocRate = ' '
@@ -104,7 +115,7 @@ def template_formation(data):
                                 # print('this----6')
                                 new_data = [' ', int(Series),CardCode,DocDate,DocDueDate,TaxDate,DiscPrcnt,DocCur,
                                             DocRate,NumAtCard,CntctCode,DocType,SlpCode,Comments,GSTTranType]
-                                print('this----5')
+                                # print('this----5')
                                 # Load the workbook and select the active sheet
                                 workbook = load_workbook(file_path_header)
                                 sheet = workbook.active
@@ -119,7 +130,11 @@ def template_formation(data):
                                 for index, row in filtered_row_.iterrows():
                                     LineNum = index
                                     Due_Amount = row['Total Paymt Due']
-                                    # print("hello--3")
+                                    if DocCur == 'INR':
+                                        Due_Amount = row['Total Paymt Due']
+                                    else:
+                                        Due_Amount = row['Total Payment Due FC']
+                                    # print("hello--3",Due_Amount,total_amount_invoice)
                                     if abs(float(Due_Amount) - float(total_amount_invoice)) < 1 :
                                         # print("hello--4")
                                         DocNum = filtered_row.iloc[0]['Document Number']
@@ -128,8 +143,13 @@ def template_formation(data):
                                         Price = row['Price']
                                         TaxCode = row['Tax Code']
                                         BaseType = 20
-                                        BaseEntry = ' '
-                                        Price_ = row['Total Before Discount']
+                                        BaseEntry = row['GRPO DocEntry']
+                                        print(BaseEntry)
+                                        if DocCur == 'INR':
+                                            Price_ = row['Total Before Discount']
+                                        else:
+                                            Price_ = row['Total Before Discount FC']
+                                        # Price_ = row['Total Before Discount']
                                         LocCode = 2
                                         WhsCode = row['WarehouseCode']
                                         CntctCode = ' '
@@ -177,7 +197,7 @@ def template_formation(data):
             except:
                 pass
 
-            # print(file_name)
+            print(file_name)
     return message
 
     # path_ = 'TemplateData/header.xlsx'

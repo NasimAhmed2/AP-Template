@@ -15,6 +15,7 @@ urlpatterns = [
     path('update-status/', views.update_status, name='update_status'),
     path('invoicepdf-show/', views.pdf_show, name='pdf_show'),
     path('show-templates/', views.show_templates, name='show_templates'),
+    path('reset_project/', views.reset_project, name='reset_project'),
 ]
 
 if settings.DEBUG:  # Only for development

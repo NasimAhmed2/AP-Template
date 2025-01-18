@@ -71,6 +71,15 @@
         </nav>
     </header>
     <main>
+        <!-- Display messages -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="alert {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         <h2>Welcome to the Home Page</h2>
         <p>Use the buttons above to navigate.</p>
     </main>
