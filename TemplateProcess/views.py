@@ -20,93 +20,127 @@ from .diffrent_functions import filingstatus,Table_data,InvoiceTable_vs_GrnTable
 from .Template_formation import template_formation, retain_two_rows
 # from .sqlite_function import ensure_table_and_update
 import sqlite3
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import InvoiceDetail
 
 
 # Create your views here.
-
+@login_required
 def home(request):
     return render(request, 'home.html')
 
 
 
 
-# Function to ensure the table exists and then insert/update data
-def ensure_table_and_update(file_name, path, upload_date, okay_status, okay_message, status='waiting'):
-    # print("Ensuring table and updating database...")
+
+def register(request):
+    if request.method == "POST":
+        password = request.POST["password"]
+        email = request.POST["email"]
+        confirm_password = request.POST["confirm_password"]
+
+        if User.objects.filter(username=email).exists():
+            messages.error(request, "Username already exists.")
+            return redirect("register")
+        
+        if password == confirm_password:
+            user = User.objects.create_user(username=email, email=email, password=password)
+            messages.success(request, "Registration successful. Please log in.")
+            return redirect("login")
+        else:
+            messages.success(request, "Confirm password did not match. Please Try Again.")
+            return redirect("login")
+
+    return render(request, "register.html")
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Store the user's ID in the session
+            request.session["user_id"] = user.id  # or user.pk
+            next_url = request.GET.get('next', 'home')  # Redirect to 'next' or home page
+            return redirect(next_url)
+        else:
+            messages.error(request, "Invalid username or password.")
+            return redirect("login")
+
+    return render(request, "login.html")
+
+def user_logout(request):
+    logout(request)
+    request.session.flush()  # Clears all session data
+    return redirect("login")
+
+def save_invoice_detail(user, file_name, upload_date, path, okay_status=None, okay_message=None, status='waiting'):
     """
-    Ensures the table exists and then adds or updates the entry.
+    Saves or updates the invoice details for a user.
 
     Args:
+        user (User): The user associated with the invoice.
         file_name (str): The name of the file.
         path (str): The full path of the file.
-        status (str): The status to set, defaults to 'waiting'.
-    """
-    # Path to the SQLite database
-    db_path = settings.DATABASES['default']['NAME']
-
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-
-    # Ensure the table exists
-    create_table_query = """
-    CREATE TABLE IF NOT EXISTS invoice_detail (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        file_name TEXT UNIQUE NOT NULL,
-        path TEXT NOT NULL,
-        upload_date TEXT NOT NULL,
-        okay_status TEXT,
-        okay_message TEXT,
-        status TEXT DEFAULT 'waiting'
-    );
-    """
-    cursor.execute(create_table_query)
-
-    # Insert or update the record (Correct the table name here to match the created table)
-    upsert_query = """
-    INSERT INTO invoice_detail (file_name, path, upload_date, okay_status, okay_message, status)
-    VALUES (?, ?, ?, ?, ?, ?)
-    ON CONFLICT(file_name) DO UPDATE SET
-        path = excluded.path,
-        status = excluded.status,
-        okay_status = excluded.okay_status,
-        okay_message = excluded.okay_message;
+        okay_status (str, optional): The status of the invoice. Defaults to None.
+        okay_message (str, optional): The message related to the invoice. Defaults to None.
+        status (str, optional): The status of the invoice. Defaults to 'waiting'.
     """
     try:
-        cursor.execute(upsert_query, (file_name, path, upload_date, okay_status, okay_message, status))
-        conn.commit()
-        print(f"Entry for '{file_name}' added/updated successfully.")
-    except sqlite3.Error as e:
-        print(f"Error updating/creating entry for '{file_name}': {e}")
-    finally:
-        conn.close()
+        # Create or update the invoice detail
+        invoice, created = InvoiceDetail.objects.update_or_create(
+            user=user,
+            file_name=file_name,
+            defaults={
+                'upload_date':upload_date,
+                'path': path,
+                'okay_status': okay_status,
+                'okay_message': okay_message,
+                'status': status,
+            }
+        )
+        if created:
+            print(f"Invoice '{file_name}' created for user {user.username}.")
+        else:
+            print(f"Invoice '{file_name}' updated for user {user.username}.")
+    except Exception as e:
+        print(f"Error saving invoice '{file_name}': {e}")
 
 
+@login_required
 def pdf_show(request):
+    user = request.user  # Get the logged-in user
+    user_index = user.id
     # Get the PDF file name from the URL parameter
     response_file = request.GET.get('response_file')
-
-    # Define the folder where your PDF files are stored
-    response_dir = os.path.join(settings.MEDIA_ROOT, "invoices")
-    pdf_path = os.path.join(response_dir, response_file)
+    pdf_path = os.path.join(settings.MEDIA_ROOT, "invoices", str(user.id), response_file)
+    # # Define the folder where your PDF files are stored
+    # response_dir = os.path.join(settings.MEDIA_ROOT, "invoices")
+    # pdf_path = os.path.join(response_dir, response_file)
 
     # Check if the file exists
     if not os.path.exists(pdf_path):
         raise Http404("PDF file not found.")
 
     # Pass the URL-relative path to the template
-    pdf_url = f"{settings.MEDIA_URL}invoices/{response_file}"
+    pdf_url = f"{settings.MEDIA_URL}invoices/{user_index}/{response_file}"
+    print(pdf_url)
 
     return render(request, 'invoice_pdf_show.html', {'pdf_name': pdf_url})
-
+@login_required
 def export_templates(request):
     if request.method == "POST":
         try:
             # Paths to the two Excel files
-            file1_path = "TemplateData/header.xlsx"
-            file2_path = "TemplateData/Templates.xlsx"
-
+            user_index = request.session.get("user_id")
+            base_dir = os.path.join(settings.BASE_DIR, 'TemplateData', str(user_index))
+            # Define user-specific file paths
+            file2_path = os.path.join(base_dir, 'Templates.xlsx')
+            file1_path = os.path.join(base_dir, 'header.xlsx')
             # Check if files exist
             if not os.path.exists(file1_path) or not os.path.exists(file2_path):
                 return JsonResponse({"message": "One or more files not found."}, status=404)
@@ -123,23 +157,26 @@ def export_templates(request):
             # Serve the ZIP file as a response
             response = FileResponse(zip_buffer, content_type='application/zip')
             response['Content-Disposition'] = 'attachment; filename="templates.zip"'
-
-            retain_two_rows()
+            path = [file2_path,file1_path]
+            retain_two_rows(path)
             return response
             
         except Exception as e:
             return JsonResponse({"message": f"Error: {str(e)}"}, status=500)
     return JsonResponse({"message": "Invalid request method"}, status=400)
 
+@login_required
 def show_templates(request, message=[]):
     try:
+        user_index = request.session.get("user_id")
+        user = request.user
         # Read the first Excel sheet
-        file_path_1 = os.path.join(settings.BASE_DIR, 'TemplateData', 'header.xlsx')
+        file_path_1 = os.path.join(settings.BASE_DIR, 'TemplateData', str(user_index), 'header.xlsx')
         # file_path_1 = 'TemplateData/header.xlsx'
         sheet_1 = pd.read_excel(file_path_1)
 
         # Read the second Excel sheet
-        file_path_2 = os.path.join(settings.BASE_DIR, 'TemplateData', 'Templates.xlsx')
+        file_path_2 = os.path.join(settings.BASE_DIR, 'TemplateData', str(user_index), 'Templates.xlsx')
         # file_path_2 = 'TemplateData/Templates.xlsx'
         sheet_2 = pd.read_excel(file_path_2)
 
@@ -161,10 +198,12 @@ def show_templates(request, message=[]):
             'sheet_1_html': '',
             'sheet_2_html': ''
         })
-
+@login_required
 def save_template(request):
     # Check if the Save Template button was clicked
     if request.method == "POST":
+        user_index = request.session.get("user_id")
+        user = request.user
         try:
             # Get the list of selected files from the POST data
             selected_files = request.POST.get('selected_files', '[]')
@@ -174,7 +213,7 @@ def save_template(request):
             print("Selected files:", selected_files)
 
             # Generate the message by processing the selected files
-            message = template_formation(selected_files)
+            message = template_formation(selected_files,user_index,user)
             
             if isinstance(message, str):
                 # Wrap the string in a list
@@ -190,11 +229,12 @@ def save_template(request):
 
 
     
-
+@login_required
 def show_grn(request):
     context = {"data": None, "columns": None, "message": ""}
+    user_index = request.session.get("user_id")
     # Absolute path to GRN_Data directory
-    path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
+    path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
     try:
         data = pd.read_csv(path)
         context["data"] = data.values.tolist()
@@ -203,15 +243,18 @@ def show_grn(request):
     except:
         context['message'] = 'Please Upload Open GRN reports , found not reports to display'
     return render(request, 'show_opengrn.html', context)
-
+@login_required
 def invoice_display(request):
     context = {}
     # Get data from session
     # api_response = request.session.get('api_response', {})
     # result = api_response.get('result', {})
     # Define the directory where responses are saved
+    user = request.user  # Get the logged-in user
+    user_index = request.session.get("user_id")
     
-    response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
+    # response_dir = os.path.join(settings.MEDIA_ROOT, "responses", user_index)
+    response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user.id))
     
     # Get the response file name from the query parameter
     response_file_name = request.GET.get('response_file')
@@ -553,46 +596,7 @@ def invoice_display(request):
                 except:
                     pass
 
-                try:
-                    pass
-                    # account_check_comapnyaddress = {}
-                    # account_check_comapnyname = {}
-                    # account_check_invoiceid_date = {}
-                    # account_check_pryr = {}
-                    # account_check_data = {}
-
-
-                    # account_check_complete_valid['Is the Invoice Complete'] = account_check['Complete_Invoice']['status']
-                    # account_check_complete_valid['Parameters Checked for Invoice Complete'] = 'Supplier Name, PAN, Customer Name, Customer Address, GST/PAN, Bill No., Bill Date, Basic Value, Total Value etc'
-                    # account_check_complete_valid['Is the Invoice Valid'] = account_check['valid_invoice']['status']
-                    # account_check_complete_valid['Parameters Checked for Invoice Valid'] = 'Should not mention - PI/Estimate/Commercial Invoice/Supply invoice/Challan'
-
-                    # account_check_comapnyaddress['Result'] = account_check['Customer_Adress']['status']
-                    # account_check_comapnyaddress['Company Address-As per Invoice'] = account_check['Customer_Adress']['Invoice_data']
-                    # account_check_comapnyaddress['Company Address-As per GST Portal'] = account_check['Customer_Adress']['Gst_Portal']
-
-                    # account_check_comapnyname['Result'] = account_check['Customer_Name']['status']
-                    # account_check_comapnyname['Company Name-As per Invoice'] = account_check['Customer_Name']['Invoice_data']
-                    # account_check_comapnyname['Company Legal Name-As per GST Portal'] = result.get('CHECKS', {}).get('data_from_gst', {}).get('customer_gst_data', {}).get('lgnm', None)
-                    # account_check_comapnyname['Company Trade Name-As per GST Portal'] = account_check['Customer_Name']['Gst_Portal']
-
-                    # okay1 = account_check['Invoice_Date']['status']
-                    # okay2 = account_check['Invoice_Number']['status']
-                    # account_check_invoiceid_date['Is Invoice Date mentioned on Invoice?'] = YES_NO.get(okay1)
-                    # account_check_invoiceid_date['Invoice Date'] = account_check['Invoice_Date']['Invoice_data']
-                    # account_check_invoiceid_date['Is Invoice No. mentioned on Invoice?'] = YES_NO.get(okay2)
-                    # account_check_invoiceid_date['Invoice No.'] = account_check['Invoice_Number']['Invoice_data']
-
-                    # account_check_pryr['Is Invoice of Prev Year'] = account_check['Pre_year']['status']
-                    # account_check_pryr['Invoice Date'] = account_check['Invoice_Date']['Invoice_data']
-
-                    # account_check_data['account_check_complete_valid'] = account_check_complete_valid
-                    # account_check_data['account_check_comapnyaddress'] = account_check_comapnyaddress
-                    # account_check_data['account_check_comapnyname'] = account_check_comapnyname
-                    # account_check_data['account_check_invoiceid_date'] = account_check_invoiceid_date
-                    # account_check_data['account_check_pryr'] = account_check_pryr
-                except:
-                    pass
+                
 
                 try:
                     ##table data
@@ -610,7 +614,7 @@ def invoice_display(request):
                 # print('this---3')
                 grn_vs_inoice = {}
                 try:
-                    invoice_table,grn_data = InvoiceTable_vs_GrnTable(invoice_data)
+                    invoice_table,grn_data = InvoiceTable_vs_GrnTable(invoice_data,user_index)
                     # print('this---4')
                     # print(invoice_table,grn_data)
                     
@@ -630,7 +634,7 @@ def invoice_display(request):
                     pass
                 
                 try:
-                    invoice_table_vs_grn_data = Invoicetable_vs_Grntable_compare(invoice_data)
+                    invoice_table_vs_grn_data = Invoicetable_vs_Grntable_compare(invoice_data,user_index)
                     # print(invoice_table_vs_grn_data)
                 except:
                     invoice_table_vs_grn_data = {}
@@ -660,21 +664,21 @@ def invoice_display(request):
                     # }
 
                     context = {
-    'active_tab': 'Invoice_data',
-    'invoice_data': invoice_data if 'invoice_data' in locals() else {},
-    'Tax_check': tax_check_data if 'tax_check_data' in locals() else {},
-    'gst_data': result.get('CHECKS', {}).get('data_from_gst', {}),
-    'table_data': Table_Data if 'Table_Data' in locals() else {},
-    'Checks': Checks if 'Checks' in locals() else {},
-    'Filinq_frequency': result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Frequency', {}),
-    'Filinq_status': Filinq_status_data if 'Filinq_status_data' in locals() else {},
-    'df_gstr1_html': df_gstr1_html if 'df_gstr1_html' in locals() else '',
-    'df_3b_html': df_3b_html if 'df_3b_html' in locals() else '',
-    'grn_vs_invoice': grn_vs_inoice if 'grn_vs_inoice' in locals() else {},
-    'keys_with_tooltip': ['invoice_complete', 'invoice_valid'],
-    '2b_olive_color': ['YES', 'Filed', 'Regular', 'Monthly', 'Okay'],
-    'Invoicetable_vs_Grntable_compare': invoice_table_vs_grn_data if 'invoice_table_vs_grn_data' in locals() else {},
-}
+                        'active_tab': 'Invoice_data',
+                        'invoice_data': invoice_data if 'invoice_data' in locals() else {},
+                        'Tax_check': tax_check_data if 'tax_check_data' in locals() else {},
+                        'gst_data': result.get('CHECKS', {}).get('data_from_gst', {}),
+                        'table_data': Table_Data if 'Table_Data' in locals() else {},
+                        'Checks': Checks if 'Checks' in locals() else {},
+                        'Filinq_frequency': result.get('CHECKS', {}).get('data_from_gst', {}).get('Filing Frequency', {}),
+                        'Filinq_status': Filinq_status_data if 'Filinq_status_data' in locals() else {},
+                        'df_gstr1_html': df_gstr1_html if 'df_gstr1_html' in locals() else '',
+                        'df_3b_html': df_3b_html if 'df_3b_html' in locals() else '',
+                        'grn_vs_invoice': grn_vs_inoice if 'grn_vs_inoice' in locals() else {},
+                        'keys_with_tooltip': ['invoice_complete', 'invoice_valid'],
+                        '2b_olive_color': ['YES', 'Filed', 'Regular', 'Monthly', 'Okay'],
+                        'Invoicetable_vs_Grntable_compare': invoice_table_vs_grn_data if 'invoice_table_vs_grn_data' in locals() else {},
+                    }
 
                     # print(context['Checks'])
                 except Exception as e:
@@ -692,18 +696,26 @@ def invoice_display(request):
     return render(request, 'invoice_display.html', context)
 
 
-
+@login_required
 def upload_invoice(request):
     context = {"message": ""}
     url = "https://ocrblueconsulting.azurewebsites.net/process-invoice-withchecks-updated"
     user_id = "BC_User1"
     password = "1234@India"
     
-    # Define directories to save invoices and responses
-    invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices")
-    response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
+    user = request.user  # Get the logged-in user
+    user_index = request.session.get("user_id")
+    # print(user_index)
+    # Define user-specific directories
+    # Define user-specific directories
+    invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices", str(user_index),)
+    response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index),)
+
+    # Ensure the directories exist
     os.makedirs(invoice_dir, exist_ok=True)
     os.makedirs(response_dir, exist_ok=True)
+    
+    
     # print('hello--1')
     if request.method == 'POST' and request.FILES.getlist('files'):
         uploaded_files = request.FILES.getlist('files')
@@ -715,11 +727,11 @@ def upload_invoice(request):
                 # print('hello--2')
                 # Generate a unique name with timestamp
                 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                # current_date = datetime.now().date()
+                
                 unique_name = f"{timestamp}_{uploaded_file.name}"
-                # print('hello--2')
-                # Save the uploaded file locally
+                # print(current_date_)
                 invoice_path = os.path.join(invoice_dir, unique_name)
+                # print(invoice_path)
                 with default_storage.open(invoice_path, 'wb+') as destination:
                     for chunk in uploaded_file.chunks():
                         destination.write(chunk)
@@ -748,17 +760,27 @@ def upload_invoice(request):
                             # print(mess)
                             okay_message_ = okay_message_ + ' ' + mess
 
-                    response_file = os.path.join(response_dir, f"{timestamp}_{uploaded_file.name}.json")
-                    # print(okay_notokay,okay_message)
+                    uploaded_file_name = os.path.join(response_dir, f"{timestamp}_{uploaded_file.name}.json")
+                    response_file = os.path.join(response_dir, uploaded_file_name)
+                    
                     with open(response_file, 'w') as f:
                         json.dump(api_response_, f, indent=4)
                     
                     # print("Calling the function to ensure table and update the database...")
-                    ensure_table_and_update(file_name=unique_name, path=invoice_path, upload_date=timestamp, okay_status=okay_notokay, okay_message=okay_message_, status='waiting')
+                    # Save or update the database entry
+                    save_invoice_detail(
+                        user=user,
+                        file_name=unique_name,
+                        upload_date=timestamp,
+                        path=invoice_path,
+                        okay_status=okay_notokay,
+                        okay_message=okay_message,
+                        status='waiting'
+                    )
                     print("Function call finished.")
                     responses.append(f"Processed {uploaded_file.name} successfully.")
                 else:
-                    print("Function call gaver errror")
+                    print("Function call gave errror")
                     responses.append(f"Error for {uploaded_file.name}: {response.status_code} - {response.text}")
             
             except Exception as e:
@@ -768,160 +790,87 @@ def upload_invoice(request):
         return redirect('show_invoices')  # Redirect to the new page
     return render(request, 'upload_invoice.html', context)
 
+    
+@login_required
 def update_status(request):
     if request.method == "POST":
         try:
+            # Parse the incoming JSON data
             data = json.loads(request.body)
             invoice_name = data['invoice_name']
             status = data['status']
             name = data['name']
             reason = data['reason']
-            # print(status)
+
+            # Construct the message
+            okay_message = f"{status}, Updated by {name} for reason {reason}"
+
             try:
-                # Construct the message
-                okay_message = f"{status}, Updated by {name} for reason {reason}"
+                # Get the invoice by file_name using Django's ORM
+                invoice = InvoiceDetail.objects.get(user=request.user, file_name=invoice_name)
 
-                # Connect to the SQLite database
-                db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
-                conn = sqlite3.connect(db_path)
-                cursor = conn.cursor()
+                # Update the fields
+                invoice.okay_status = status
+                invoice.okay_message = okay_message
 
-                # Update the okay_status and okay_message for the matching file_name
-                update_query = """
-                UPDATE invoice_detail
-                SET okay_status = ?, okay_message = ?
-                WHERE file_name = ?
-                """
-                cursor.execute(update_query, (status, okay_message, invoice_name))
+                # Save the changes
+                invoice.save()
+                print('hello')
+                
+                response = {
+                    "message": f"Status updated for {invoice_name}",
+                    "success": True
+                }
+                return JsonResponse(response)
 
-                # Commit changes to the database
-                conn.commit()
-                # Check if the update was successful
-                if cursor.rowcount > 0:
-                    response = {
-                        "message": "Status updated successfully",
-                        "status": "success"
-                    }
-                else:
-                    response = {
-                        "message": f"No invoice found with the name '{invoice_name}'",
-                        "status": "error"
-                    }
+            except InvoiceDetail.DoesNotExist:
+                # If the invoice does not exist
+                response = {
+                    "message": f"No invoice found with the name '{invoice_name}'",
+                    "status": "error"
+                }
+                return JsonResponse(response)
 
             except Exception as e:
+                # Handle other errors
                 response = {
                     "message": f"Error updating status: {str(e)}",
                     "status": "error"
                 }
-
-            finally:
-                conn.close()
-
-            # Construct the file path
-            response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
-            response_file_name = f"{invoice_name}.json"
-            response_file = os.path.join(response_dir, response_file_name)
-
-            # Load the JSON file
-            if os.path.exists(response_file):
-                with open(response_file, 'r') as file:
-                    api_response = json.load(file)
-
-                # Update the "Okay_NotOkay" key
-                result_ = {
-                    'status': status,
-                    'message': f'Changed by {name} for reason {reason}'
-                }
-                if "result" in api_response:
-                    api_response["result"]["Okay_NotOkay"] = result_
-                else:
-                    api_response["result"] = {"Okay_NotOkay": result_}
-
-                # Save the updated JSON back to the file
-                with open(response_file, 'w') as file:
-                    json.dump(api_response, file, indent=4)
-
-                return JsonResponse({"success": True, "message": "Status updated successfully."})
-            else:
-                return JsonResponse({"success": False, "message": "File not found."}, status=404)
+                return JsonResponse(response)
 
         except Exception as e:
+            # Handle JSON parsing errors or other issues
             return JsonResponse({"success": False, "message": str(e)}, status=500)
+
     else:
         return JsonResponse({"success": False, "message": "Invalid request method."}, status=400)
 
-# def show_invoices(request):
-#     # Path to the directory where invoices are stored
-#     invoice_folder = os.path.join(settings.MEDIA_ROOT, 'invoices')
-#     response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
-#     # Get the selected date from the request, default to today
-#     selected_date = request.GET.get('date', date.today().strftime('%Y-%m-%d'))
-#     print(invoice_folder,response_dir)
-#     invoices = []
-#     if os.path.exists(invoice_folder):
-#         # Iterate through files in the invoice folder
-#         for file_name in os.listdir(invoice_folder):
-#             # Get the file's upload date from the timestamp in its name
-#             file_path = os.path.join(invoice_folder, file_name)
-#             file_timestamp = os.path.getmtime(file_path)
-#             file_date = date.fromtimestamp(file_timestamp).strftime('%Y-%m-%d')
-#             ##response file to check status
-#             response_file_name = f"{file_name}.json"
-#             response_file = os.path.join(response_dir, response_file_name)
-#             with open(response_file, "r") as file:
-#                 api_response = json.load(file)
-#                 # Extract relevant data
-#             result = api_response.get("result", {})
-#             all_okay_ = result.get('Okay_NotOkay')
-#             if all_okay_:
-#                 pass
-#             else:
-#                 all_okay_ = all_okay(file_name)
-#             print(all_okay_)
-#             # If the file matches the selected date, add it to the list
-            
-#             if file_date == selected_date:
-#                 invoices.append({'name': file_name, 'date': file_date, 'all_okay':all_okay_})
-    
-#     context = {
-#         'invoices': invoices,
-#         'selected_date': selected_date,
-#     }
-#     return render(request, 'show_invoices.html', context)
+
 
 import sqlite3
-
+@login_required
 def show_invoices(request):
     # Default filter is "waiting"
     status_filter = request.GET.get('status', 'waiting')
-    
-    # Connect to SQLite database
-    db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-
-    
-
+    user_index = request.session.get("user_id")
     # Query invoices based on the selected status
     if status_filter == 'all':
-        query = "SELECT file_name, path, upload_date, okay_status, okay_message, status FROM invoice_detail"
-        cursor.execute(query)
+        # Fetch all invoices for the logged-in user
+        invoices = InvoiceDetail.objects.filter(user=request.user)
     else:
-        query = "SELECT file_name, path, upload_date, okay_status, okay_message, status FROM invoice_detail WHERE status = ?"
-        cursor.execute(query, (status_filter,))
-    #file_name, path, upload_date, okay_status, okay_message, status
-    invoices = [{'file_name': row[0], 'path': row[1], 'upload_date': row[2], 'okay_status': row[3], 'okay_message': row[4], 'status': row[5]} for row in cursor.fetchall()]
+        # Fetch invoices filtered by status for the logged-in user
+        invoices = InvoiceDetail.objects.filter(user=request.user, status=status_filter)
 
-    # Close the database connection
-    conn.close()
-
+    # Prepare context for rendering
     context = {
         'invoices': invoices,
         'selected_status': status_filter,
+        'user_index':user_index,
     }
     return render(request, 'show_invoices.html', context)
 
-
+@login_required
 def reset_project(request):
     # Only proceed if the password is provided and matches
     if request.method == "POST":
@@ -974,10 +923,11 @@ def reset_project(request):
     # If GET request, show the password form
     return render(request, 'reset_project.html')
 
-
+@login_required
 def upload_opengrn(request):
     context = {"data": None, "columns": None, "message": ""}
-    save_folder = os.path.join(settings.BASE_DIR, 'GRN_Data')
+    user_index = request.session.get("user_id")
+    save_folder = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index))
 
     # Ensure the save folder exists
     if not os.path.exists(save_folder):

@@ -146,6 +146,7 @@
             <button onclick="window.location.href='/show-templates/'">Show Templates</button>
             <button onclick="window.location.href='/show-opengrn/'">Show Open GRN</button>
             <button onclick="exportTemplates()">Export Templates</button>
+            <button onclick="window.location.href='/logout/'">Logout</button>
         </nav>
     </header>
     <!-- <form method="GET" action="/show-invoice/"> -->
@@ -196,7 +197,7 @@
                     <tr class="invoice-row" data-status="{{ invoice.okay_status }}">
                         <!-- Add the 'data-status' attribute to the row -->
                         <td>
-                            <a href="/media/invoices/{{ invoice.file_name }}" target="_blank">
+                            <a href="/media/invoices/{{user_index}}/{{ invoice.file_name }}" target="_blank">
                                 {{ invoice.file_name }}
                             </a>
                         </td>

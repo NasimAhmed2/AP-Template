@@ -26,11 +26,11 @@ SECRET_KEY = 'django-insecure-%gvc8n1osav3-8$=z2q)zm$ryguuu7b9nec)_%2_m9-g5k3#&t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['de2c-122-176-50-6.ngrok-free.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['54.160.230.84', 'localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://de2c-122-176-50-6.ngrok-free.app',
-    'http://de2c-122-176-50-6.ngrok-free.app',
+    'https://54.160.230.84',
+    'http://54.160.230.84',
 ]
 
 
@@ -133,4 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = '/login/'
 

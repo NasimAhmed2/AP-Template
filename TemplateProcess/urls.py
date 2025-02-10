@@ -16,6 +16,9 @@ urlpatterns = [
     path('invoicepdf-show/', views.pdf_show, name='pdf_show'),
     path('show-templates/', views.show_templates, name='show_templates'),
     path('reset_project/', views.reset_project, name='reset_project'),
+    path("register/", views.register, name="register"),
+    path("login/", views.user_login, name="login"),
+    path("logout/", views.user_logout, name="logout"),
 ]
 
 if settings.DEBUG:  # Only for development

@@ -1,0 +1,432 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2025-01-21",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "24253367",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "AAAFZ8851G",
+                    "pan_allotment_date": "2012-01-20",
+                    "pan_name": "3S PXXXXXXS AXD SXXXXXXS",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": [
+                    {
+                        "preference": "M",
+                        "quarter": "Q1"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q2"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q3"
+                    },
+                    {
+                        "preference": "M",
+                        "quarter": "Q4"
+                    }
+                ],
+                "Filing Status": [
+                    {
+                        "arn": "AB291224448940Z",
+                        "dof": "21-01-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "122024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB291024282060J",
+                        "dof": "20-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290824284661O",
+                        "dof": "20-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290724280097R",
+                        "dof": "20-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2906244413641",
+                        "dof": "20-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2905242512471",
+                        "dof": "20-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290424064295Z",
+                        "dof": "20-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB291124071440G",
+                        "dof": "19-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290924382388D",
+                        "dof": "19-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291124453738V",
+                        "dof": "11-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2910244667316",
+                        "dof": "11-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824457706L",
+                        "dof": "11-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2905245316905",
+                        "dof": "11-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290424443699M",
+                        "dof": "11-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291224503376A",
+                        "dof": "11-01-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "122024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290924379316L",
+                        "dof": "10-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2907243103376",
+                        "dof": "09-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624140113I",
+                        "dof": "04-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    }
+                ],
+                "Pan_Status": {
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
+                    "address": {
+                        "building_name": "No. 22 Nandagokula Industrial Layout",
+                        "city": "BANGALORE",
+                        "country": "India",
+                        "locality": "Peenya Small Industries S.O",
+                        "pincode": "560058",
+                        "state": "Karnataka",
+                        "street_name": "Thigalarapalya Main Road, Peenya 2nd Stage, "
+                    },
+                    "dob": "05/01/2012",
+                    "email": "",
+                    "first_name": "",
+                    "fullname": "3S PRODUCTS AND SERVICES",
+                    "gender": null,
+                    "last_name": "3S PRODUCTS AND SERVICES",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "AAAFZ8851G",
+                    "pan_status": "Active",
+                    "pan_type": "Firm/Limited Liability Partnership"
+                },
+                "customer_gst_data": {
+                    "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Central tax Jurisdiction": "RANGE-BED7",
+                    "Central tax Jurisdiction Code": "YT0702",
+                    "Date of Registration": "01/07/2017",
+                    "Duty": "Regular",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAGCG0335D2ZX",
+                    "Legal Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Nature of Business Activity": [
+                        "Factory / Manufacturing"
+                    ],
+                    "State Jurisdiction Code": "KA119",
+                    "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "Address": "3S PRODUCTS AND SERVICES , Site No 22 Nandagokula Industrial Estate , Thigalarapalya Main Road Karivobanahalli , Bengaluru Urban , Karnataka , 560058",
+                    "Central tax Jurisdiction": "RANGE-ANWD1",
+                    "Central tax Jurisdiction Code": "YX0101",
+                    "Date of Registration": "01/07/2017",
+                    "Duty": "Regular",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAAFZ8851G1ZO",
+                    "Legal Name": "3S PRODUCTS AND SERVICES",
+                    "Nature of Business Activity": [
+                        "Factory / Manufacturing"
+                    ],
+                    "State Jurisdiction Code": "KA021",
+                    "Trade Name": "3S PRODUCTS AND SERVICES"
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"13606-25-01-FABRICATED ENCLOSURE MAK1.2m\\nPO. No. : 241000471 dtd : 11\\/12\\/2024\",\"item_quantity\":5.0,\"unit\":\"NOS\",\"unit_price\":631.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":3155.0,\"qty_unitprice\":3155.0,\"qty_unit+rate_qty_unit\":3722.9,\"qty_unit+2_rate_qty_unit\":4290.8,\"check1\":\"correct\"},{\"item_description\":\"13606-25-02-FABRICATED FRONT PLATE MAK1.2m\\nPO. No. : 241000471 dtd : 11\\/12\\/2024\",\"item_quantity\":5.0,\"unit\":\"NOS\",\"unit_price\":171.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":855.0,\"qty_unitprice\":855.0,\"qty_unit+rate_qty_unit\":1008.9,\"qty_unit+2_rate_qty_unit\":1162.8,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "",
+                    "Invoice_data": " ",
+                    "status": "Filled"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "Active",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AAAFZ8851G1ZO",
+                    "status": "YES"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AAAFZ8851G1ZO",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": null,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "Active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Regular",
+                    "Invoice_data": "-",
+                    "status": "Regular"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "Monthly",
+                    "Invoice_data": " ",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "3S",
+                "Bank_Account_No": "50200027894336",
+                "Email": null,
+                "VendorAddress": "No.22, Nandagokula Industrial Layout, Thigalarapalya Main Road, Bengaluru, None, 560058, None"
+            },
+            "BillingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "Currency": "INR",
+            "CustomerName": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "3155.0",
+                    "item_description": "13606-25-01-FABRICATED ENCLOSURE MAK1.2m\nPO. No. : 241000471 dtd : 11/12/2024",
+                    "item_quantity": 5.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "631.0"
+                },
+                "item#2": {
+                    "amount": "855.0",
+                    "item_description": "13606-25-02-FABRICATED FRONT PLATE MAK1.2m\nPO. No. : 241000471 dtd : 11/12/2024",
+                    "item_quantity": 5.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "171.0"
+                }
+            },
+            "InvoiceDate": "2025-01-21",
+            "InvoiceId": "24253367",
+            "InvoiceTotal": "4732.00",
+            "Payment_Term": "Net 60 days Credit",
+            "PurchaseOrder": "241000471\n241000471",
+            "ShippingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "SubTotal": "4010.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": 361.0,
+                    "rate": 0
+                },
+                "SGST": {
+                    "amount": 361.0,
+                    "rate": 0
+                }
+            },
+            "TotalTax": 722.0,
+            "Vendor Gst No.": "29AAAFZ8851G1ZO",
+            "VendorAddress": "No.22, Nandagokula Industrial Layout, Thigalarapalya Main Road, Bengaluru, None, 560058, None",
+            "VendorAddressRecipient": "3S Products And Services",
+            "VendorName": "3S"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Customer_Adress Not Matched",
+                "Vendor_Filing_status"
+            ]
+        }
+    }
+}

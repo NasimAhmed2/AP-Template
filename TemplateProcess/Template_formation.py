@@ -6,6 +6,9 @@ import json
 import os
 from django.conf import settings
 import sqlite3
+from .models import InvoiceDetail
+import shutil
+from django.http import FileResponse, JsonResponse
 
 
 # Get today's date
@@ -13,20 +16,49 @@ today = datetime.now()
 # Format the date as ddmmyyyy
 formatted_date = today.strftime("%d%m%Y")
 
-def template_formation(data):
+def ensure_files_and_directories(user_index):
+    # Define base directory for user-specific files
+    base_dir = os.path.join(settings.BASE_DIR, 'TemplateData', str(user_index))
+    os.makedirs(base_dir, exist_ok=True)  # Ensure the directory exists
+
+    # Define paths for dummy files
+    dummy_template_path = os.path.join(settings.BASE_DIR, 'TemplateData', 'Templates.xlsx')
+    dummy_header_path = os.path.join(settings.BASE_DIR, 'TemplateData', 'header.xlsx')
+
+    # Define user-specific file paths
+    user_template_path = os.path.join(base_dir, 'Templates.xlsx')
+    user_header_path = os.path.join(base_dir, 'header.xlsx')
+
+    # Check and copy Templates.xlsx
+    if not os.path.exists(user_template_path):
+        shutil.copy(dummy_template_path, user_template_path)
+        print(f"Copied Templates.xlsx to: {user_template_path}")
+
+    # Check and copy header.xlsx
+    if not os.path.exists(user_header_path):
+        shutil.copy(dummy_header_path, user_header_path)
+        print(f"Copied header.xlsx to: {user_header_path}")
+
+    # Return the paths
+    return user_template_path, user_header_path
+
+def template_formation(data,user_index,User):
     data_len = len(data)
     message = []
     if data_len > 0:
-        path_ = os.path.join(settings.BASE_DIR, 'TemplateData', 'header.xlsx')
-        # path_ = 'TemplateData/header.xlsx'
-        data_templateheader = pd.read_excel(path_, skiprows=1)
-        doc_number_list = data_templateheader['DocNum'].tolist()
-        path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
+        
+        file_path_template,file_path_header = ensure_files_and_directories(user_index)
+        data_template = pd.read_excel(file_path_template, skiprows=1)
+        # print(data_templateheader)
+        Document_Number_list = data_template['BaseRef'].tolist()
+        path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
+        # file_path_header = 'TemplateData/header.xlsx'
+        
         # path = 'GRN_DATA/Open_GRN_Data.csv'
         data_grn = pd.read_csv(path)
         for invoice_name in data:
             file_name = f"{invoice_name}.json"
-            response_dir = os.path.join(settings.MEDIA_ROOT, "responses")
+            response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index))
             response_file = os.path.join(response_dir, file_name)
             try:
                 # Check if the response file exists
@@ -63,55 +95,57 @@ def template_formation(data):
                     
                     if invoice_id:
                         # print(invoice_id)
-                        invoice_id = str(invoice_id).lstrip('0')
-                        filtered_row = data_grn[data_grn['Supplier Ref No'] == invoice_id]
+                        # invoice_id = str(invoice_id).lstrip('0')
+                        # print(data_grn['Supplier Ref No'])
+                        invoice_id = str(invoice_id).lstrip('0').strip()  # Remove leading zeros & extra spaces
+                        filtered_row = data_grn[
+                            data_grn['Supplier Ref No'].astype(str).str.strip().str.contains(invoice_id, case=False, na=False)
+                        ]
 
                         # print('this---1')
                         if filtered_row.empty:
+                            print("No rows matched with invoice id")
                             message.append(f'No data found in open grn records against {invoice_id} for {invoice_name}')
                             
                         else:
-                            # file_path_header = 'TemplateData/header.xlsx'
-                            file_path_header = os.path.join(settings.BASE_DIR, 'TemplateData', 'header.xlsx')
-                            # file_path_template = 'TemplateData/Templates.xlsx'
-                            file_path_template = os.path.join(settings.BASE_DIR, 'TemplateData', 'Templates.xlsx')
+                            
                             # print(filtered_row.iloc[0])
+                            row_data = filtered_row.iloc[0].to_dict()  # Convert the row to a dictionary
                             DocNum = filtered_row.iloc[0]['Document Number'] 
-                            if DocNum in doc_number_list:
+                            if DocNum in Document_Number_list:
                                 message.append(f"THIS {invoice_name} IS ALREADY IN TEMPLATE")
                                  
                             else:
                                 # print('this----1')
-                                DocNum = filtered_row.iloc[0]['Document Number']
-                                Series = filtered_row.iloc[0]['Series']
-                                CardCode = filtered_row.iloc[0]['Customer/Supplier No.']
-                                date1 = filtered_row.iloc[0]['Posting Date']
-                                date1_ = pd.to_datetime(date1)
-                                DocDate_formatted = date1_.strftime("%Y%m%d")
-                                # print(date1)
-                                
-                                
-                                # print('this----3')
-                                date2 = filtered_row.iloc[0]['Due Date']
-                                date2_ = pd.to_datetime(date2)
-                                DocDueDate_formatted = date2_.strftime("%Y%m%d")
-                                # print('this----4')
+                                DocNum = row_data.get('Document Number', ' ')
+                                Series = row_data.get('Series', ' ')
+                                CardCode = row_data.get('Customer/Supplier No.', ' ')
+
+                                # Convert dates safely
+                                date1 = row_data.get('Posting Date', ' ')
+                                DocDate_formatted = pd.to_datetime(date1, errors='coerce').strftime("%Y%m%d") if date1 != ' ' else ' '
+
+                                date2 = row_data.get('Due Date', ' ')
+                                DocDueDate_formatted = pd.to_datetime(date2, errors='coerce').strftime("%Y%m%d") if date2 != ' ' else ' '
+
                                 DocDate = DocDate_formatted
                                 DocDueDate = DocDueDate_formatted
-                                # taxdate = filtered_row.iloc[0]['Document Date']Posting Date
-                                invoice_date_obj = datetime.strptime(invoice_date, "%Y-%m-%d")
-                                invoice_formatted_date = invoice_date_obj.strftime("%Y%m%d")
+
+                                # Convert invoice_date safely
+                                invoice_date_obj = datetime.strptime(invoice_date, "%Y-%m-%d") if 'invoice_date' in locals() else None
+                                invoice_formatted_date = invoice_date_obj.strftime("%Y%m%d") if invoice_date_obj else ' '
                                 TaxDate = invoice_formatted_date
+
                                 DiscPrcnt = 0
-                                DocCur = filtered_row.iloc[0]['Currency Type']
+                                DocCur = row_data.get('Currency Type Header', ' ')
                                 DocRate = ' '
-                                NumAtCard = filtered_row.iloc[0]['Supplier Ref No']
+                                NumAtCard = row_data.get('Supplier Ref No', ' ')
                                 CntctCode = ' '
                                 # print('this----5')
-                                DocType = filtered_row.iloc[0]['Document Type']
+                                DocType = row_data.get('Document Type', ' ')
                                 SlpCode = ' '
                                 Comments = ' '
-                                GSTTranType = filtered_row.iloc[0]['GSTTransactionType']
+                                GSTTranType = row_data.get('GSTTransactionType', ' ')
                                 # print('this----6')
                                 new_data = [' ', int(Series),CardCode,DocDate,DocDueDate,TaxDate,DiscPrcnt,DocCur,
                                             DocRate,NumAtCard,CntctCode,DocType,SlpCode,Comments,GSTTranType]
@@ -127,6 +161,7 @@ def template_formation(data):
                                 print("Data appended successfully.")
                                 # Resetting index and iterating
                                 filtered_row_ = filtered_row.reset_index()
+                                # print(filtered_row_)
                                 for index, row in filtered_row_.iterrows():
                                     LineNum = index
                                     Due_Amount = row['Total Paymt Due']
@@ -137,14 +172,15 @@ def template_formation(data):
                                     # print("hello--3",Due_Amount,total_amount_invoice)
                                     if abs(float(Due_Amount) - float(total_amount_invoice)) < 1 :
                                         # print("hello--4")
-                                        DocNum = filtered_row.iloc[0]['Document Number']
+                                        # print(row)
+                                        DocNum = row['Document Number']
                                         ItemCode = row['Item No.']
                                         Quantity = row['Quantity']
                                         Price = row['Price']
                                         TaxCode = row['Tax Code']
                                         BaseType = 20
                                         BaseEntry = row['GRPO DocEntry']
-                                        print(BaseEntry)
+                                        # print(BaseEntry)
                                         if DocCur == 'INR':
                                             Price_ = row['Total Before Discount']
                                         else:
@@ -173,21 +209,42 @@ def template_formation(data):
                                         print("Templates appended succesfully")
                                     else:
                                         pass
-                                # Connect to the SQLite database
-                                db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
-                                conn = sqlite3.connect(db_path)
-                                cursor = conn.cursor()
+                                # # Connect to the SQLite database
+                                # db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
+                                # conn = sqlite3.connect(db_path)
+                                # cursor = conn.cursor()
 
-                                # Update the okay_status and okay_message for the matching file_name
-                                update_query = """
-                                UPDATE invoice_detail
-                                SET status = ?
-                                WHERE file_name = ?
-                                """
-                                cursor.execute(update_query, ('confirmed', invoice_name))
+                                # # Update the okay_status and okay_message for the matching file_name
+                                # update_query = """
+                                # UPDATE invoice_detail
+                                # SET status = ?
+                                # WHERE file_name = ?
+                                # """
+                                # cursor.execute(update_query, ('confirmed', invoice_name))
 
                                 # Commit changes to the database
-                                conn.commit()
+                                # conn.commit()
+                                try:
+                                    # Get the invoice by file_name using Django's ORM
+                                    invoice = InvoiceDetail.objects.get(user=User, file_name=invoice_name)
+
+                                    # Update the fields
+                                    invoice.status = 'confirmed'
+                                    
+
+                                    # Save the changes
+                                    invoice.save()
+                                    
+
+                                except InvoiceDetail.DoesNotExist:
+                                    # If the invoice does not exist
+                                    response = {
+                                        "message": f"No invoice found with the name '{invoice_name}'",
+                                        "status": "error"
+                                    }
+                                    return JsonResponse(response)
+
+                                
                                 message.append(f"Templates appended succesfully for {invoice_name}")
                     
                     elif po_number_:
@@ -300,11 +357,11 @@ def template_formation(data):
                     
     # return 'No po number foubnd on onvoice to map with grn data'
 
-def retain_two_rows():
+def retain_two_rows(path):
     # Paths to the two Excel files
-    file1_path = "TemplateData/header.xlsx"
-    file2_path = "TemplateData/Templates.xlsx"
-    for file in [file1_path,file2_path]:
+    # file1_path = "TemplateData/header.xlsx"
+    # file2_path = "TemplateData/Templates.xlsx"
+    for file in path:
         try:
             # Load the workbook
             wb = load_workbook(file)

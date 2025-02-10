@@ -126,7 +126,7 @@ def Table_data(table,invoice_data):
     # print(processed_list_of_dicts,check2,check3)
     return processed_list_of_dicts , check2 , check3
 
-def InvoiceTable_vs_GrnTable(invoice_data):
+def InvoiceTable_vs_GrnTable(invoice_data,user_index):
     # print('this---1')
     table = invoice_data.get('Invoice items:')
     invoice_id = invoice_data.get('InvoiceId')
@@ -150,17 +150,19 @@ def InvoiceTable_vs_GrnTable(invoice_data):
     else:
         df_ =  [400,'No Table items in invoice']
     # path = 'GRN_DATA/Open_GRN_Data.csv'
-    path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
+    path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
     # print('this---5')
     try:
         data = pd.read_csv(path)
         if invoice_id:
             invoice_id = str(invoice_id).lstrip('0')
         data = data[data['Supplier Ref No'] == invoice_id]
+        # print(data)
         if not data.empty:
             # print('this---5')
             columns = ['Document Number','Supplier Ref No','Item No.', 'Item Description', 'Quantity', 'Price', 'Discount %', 'HSN/SAC', 'Total Before Discount']
             data = data[columns]
+            # print(data)
             # Convert back to a list of dictionaries
             data1 = data.to_dict(orient='records')
             data_ = [200,data1]
@@ -171,7 +173,7 @@ def InvoiceTable_vs_GrnTable(invoice_data):
     # print(df_,data_)
     return df_,data_
 
-def Invoicetable_vs_Grntable_compare(invoice_data):
+def Invoicetable_vs_Grntable_compare(invoice_data,user_index):
     result = {}
     table = invoice_data.get('Invoice items:')
     invoice_id = invoice_data.get('InvoiceId')
@@ -189,25 +191,26 @@ def Invoicetable_vs_Grntable_compare(invoice_data):
         Total_Paymt_Due = total_amount
    
     # path = 'GRN_DATA/Open_GRN_Data.csv'
-    path = os.path.join(settings.BASE_DIR, 'GRN_Data', 'Open_GRN_Data.csv')
-    # print('hello--2')
+    path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
+    print(path,invoice_id)
     try:
         data = pd.read_csv(path)
         if invoice_id:
             invoice_id = str(invoice_id).lstrip('0')
         data = data[data['Supplier Ref No'] == invoice_id]
+        # print(data)
         if not data.empty:
             data_ = data.iloc[0]
             invoice_id_grn = data_['Supplier Ref No']
             supplier_name_grn = data_['Customer/Supplier Name']
             Currency_Type_grn = data_['Currency Type']
             if Currency_Type_grn == 'INR':
-                Total_Paymt_Due_grn = data_['Total Payment Due']
+                Total_Paymt_Due_grn = data_['Total Paymt Due']  # Total Paymt Due  Total Paymt Due
             else:
                 Total_Paymt_Due_grn = data_['Total Payment Due FC']
-        #     print(Total_Paymt_Due_grn)
-        #     print(Total_Paymt_Due)     
-        #     print('hello--3')  
+            # print(Total_Paymt_Due_grn)
+            # print(Total_Paymt_Due)     
+            # print('hello--3')  
         # print('hello--2')
     except Exception as e:
         # Print the error message

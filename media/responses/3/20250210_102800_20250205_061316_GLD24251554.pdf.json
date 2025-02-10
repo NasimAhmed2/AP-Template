@@ -9,12 +9,12 @@
                 },
                 "Customer_Adress": {
                     "Gst_Portal": "NO GSt on invoice",
-                    "Invoice_data": "#71, EPIP IND AREA, HOODY VILLAGE\nK.R PURAM HOBLI\nWHITEFIELD, BANGALORE, None, 560066, India",
+                    "Invoice_data": "No Customer Address on Invoice",
                     "status": " "
                 },
                 "Customer_Name": {
                     "Gst_Portal": "NO GSt on invoice",
-                    "Invoice_data": "GLODESI TECHNOLOGIES PRIVATE LTD",
+                    "Invoice_data": "Godesi Technologies",
                     "status": " "
                 },
                 "Invoice_Blocked_Credit": {
@@ -24,12 +24,12 @@
                 },
                 "Invoice_Date": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "2024-12-30",
+                    "Invoice_data": "2025-01-31",
                     "status": "Okay"
                 },
                 "Invoice_Number": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "TX IV-318829",
+                    "Invoice_data": "542",
                     "status": "Okay"
                 },
                 "Invoice_RCM-Services": {
@@ -66,7 +66,7 @@
                 }
             },
             "table_data": {
-                "Table_Check_data": "[{\"item_description\":\"MATERIAL SALE\",\"item_quantity\":16.0,\"unit_price\":155.77,\"amount\":2492.32,\"qty_unitprice\":2492.32,\"check1\":\"correct\"}]"
+                "Table_Check_data": "[{\"item_description\":\"Water Tanker\",\"item_quantity\":8.0,\"unit_price\":1500.0,\"amount\":120001.0,\"qty_unitprice\":12000.0,\"check1\":\"incorrect\"}]"
             },
             "tax_check": {
                 "Company_Gst_Valid": {
@@ -125,56 +125,40 @@
                     "status": "Not fetched as no vendor Gst on Invoice"
                 },
                 "tax_type_on_invoice": {
-                    "Gst_Portal": " ",
-                    "Invoice_data": " ",
-                    "status": "Okay"
+                    "Gst_Portal": "",
+                    "Invoice_data": "Tax type is not present on Invoice or not captured by OCR",
+                    "status": "Not Okay"
                 }
             }
         },
         "Invoice_data": {
-            "AmountDue": 2807.32,
             "Bank_Details": {
-                "Account_holder_name": "AMI Metals, Inc.",
-                "Bank_Account_No": "153656082259",
+                "Account_holder_name": "S.N. Siddeshwara\nDEKSHI WATER SUPPLY",
+                "Bank_Account_No": null,
                 "Email": null,
-                "VendorAddress": "586, NORTH BEACH STREET, FORT WORTH, TX, 76111, None"
+                "VendorAddress": "560 036, Theatre Road, Devasandra K.R. Puram,\nBangalore, None, None, None, None"
             },
-            "Currency": "USD",
-            "CustomerAddress": "#71, EPIP IND AREA, HOODY VILLAGE\nK.R PURAM HOBLI\nWHITEFIELD, BANGALORE, None, 560066, India",
-            "CustomerAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LTD",
-            "CustomerName": "GLODESI TECHNOLOGIES PRIVATE LTD",
+            "BillingAddressRecipient": "Godesi Technologies",
+            "Currency": "INR",
+            "CustomerName": "Godesi Technologies",
             "Cutomer Gst No.": "",
-            "DueDate": "2025-04-14",
             "Invoice items:": {
                 "item#1": {
-                    "amount": "2492.32",
-                    "item_description": "MATERIAL SALE",
-                    "item_quantity": 16.0,
-                    "unit_price": "155.77"
+                    "amount": "120001.0",
+                    "item_description": "Water Tanker",
+                    "item_quantity": 8.0,
+                    "unit_price": "1500.0"
                 }
             },
-            "InvoiceDate": "2024-12-30",
-            "InvoiceId": "TX IV-318829",
-            "InvoiceTotal": "2807.32",
-            "Payment_Term": "NET 105 FROM INVOICE DATE",
-            "PurchaseOrder": "241000463",
-            "ShippingAddress": "#71, EPIP IND AREA, HOODY VILLAGE\nK.R PURAM HOBLI\nWHITEFIELD, BANGALORE, None, 560066, India",
-            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LTD",
-            "SubTotal": "2492.32",
-            "Tax Items": {
-                "CGST": {
-                    "amount": 0.0,
-                    "rate": 9.0
-                },
-                "SGST": {
-                    "amount": 0.0,
-                    "rate": 9.0
-                }
-            },
-            "TotalTax": "0.00",
+            "InvoiceDate": "2025-01-31",
+            "InvoiceId": "542",
+            "InvoiceTotal": "12000",
+            "PurchaseOrder": "241100187-\n24351378-",
+            "Tax Items": {},
             "Vendor Gst No.": "",
-            "VendorAddress": "586, NORTH BEACH STREET, FORT WORTH, TX, 76111, None",
-            "VendorName": "AMI Metals, Inc."
+            "VendorAddress": "560 036, Theatre Road, Devasandra K.R. Puram,\nBangalore, None, None, None, None",
+            "VendorAddressRecipient": "S.N. SIDDESHWARA",
+            "VendorName": "DEKSHI WATER SUPPLY"
         },
         "Okay_NotOkay": {
             "status": "Not All Okay",
@@ -186,7 +170,10 @@
                 "Vendor_206AB",
                 "Vendor_Filing_status",
                 "Vendor_Gst inValid",
-                "Vendor_Gst not mentioned"
+                "Vendor_Gst not mentioned",
+                "tax_type_on_invoice",
+                "Table_check1 not okay",
+                "Table_Check2 not confirmed as Basic amount was not captured by ocr for comprasion"
             ]
         }
     }
