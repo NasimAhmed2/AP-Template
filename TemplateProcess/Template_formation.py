@@ -9,6 +9,7 @@ import sqlite3
 from .models import InvoiceDetail
 import shutil
 from django.http import FileResponse, JsonResponse
+import traceback
 
 
 # Get today's date
@@ -98,9 +99,10 @@ def template_formation(data,user_index,User):
                         # invoice_id = str(invoice_id).lstrip('0')
                         # print(data_grn['Supplier Ref No'])
                         invoice_id = str(invoice_id).lstrip('0').strip()  # Remove leading zeros & extra spaces
+                        invoice_id_ = str(invoice_id).strip()  # Remove leading zeros & extra spaces
                         filtered_row = data_grn[
-                            data_grn['Supplier Ref No'].astype(str).str.strip().str.contains(invoice_id, case=False, na=False)
-                        ]
+                                                data_grn['Supplier Ref No'].astype(str).str.strip().str.contains(invoice_id, case=False, na=False)
+                                            ]
 
                         # print('this---1')
                         if filtered_row.empty:
@@ -137,7 +139,7 @@ def template_formation(data,user_index,User):
                                 TaxDate = invoice_formatted_date
 
                                 DiscPrcnt = 0
-                                DocCur = row_data.get('Currency Type Header', ' ')
+                                DocCur = row_data.get('Currency Type Header') or row_data.get('Currency Type') or ' '
                                 DocRate = ' '
                                 NumAtCard = row_data.get('Supplier Ref No', ' ')
                                 CntctCode = ' '
@@ -147,7 +149,7 @@ def template_formation(data,user_index,User):
                                 Comments = ' '
                                 GSTTranType = row_data.get('GSTTransactionType', ' ')
                                 # print('this----6')
-                                new_data = [' ', int(Series),CardCode,DocDate,DocDueDate,TaxDate,DiscPrcnt,DocCur,
+                                new_data = [' ', Series,CardCode,DocDate,DocDueDate,TaxDate,DiscPrcnt,DocCur,
                                             DocRate,NumAtCard,CntctCode,DocType,SlpCode,Comments,GSTTranType]
                                 # print('this----5')
                                 # Load the workbook and select the active sheet
@@ -158,57 +160,63 @@ def template_formation(data,user_index,User):
 
                                 # Save the workbook
                                 workbook.save(file_path_header)
-                                print("Data appended successfully.")
+                                print("Header Data appended successfully.")
                                 # Resetting index and iterating
                                 filtered_row_ = filtered_row.reset_index()
                                 # print(filtered_row_)
                                 for index, row in filtered_row_.iterrows():
-                                    LineNum = index
-                                    Due_Amount = row['Total Paymt Due']
-                                    if DocCur == 'INR':
+                                    try:
+                                        LineNum = index
                                         Due_Amount = row['Total Paymt Due']
-                                    else:
-                                        Due_Amount = row['Total Payment Due FC']
-                                    # print("hello--3",Due_Amount,total_amount_invoice)
-                                    if abs(float(Due_Amount) - float(total_amount_invoice)) < 1 :
-                                        # print("hello--4")
-                                        # print(row)
-                                        DocNum = row['Document Number']
-                                        ItemCode = row['Item No.']
-                                        Quantity = row['Quantity']
-                                        Price = row['Price']
-                                        TaxCode = row['Tax Code']
-                                        BaseType = 20
-                                        BaseEntry = row['GRPO DocEntry']
-                                        # print(BaseEntry)
                                         if DocCur == 'INR':
-                                            Price_ = row['Total Before Discount']
+                                            Due_Amount = row['Total Paymt Due']
                                         else:
-                                            Price_ = row['Total Before Discount FC']
-                                        # Price_ = row['Total Before Discount']
-                                        LocCode = 2
-                                        WhsCode = row['WarehouseCode']
-                                        CntctCode = ' '
-                                        # print("hello--5")
-                                        DocType = row['Document Type']
-                                        SlpCode = ' '
-                                        Comments = ' '
-                                        GSTTranType = row['GSTTransactionType']
-                                        new_data = [' ', LineNum,ItemCode,Quantity,Price,TaxCode,BaseType,BaseEntry,
-                                                    LineNum,Price_,LocCode,WhsCode,int(DocNum)]
-                                        
-                                        # Load the workbook and select the active sheet
-                                        workbook = load_workbook(file_path_template)
-                                        sheet = workbook.active
-                                        # Append data to the next available row
-                                        sheet.append(new_data)
+                                            Due_Amount = row['Total Payment Due FC']
+                                        # print("hello--3",Due_Amount,total_amount_invoice)
+                                        if abs(float(Due_Amount) - float(total_amount_invoice)) < 1 :
+                                            # print("hello--4")
+                                            # print(row)
+                                            DocNum = row['Document Number']
+                                            ItemCode = row['Item No.']
+                                            Quantity = row['Quantity']
+                                            Price = row['Price']
+                                            TaxCode = row['Tax Code']
+                                            BaseType = 20
+                                            BaseEntry = row['GRPO DocEntry']
+                                            # print(BaseEntry)
+                                            if DocCur == 'INR':
+                                                Price_ = row['Total Before Discount']
+                                            else:
+                                                Price_ = row['Total Before Discount FC']
+                                            # Price_ = row['Total Before Discount']
+                                            LocCode = 2
+                                            WhsCode = row['WarehouseCode']
+                                            CntctCode = ' '
+                                            # print("hello--5")
+                                            DocType = row['Document Type']
+                                            SlpCode = ' '
+                                            Comments = ' '
+                                            GSTTranType = row['GSTTransactionType']
+                                            new_data = [' ', LineNum,ItemCode,Quantity,Price,TaxCode,BaseType,BaseEntry,
+                                                        LineNum,Price_,LocCode,WhsCode,int(DocNum)]
+                                            
+                                            # Load the workbook and select the active sheet
+                                            workbook = load_workbook(file_path_template)
+                                            sheet = workbook.active
+                                            # Append data to the next available row
+                                            sheet.append(new_data)
 
-                                        # Save the workbook
-                                        workbook.save(file_path_template)
-                                        
-                                        print("Templates appended succesfully")
-                                    else:
-                                        pass
+                                            # Save the workbook
+                                            workbook.save(file_path_template)
+                                            
+                                            print(f"[✓] Templates appended successfully - Row: {index}, Invoice: {invoice_name}")
+                                        else:
+                                            print("Templates not appended succesfully")
+                                    except:
+                                        print({"error": str(e)})
+                                        traceback.print_exc()
+                                        print("Error:", e)
+
                                 # # Connect to the SQLite database
                                 # db_path = os.path.join(settings.BASE_DIR, "db.sqlite3")
                                 # conn = sqlite3.connect(db_path)
@@ -251,8 +259,10 @@ def template_formation(data,user_index,User):
                         pass
                     else:
                         pass
-            except:
-                pass
+            except Exception as e:
+                print({"error": str(e)})
+                traceback.print_exc()
+                print("Error:", e)
 
             print(file_name)
     return message

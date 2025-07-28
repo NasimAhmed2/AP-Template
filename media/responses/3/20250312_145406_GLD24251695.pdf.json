@@ -1,0 +1,357 @@
+{
+    "result": {
+        "CHECKS": {
+            "Account_check": {
+                "Complete_Invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Customer_Adress": {
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+                    "status": "Not Matching"
+                },
+                "Customer_Name": {
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "status": "Matching"
+                },
+                "Invoice_Blocked_Credit": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Invoice_Date": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "2025-02-24",
+                    "status": "Okay"
+                },
+                "Invoice_Number": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": "24253798",
+                    "status": "Okay"
+                },
+                "Invoice_RCM-Services": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "Pre_year": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "NO"
+                },
+                "gstnumber_gstcharged": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "valid_invoice": {
+                    "Gst_Portal": "-",
+                    "Invoice_data": "",
+                    "status": "YES"
+                }
+            },
+            "data_from_gst": {
+                "206AB_Compliance": {
+                    "fin_year": "2024-25",
+                    "pan": "AAAFZ8851G",
+                    "pan_allotment_date": "2012-01-20",
+                    "pan_name": "3S PXXXXXXS AXD SXXXXXXS",
+                    "pan_operative_status": "operative",
+                    "specified_person": "N"
+                },
+                "Filing Frequency": {},
+                "Filing Status": {},
+                "Pan_Status": {
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
+                    "address": {
+                        "building_name": "No. 22 Nandagokula Industrial Layout",
+                        "city": "BANGALORE",
+                        "country": "India",
+                        "locality": "Peenya Small Industries S.O",
+                        "pincode": "560058",
+                        "state": "Karnataka",
+                        "street_name": "Thigalarapalya Main Road, Peenya 2nd Stage, "
+                    },
+                    "dob": "05/01/2012",
+                    "email": "",
+                    "first_name": "",
+                    "fullname": "3S PRODUCTS AND SERVICES",
+                    "gender": null,
+                    "last_name": "3S PRODUCTS AND SERVICES",
+                    "middle_name": "",
+                    "mobile": "",
+                    "pan": "AAAFZ8851G",
+                    "pan_status": "Active",
+                    "pan_type": "Firm/Limited Liability Partnership"
+                },
+                "customer_gst_data": {
+                    "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Central tax Jurisdiction": "RANGE-BED7",
+                    "Central tax Jurisdiction Code": "YT0702",
+                    "Date of Registration": "01/07/2017",
+                    "Duty": "Regular",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAGCG0335D2ZX",
+                    "Legal Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Nature of Business Activity": [
+                        "Factory / Manufacturing"
+                    ],
+                    "State Jurisdiction Code": "KA119",
+                    "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
+                },
+                "vendor_gst_data": {
+                    "vendor_gst": {}
+                }
+            },
+            "table_data": {
+                "Table_Check_data": "[{\"item_description\":\"MECH26315A-ZINC PLATED MECH26315A -EOD\\nCAP-12.5 x2 VER CLAMP\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":260.0,\"unit\":\"NOS\",\"unit_price\":24.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":6240.0,\"qty_unitprice\":6240.0,\"qty_unit+rate_qty_unit\":7363.2,\"qty_unit+2_rate_qty_unit\":8486.4,\"check1\":\"correct\"},{\"item_description\":\"MECH27302C-MP F COVER V100\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":51.0,\"unit\":\"NOS\",\"unit_price\":875.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":44625.0,\"qty_unitprice\":44625.0,\"qty_unit+rate_qty_unit\":52657.5,\"qty_unit+2_rate_qty_unit\":60690.0,\"check1\":\"correct\"},{\"item_description\":\"MECH27304B-MP F D-TYP AMP CLAMP\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":237.0,\"unit\":\"NOS\",\"unit_price\":25.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":5925.0,\"qty_unitprice\":5925.0,\"qty_unit+rate_qty_unit\":6991.5,\"qty_unit+2_rate_qty_unit\":8058.0,\"check1\":\"correct\"},{\"item_description\":\"MECH27305B-MP F PMB BRACKET 1\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":134.0,\"unit\":\"NOS\",\"unit_price\":93.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":12462.0,\"qty_unitprice\":12462.0,\"qty_unit+rate_qty_unit\":14705.16,\"qty_unit+2_rate_qty_unit\":16948.32,\"check1\":\"correct\"},{\"item_description\":\"MECH27317B-MP F 1PS307 Holder\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":30.0,\"unit\":\"NOS\",\"unit_price\":37.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":1110.0,\"qty_unitprice\":1110.0,\"qty_unit+rate_qty_unit\":1309.8,\"qty_unit+2_rate_qty_unit\":1509.6,\"check1\":\"correct\"},{\"item_description\":\"MECH27330A-MP F DC-DC D-TYP 9W4 CLAMP\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":135.0,\"unit\":\"NOS\",\"unit_price\":28.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":3780.0,\"qty_unitprice\":3780.0,\"qty_unit+rate_qty_unit\":4460.4,\"qty_unit+2_rate_qty_unit\":5140.8,\"check1\":\"correct\"},{\"item_description\":\"MECH27333A-MP F B2 TOP PLATE\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":126.0,\"unit\":\"NOS\",\"unit_price\":425.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":53550.0,\"qty_unitprice\":53550.0,\"qty_unit+rate_qty_unit\":63189.0,\"qty_unit+2_rate_qty_unit\":72828.0,\"check1\":\"correct\"},{\"item_description\":\"MECH27334A-MP F B3 TOP PLATE\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":125.0,\"unit\":\"NOS\",\"unit_price\":463.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":57875.0,\"qty_unitprice\":57875.0,\"qty_unit+rate_qty_unit\":68292.5,\"qty_unit+2_rate_qty_unit\":78710.0,\"check1\":\"correct\"},{\"item_description\":\"MECH27340B-MP DETECTOR SBC COVER-1\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":98.0,\"unit\":\"NOS\",\"unit_price\":310.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":30380.0,\"qty_unitprice\":30380.0,\"qty_unit+rate_qty_unit\":35848.4,\"qty_unit+2_rate_qty_unit\":41316.8,\"check1\":\"correct\"},{\"item_description\":\"MECH27342A-MP DETECTOR DC-DC 1-4 BOX 15P COVER\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":130.0,\"unit\":\"NOS\",\"unit_price\":47.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":6110.0,\"qty_unitprice\":6110.0,\"qty_unit+rate_qty_unit\":7209.8,\"qty_unit+2_rate_qty_unit\":8309.6,\"check1\":\"correct\"},{\"item_description\":\"MECH27359A-MP F UNITE LABEL PLATE\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":53.0,\"unit\":\"NOS\",\"unit_price\":null,\"product_code\":null,\"tax_rate\":18,\"amount\":4929.0,\"qty_unitprice\":0.0,\"qty_unit+rate_qty_unit\":0.0,\"qty_unit+2_rate_qty_unit\":0.0,\"check1\":\"unchecked\"},{\"item_description\":\"MECH27304C-MP F D-TYP AMP B1 CLAMP\",\"item_quantity\":null,\"unit\":\"NOS\",\"unit_price\":128.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":3328.0,\"qty_unitprice\":0.0,\"qty_unit+rate_qty_unit\":0.0,\"qty_unit+2_rate_qty_unit\":0.0,\"check1\":\"unchecked\"},{\"item_description\":\"MECH27317C-MP F 1PS313 BAR\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":120.0,\"unit\":\"NOS\",\"unit_price\":16.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":1920.0,\"qty_unitprice\":1920.0,\"qty_unit+rate_qty_unit\":2265.6,\"qty_unit+2_rate_qty_unit\":2611.2,\"check1\":\"correct\"},{\"item_description\":\"MECH27356A-ETH TO USB MODULE BRACKET\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":100.0,\"unit\":\"NOS\",\"unit_price\":94.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":9400.0,\"qty_unitprice\":9400.0,\"qty_unit+rate_qty_unit\":11092.0,\"qty_unit+2_rate_qty_unit\":12784.0,\"check1\":\"correct\"},{\"item_description\":\"MECH27357 A-ETH TO USB MODULE 1PS314 HolderSI TECHNOLOGIES PVT\\nPO. No. : 241000505 dtd : 02\\/01\\/2025\",\"item_quantity\":95.0,\"unit\":\"NOS\",\"unit_price\":11.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":1045.0,\"qty_unitprice\":1045.0,\"qty_unit+rate_qty_unit\":1233.1,\"qty_unit+2_rate_qty_unit\":1421.2,\"check1\":\"correct\"}]"
+            },
+            "tax_check": {
+                "Company_Gst_Valid": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Company_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_206AB": {
+                    "Gst_Portal": "N",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Filing_status": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Gst_Active": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "YES"
+                },
+                "Vendor_Gst_Valid": {
+                    "Gst_Portal": "Invalid Gst Number",
+                    "Invoice_data": "29AAAFZ8851G1Z0",
+                    "status": "NO"
+                },
+                "Vendor_Gst_mentioned": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "29AAAFZ8851G1Z0",
+                    "status": "YES"
+                },
+                "Vendor_Pan-Adhar_Linked": {
+                    "Gst_Portal": null,
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_Pan_Active": {
+                    "Gst_Portal": "Active",
+                    "Invoice_data": "",
+                    "status": "Okay"
+                },
+                "Vendor_TaxPayer_type": {
+                    "Gst_Portal": "Invalid Gst Number",
+                    "Invoice_data": "29AAAFZ8851G1Z0",
+                    "status": "Invalid Gst Number"
+                },
+                "Vendor_Taxfiliging_Frequency": {
+                    "Gst_Portal": "",
+                    "Invoice_data": "",
+                    "status": "Monthly"
+                },
+                "tax_type_on_invoice": {
+                    "Gst_Portal": " ",
+                    "Invoice_data": " ",
+                    "status": "Okay"
+                }
+            }
+        },
+        "Invoice_data": {
+            "Bank_Details": {
+                "Account_holder_name": "3S",
+                "Bank_Account_No": "50200027894336",
+                "Email": null,
+                "VendorAddress": "No.22, Nandagokula Industrial Layout,Thigalarapalya Main Road, Bengaluru, None, 560058, None"
+            },
+            "BillingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "Currency": "INR",
+            "CustomerName": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
+            "Invoice items:": {
+                "item#1": {
+                    "amount": "6240.0",
+                    "item_description": "MECH26315A-ZINC PLATED MECH26315A -EOD\nCAP-12.5 x2 VER CLAMP\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 260.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "24.0"
+                },
+                "item#10": {
+                    "amount": "6110.0",
+                    "item_description": "MECH27342A-MP DETECTOR DC-DC 1-4 BOX 15P COVER\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 130.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "47.0"
+                },
+                "item#11": {
+                    "amount": "4929.0",
+                    "item_description": "MECH27359A-MP F UNITE LABEL PLATE\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 53.0,
+                    "tax_rate": "18 %",
+                    "unit": "NOS"
+                },
+                "item#12": {
+                    "amount": "3328.0",
+                    "item_description": "MECH27304C-MP F D-TYP AMP B1 CLAMP",
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "128.0"
+                },
+                "item#13": {
+                    "amount": "1920.0",
+                    "item_description": "MECH27317C-MP F 1PS313 BAR\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 120.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "16.0"
+                },
+                "item#14": {
+                    "amount": "9400.0",
+                    "item_description": "MECH27356A-ETH TO USB MODULE BRACKET\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 100.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "94.0"
+                },
+                "item#15": {
+                    "amount": "1045.0",
+                    "item_description": "MECH27357 A-ETH TO USB MODULE 1PS314 HolderSI TECHNOLOGIES PVT\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 95.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "11.0"
+                },
+                "item#2": {
+                    "amount": "44625.0",
+                    "item_description": "MECH27302C-MP F COVER V100\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 51.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "875.0"
+                },
+                "item#3": {
+                    "amount": "5925.0",
+                    "item_description": "MECH27304B-MP F D-TYP AMP CLAMP\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 237.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "25.0"
+                },
+                "item#4": {
+                    "amount": "12462.0",
+                    "item_description": "MECH27305B-MP F PMB BRACKET 1\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 134.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "93.0"
+                },
+                "item#5": {
+                    "amount": "1110.0",
+                    "item_description": "MECH27317B-MP F 1PS307 Holder\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 30.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "37.0"
+                },
+                "item#6": {
+                    "amount": "3780.0",
+                    "item_description": "MECH27330A-MP F DC-DC D-TYP 9W4 CLAMP\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 135.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "28.0"
+                },
+                "item#7": {
+                    "amount": "53550.0",
+                    "item_description": "MECH27333A-MP F B2 TOP PLATE\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 126.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "425.0"
+                },
+                "item#8": {
+                    "amount": "57875.0",
+                    "item_description": "MECH27334A-MP F B3 TOP PLATE\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 125.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "463.0"
+                },
+                "item#9": {
+                    "amount": "30380.0",
+                    "item_description": "MECH27340B-MP DETECTOR SBC COVER-1\nPO. No. : 241000505 dtd : 02/01/2025",
+                    "item_quantity": 98.0,
+                    "product_code": "84879000",
+                    "tax_rate": "18 %",
+                    "unit": "NOS",
+                    "unit_price": "310.0"
+                }
+            },
+            "InvoiceDate": "2025-02-24",
+            "InvoiceId": "24253798",
+            "InvoiceTotal": "286361.00",
+            "Payment_Term": "Net 60 days Credit",
+            "PurchaseOrder": "241000505",
+            "ShippingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "SubTotal": "242679.00",
+            "Tax Items": {
+                "CGST": {
+                    "amount": 21841.0,
+                    "rate": 0
+                },
+                "SGST": {
+                    "amount": 21841.0,
+                    "rate": 0
+                }
+            },
+            "TotalTax": 43682.0,
+            "Vendor Gst No.": "29AAAFZ8851G1Z0",
+            "VendorAddress": "No.22, Nandagokula Industrial Layout,Thigalarapalya Main Road, Bengaluru, None, 560058, None",
+            "VendorAddressRecipient": "3S Products And Services",
+            "VendorName": "3S"
+        },
+        "Okay_NotOkay": {
+            "status": "Not All Okay",
+            "message": [
+                "Customer_Adress Not Matched",
+                "Vendor_Filing_status",
+                "Vendor_Gst inValid",
+                "Table_check1 not okay",
+                "Table_Check2 not okay"
+            ]
+        }
+    }
+}

@@ -163,7 +163,14 @@
         </select>
     
     </form>
-    {% if invoices %}
+    {% if invoices %} 
+    <!-- <script>
+        // Store already displayed invoice names in a Set
+        let existingFiles = new Set([
+            {% for invoice in invoices %}"{{ invoice.file_name }}"{% if not forloop.last %},{% endif %}{% endfor %}
+        ]);
+    </script> -->
+
         <table>
             <thead>
                 <tr>
@@ -171,7 +178,6 @@
                     <th>Upload Date</th>
                     <th>
                         <span class="filter-container">
-                            <!-- Dropdown filter in the header of status_ column -->
                             <label for="status_filter_">Filter by Status_:</label>
                             <select id="status_filter_" name="status_filter">
                                 <option value="all">All</option>
@@ -185,17 +191,15 @@
                     <th>Action</th>
                     <th>
                         <span class="filter-container">
-                            <!-- Checkbox filter in the header of select column -->
                             <label for="select_all_checkbox">Select All</label>
                             <input type="checkbox" id="select_all_checkbox">
                         </span>
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="invoice-table-body">
                 {% for invoice in invoices %}
                     <tr class="invoice-row" data-status="{{ invoice.okay_status }}">
-                        <!-- Add the 'data-status' attribute to the row -->
                         <td>
                             <a href="/media/invoices/{{user_index}}/{{ invoice.file_name }}" target="_blank">
                                 {{ invoice.file_name }}
@@ -214,28 +218,29 @@
                             <button onclick="changeStatus('{{ invoice.file_name }}')">Change Status</button>
                         </td>
                         <td>
-                            <!-- Individual checkbox for each row -->
                             <input type="checkbox" class="invoice-checkbox" data-file="{{ invoice.file_name }}">
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <!-- Button to perform action on selected rows (to be implemented later) -->
-        
     {% else %}
         <p class="message">No invoices found for the selected filter</p>
     {% endif %}
 
+
     <!-- Form to send selected files to the view -->
-    <form id="action_form" action="{% url 'save_template' %}" method="POST">
+    <!-- Form to send selected files -->
+    <form id="action_form" method="POST">
         {% csrf_token %}
-        <!-- Hidden input to hold the selected files -->
         <input type="hidden" id="selected_files" name="selected_files" value="">
 
-        <!-- Button to trigger the action -->
         <div class="action-button-container">
-            <button type="button" id="perform_action" onclick="submitForm()">Save Template for selected invoices</button>
+            <!-- Delete Button -->
+            <button type="button" id="delete_selected" onclick="submitDeleteForm()">Delete Selected Invoices</button>
+
+            <!-- Save Template Button -->
+            <button type="button" id="perform_action" onclick="submitSaveForm()">Save Template for Selected Invoices</button>
         </div>
     </form>
 
@@ -286,6 +291,7 @@
     </div>
 
     <script>
+        
 
         function exportTemplates() {
                     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -322,22 +328,74 @@
                     });
                 }
 
-        function submitForm() {
-            // Get all selected checkboxes
-            var selectedCheckboxes = document.querySelectorAll('.invoice-checkbox:checked');
+            function getSelectedInvoices() {
+                var selectedCheckboxes = document.querySelectorAll('.invoice-checkbox:checked');
+                var selectedFiles = [];
+                selectedCheckboxes.forEach(function (checkbox) {
+                    selectedFiles.push(checkbox.getAttribute('data-file'));
+                });
+                return JSON.stringify(selectedFiles);
+            }
 
-            // Get the file names of the selected invoices
-            var selectedFiles = [];
-            selectedCheckboxes.forEach(function (checkbox) {
-                selectedFiles.push(checkbox.getAttribute('data-file'));
-            });
+            function submitSaveForm() {
+                document.getElementById('selected_files').value = getSelectedInvoices();
+                document.getElementById('action_form').action = "{% url 'save_template' %}";
+                document.getElementById('action_form').submit();
+            }
 
-            // Set the selected files in the hidden input field
-            document.getElementById('selected_files').value = JSON.stringify(selectedFiles);
+            function submitDeleteForm() {
+                let selectedFiles = getSelectedInvoices();
+                
+                if (selectedFiles.length === 0) {
+                    alert("Please select at least one invoice to delete.");
+                    return;
+                }
 
-            // Submit the form
-            document.getElementById('action_form').submit();
-        }
+                if (!confirm("Are you sure you want to delete the selected invoices?")) {
+                    return; // Stop execution if user cancels
+                }
+
+                fetch("{% url 'delete_rows' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    body: new URLSearchParams({ "selected_files": selectedFiles })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        alert(data.message);
+                        location.reload(); // Reload page after successful deletion
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert("Something went wrong. Please try again.");
+                    console.error("Error:", error);
+                });
+            }
+
+
+
+        // function submitForm() {
+        //     // Get all selected checkboxes
+        //     var selectedCheckboxes = document.querySelectorAll('.invoice-checkbox:checked');
+
+        //     // Get the file names of the selected invoices
+        //     var selectedFiles = [];
+        //     selectedCheckboxes.forEach(function (checkbox) {
+        //         selectedFiles.push(checkbox.getAttribute('data-file'));
+        //     });
+
+        //     // Set the selected files in the hidden input field
+        //     document.getElementById('selected_files').value = JSON.stringify(selectedFiles);
+
+        //     // Submit the form
+        //     document.getElementById('action_form').submit();
+        // }
 
         // JavaScript to filter table rows based on selected status filter
         document.getElementById('status_filter_').addEventListener('change', function() {

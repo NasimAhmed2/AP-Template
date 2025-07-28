@@ -9,7 +9,7 @@
                 },
                 "Customer_Adress": {
                     "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
-                    "Invoice_data": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+                    "Invoice_data": "survey no. 151, hoodi village,\nKR Puram hobli, Bangalore, None, 560066, India",
                     "status": "Not Matching"
                 },
                 "Customer_Name": {
@@ -24,12 +24,12 @@
                 },
                 "Invoice_Date": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "2025-01-21",
+                    "Invoice_data": "2025-02-28",
                     "status": "Okay"
                 },
                 "Invoice_Number": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "24253367",
+                    "Invoice_data": "HL-U2/0190/24-25",
                     "status": "Okay"
                 },
                 "Invoice_RCM-Services": {
@@ -56,9 +56,9 @@
             "data_from_gst": {
                 "206AB_Compliance": {
                     "fin_year": "2024-25",
-                    "pan": "AAAFZ8851G",
-                    "pan_allotment_date": "2012-01-20",
-                    "pan_name": "3S PXXXXXXS AXD SXXXXXXS",
+                    "pan": "AADCH2823C",
+                    "pan_allotment_date": "2013-11-06",
+                    "pan_name": "HXXXXE MXXT CXXXXXXXXS PXXXXXE LXXXXXD",
                     "pan_operative_status": "operative",
                     "specified_person": "N"
                 },
@@ -82,8 +82,8 @@
                 ],
                 "Filing Status": [
                     {
-                        "arn": "AB291224448940Z",
-                        "dof": "21-01-2025",
+                        "arn": "AB291224808114E",
+                        "dof": "26-01-2025",
                         "mof": "ONLINE",
                         "ret_prd": "122024",
                         "rtntype": "GSTR3B",
@@ -91,62 +91,8 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB291024282060J",
-                        "dof": "20-11-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "102024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290824284661O",
-                        "dof": "20-09-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "082024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290724280097R",
-                        "dof": "20-08-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "072024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB2906244413641",
-                        "dof": "20-07-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "062024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB2905242512471",
-                        "dof": "20-06-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "052024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290424064295Z",
-                        "dof": "20-05-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "042024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB291124071440G",
-                        "dof": "19-12-2024",
+                        "arn": "AB291124343666Z",
+                        "dof": "20-12-2024",
                         "mof": "ONLINE",
                         "ret_prd": "112024",
                         "rtntype": "GSTR3B",
@@ -154,16 +100,42 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB290924382388D",
-                        "dof": "19-10-2024",
+                        "arn": "AB2901252871344",
+                        "dof": "20-02-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "092024",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR1A",
+                        "status": "Filed"
+                    },
+                    {
+                        "arn": "AB290125402104Q",
+                        "dof": "20-02-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "012025",
                         "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA291124453738V",
+                        "arn": "AA291024575258Y",
+                        "dof": "12-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2910244925811",
+                        "dof": "11-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2911244902083",
                         "dof": "11-12-2024",
                         "mof": "ONLINE",
                         "ret_prd": "112024",
@@ -172,16 +144,43 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2910244667316",
+                        "arn": "AB2909248311134",
                         "dof": "11-11-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "102024",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB290824477684D",
+                        "dof": "11-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2909245758775",
+                        "dof": "11-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290824457706L",
+                        "arn": "AB290724476619D",
+                        "dof": "11-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824443908J",
                         "dof": "11-09-2024",
                         "mof": "ONLINE",
                         "ret_prd": "082024",
@@ -190,7 +189,25 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2905245316905",
+                        "arn": "AA290624618060E",
+                        "dof": "11-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2904244481808",
+                        "dof": "11-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524577759B",
                         "dof": "11-06-2024",
                         "mof": "ONLINE",
                         "ret_prd": "052024",
@@ -199,16 +216,16 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290424443699M",
-                        "dof": "11-05-2024",
+                        "arn": "AA290225569771T",
+                        "dof": "11-03-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "042024",
+                        "ret_prd": "022025",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA291224503376A",
+                        "arn": "AA2912245844141",
                         "dof": "11-01-2025",
                         "mof": "ONLINE",
                         "ret_prd": "122024",
@@ -217,17 +234,17 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290924379316L",
-                        "dof": "10-10-2024",
+                        "arn": "AB290624818990P",
+                        "dof": "10-08-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "092024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2907243103376",
-                        "dof": "09-08-2024",
+                        "arn": "AA290724426616V",
+                        "dof": "10-08-2024",
                         "mof": "ONLINE",
                         "ret_prd": "072024",
                         "rtntype": "GSTR1",
@@ -235,10 +252,28 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290624140113I",
-                        "dof": "04-07-2024",
+                        "arn": "AB290524491094W",
+                        "dof": "10-07-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "062024",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290125414067E",
+                        "dof": "10-02-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2904242259514",
+                        "dof": "08-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
@@ -248,25 +283,25 @@
                     "aadhaar_linked": null,
                     "aadhaar_number": "",
                     "address": {
-                        "building_name": "No. 22 Nandagokula Industrial Layout",
-                        "city": "BANGALORE",
+                        "building_name": "No 16 Vivekananda Street ",
+                        "city": "Bangalore North",
                         "country": "India",
-                        "locality": "Peenya Small Industries S.O",
-                        "pincode": "560058",
+                        "locality": "Krishnarajapuram R S S.O",
+                        "pincode": "560016",
                         "state": "Karnataka",
-                        "street_name": "Thigalarapalya Main Road, Peenya 2nd Stage, "
+                        "street_name": ""
                     },
-                    "dob": "05/01/2012",
+                    "dob": "19/06/2013",
                     "email": "",
                     "first_name": "",
-                    "fullname": "3S PRODUCTS AND SERVICES",
+                    "fullname": "HILINE MAAT COMPONENTS PRIVATE LIMITED",
                     "gender": null,
-                    "last_name": "3S PRODUCTS AND SERVICES",
+                    "last_name": "HILINE MAAT COMPONENTS PRIVATE LIMITED",
                     "middle_name": "",
                     "mobile": "",
-                    "pan": "AAAFZ8851G",
+                    "pan": "AADCH2823C",
                     "pan_status": "Active",
-                    "pan_type": "Firm/Limited Liability Partnership"
+                    "pan_type": "Company"
                 },
                 "customer_gst_data": {
                     "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
@@ -284,23 +319,26 @@
                     "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
                 },
                 "vendor_gst_data": {
-                    "Address": "3S PRODUCTS AND SERVICES , Site No 22 Nandagokula Industrial Estate , Thigalarapalya Main Road Karivobanahalli , Bengaluru Urban , Karnataka , 560058",
-                    "Central tax Jurisdiction": "RANGE-ANWD1",
-                    "Central tax Jurisdiction Code": "YX0101",
+                    "Address": "NO 65P1 ,  , KIADB INDUSTRIAL AREA 4TH PHASE , Bengaluru Urban , Karnataka , 563130",
+                    "Central tax Jurisdiction": "RANGE-BED9",
+                    "Central tax Jurisdiction Code": "YT0902",
                     "Date of Registration": "01/07/2017",
                     "Duty": "Regular",
-                    "E-Invoice Status": "Yes",
-                    "Gstin": "29AAAFZ8851G1ZO",
-                    "Legal Name": "3S PRODUCTS AND SERVICES",
+                    "E-Invoice Status": "No",
+                    "Gstin": "29AADCH2823C1ZX",
+                    "Legal Name": "HILINE MAAT COMPONENTS PRIVATE LIMITED",
                     "Nature of Business Activity": [
-                        "Factory / Manufacturing"
+                        "Factory / Manufacturing",
+                        "Service Provision",
+                        "Supplier of Services",
+                        "Others"
                     ],
-                    "State Jurisdiction Code": "KA021",
-                    "Trade Name": "3S PRODUCTS AND SERVICES"
+                    "State Jurisdiction Code": "KA036",
+                    "Trade Name": "HILINE MAAT COMPONENTS PRIVATE LIMITED"
                 }
             },
             "table_data": {
-                "Table_Check_data": "[{\"item_description\":\"13606-25-01-FABRICATED ENCLOSURE MAK1.2m\\nPO. No. : 241000471 dtd : 11\\/12\\/2024\",\"item_quantity\":5.0,\"unit\":\"NOS\",\"unit_price\":631.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":3155.0,\"qty_unitprice\":3155.0,\"qty_unit+rate_qty_unit\":3722.9,\"qty_unit+2_rate_qty_unit\":4290.8,\"check1\":\"correct\"},{\"item_description\":\"13606-25-02-FABRICATED FRONT PLATE MAK1.2m\\nPO. No. : 241000471 dtd : 11\\/12\\/2024\",\"item_quantity\":5.0,\"unit\":\"NOS\",\"unit_price\":171.0,\"product_code\":\"84879000\",\"tax_rate\":18,\"amount\":855.0,\"qty_unitprice\":855.0,\"qty_unit+rate_qty_unit\":1008.9,\"qty_unit+2_rate_qty_unit\":1162.8,\"check1\":\"correct\"}]"
+                "Table_Check_data": "[{\"item_description\":\"MECH27320B \\/MP F - Car Mount\",\"item_quantity\":84.0,\"unit\":\"Nos\",\"unit_price\":1050.0,\"product_code\":\"8487\\/995473\",\"tax\":\"5292.0\",\"tax_rate\":6.0,\"amount\":88200.0,\"qty_unitprice\":88200.0,\"qty_unit+rate_qty_unit\":93492.0,\"qty_unit+2_rate_qty_unit\":98784.0,\"check1\":\"correct\"},{\"item_description\":\"|MECH27320D \\/MP F Bottom Frame\",\"item_quantity\":50.0,\"unit\":\"Nos\",\"unit_price\":1000.0,\"product_code\":\"8487\\/995473\",\"tax\":\"3000.0\",\"tax_rate\":6.0,\"amount\":50000.0,\"qty_unitprice\":50000.0,\"qty_unit+rate_qty_unit\":53000.0,\"qty_unit+2_rate_qty_unit\":56000.0,\"check1\":\"correct\"}]"
             },
             "tax_check": {
                 "Company_Gst_Valid": {
@@ -330,12 +368,12 @@
                 },
                 "Vendor_Gst_Valid": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AAAFZ8851G1ZO",
+                    "Invoice_data": "29AADCH2823C1ZX",
                     "status": "YES"
                 },
                 "Vendor_Gst_mentioned": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AAAFZ8851G1ZO",
+                    "Invoice_data": "29AADCH2823C1ZX",
                     "status": "YES"
                 },
                 "Vendor_Pan-Adhar_Linked": {
@@ -367,59 +405,64 @@
         },
         "Invoice_data": {
             "Bank_Details": {
-                "Account_holder_name": "3S",
-                "Bank_Account_No": "50200027894336",
+                "Account_holder_name": "HILINE MAAT COMPONENTS PVT LTD.",
+                "Bank_Account_No": null,
+                "Bank_Branch": "MAHADEVAPURA SSI BRANCH,BANGALORE,",
+                "Bank_Name": "Canara Bank",
                 "Email": null,
-                "VendorAddress": "No.22, Nandagokula Industrial Layout, Thigalarapalya Main Road, Bengaluru, None, 560058, None"
+                "IFSC_Code": "CNRB0002421",
+                "VendorAddress": "None, KIADB Industrial area,4th Phase, Malur, None, District-563130, None"
             },
-            "BillingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "BillingAddress": "survey no. 151, hoodi village,\nKR Puram hobli, Bangalore, None, 560066, India",
             "BillingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
             "Currency": "INR",
             "CustomerName": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
             "Cutomer Gst No.": "29AAGCG0335D2ZX",
             "Invoice items:": {
                 "item#1": {
-                    "amount": "3155.0",
-                    "item_description": "13606-25-01-FABRICATED ENCLOSURE MAK1.2m\nPO. No. : 241000471 dtd : 11/12/2024",
-                    "item_quantity": 5.0,
-                    "product_code": "84879000",
-                    "tax_rate": "18 %",
-                    "unit": "NOS",
-                    "unit_price": "631.0"
+                    "amount": "88200.0",
+                    "item_description": "MECH27320B /MP F - Car Mount",
+                    "item_quantity": 84.0,
+                    "product_code": "8487/995473",
+                    "tax": "5292.0",
+                    "tax_rate": "6.0%",
+                    "unit": "Nos",
+                    "unit_price": "1050.0"
                 },
                 "item#2": {
-                    "amount": "855.0",
-                    "item_description": "13606-25-02-FABRICATED FRONT PLATE MAK1.2m\nPO. No. : 241000471 dtd : 11/12/2024",
-                    "item_quantity": 5.0,
-                    "product_code": "84879000",
-                    "tax_rate": "18 %",
-                    "unit": "NOS",
-                    "unit_price": "171.0"
+                    "amount": "50000.0",
+                    "item_description": "|MECH27320D /MP F Bottom Frame",
+                    "item_quantity": 50.0,
+                    "product_code": "8487/995473",
+                    "tax": "3000.0",
+                    "tax_rate": "6.0%",
+                    "unit": "Nos",
+                    "unit_price": "1000.0"
                 }
             },
-            "InvoiceDate": "2025-01-21",
-            "InvoiceId": "24253367",
-            "InvoiceTotal": "4732.00",
-            "Payment_Term": "Net 60 days Credit",
-            "PurchaseOrder": "241000471\n241000471",
-            "ShippingAddress": "survey No. 151, Hoodi Village, KR Puram hobli\nBangalore -560066, None, None, None, None",
+            "InvoiceDate": "2025-02-28",
+            "InvoiceId": "HL-U2/0190/24-25",
+            "InvoiceTotal": "154784.00",
+            "PurchaseOrder": "241000522",
+            "ShippingAddress": "survey no. 151, hoodi village,\nKR Puram hobli, Bangalore, None, 560066, India",
             "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
-            "SubTotal": "4010.00",
+            "SubTotal": "138200.00",
             "Tax Items": {
                 "CGST": {
-                    "amount": 361.0,
+                    "amount": 8292.0,
                     "rate": 0
                 },
                 "SGST": {
-                    "amount": 361.0,
+                    "amount": 8292.0,
                     "rate": 0
                 }
             },
-            "TotalTax": 722.0,
-            "Vendor Gst No.": "29AAAFZ8851G1ZO",
-            "VendorAddress": "No.22, Nandagokula Industrial Layout, Thigalarapalya Main Road, Bengaluru, None, 560058, None",
-            "VendorAddressRecipient": "3S Products And Services",
-            "VendorName": "3S"
+            "TotalDiscount": "0.00",
+            "TotalTax": 16584.0,
+            "Vendor Gst No.": "29AADCH2823C1ZX",
+            "VendorAddress": "None, KIADB Industrial area,4th Phase, Malur, None, District-563130, None",
+            "VendorAddressRecipient": "HILINE MAAT COMPONENTS PVT LTD.",
+            "VendorName": "HILINE MAAT COMPONENTS PVT LTD."
         },
         "Okay_NotOkay": {
             "status": "Not All Okay",

@@ -9,7 +9,7 @@
                 },
                 "Customer_Adress": {
                     "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
-                    "Invoice_data": "SURVEY NO. 151, HOODI VILLAGE KR PURAM HOBLI, BENGALURU, Karnataka, 560066, India",
+                    "Invoice_data": "No.151, Hoodi Village KR PURAM Hobli, Bangalore, None, 560066, None",
                     "status": "Not Matching"
                 },
                 "Customer_Name": {
@@ -24,12 +24,12 @@
                 },
                 "Invoice_Date": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "2025-01-22",
+                    "Invoice_data": "2025-02-28",
                     "status": "Okay"
                 },
                 "Invoice_Number": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "RIS-3525",
+                    "Invoice_data": "4976/2024-25",
                     "status": "Okay"
                 },
                 "Invoice_RCM-Services": {
@@ -56,9 +56,9 @@
             "data_from_gst": {
                 "206AB_Compliance": {
                     "fin_year": "2024-25",
-                    "pan": "AHZPU5620Q",
-                    "pan_allotment_date": "2017-12-26",
-                    "pan_name": "AXXXXXXR AXXXS UXXXXXXXXXA",
+                    "pan": "AAAFI2788K",
+                    "pan_allotment_date": "1998-11-03",
+                    "pan_name": "KXXXXI IXC",
                     "pan_operative_status": "operative",
                     "specified_person": "N"
                 },
@@ -82,16 +82,7 @@
                 ],
                 "Filing Status": [
                     {
-                        "arn": "AB291024362459X",
-                        "dof": "21-11-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "102024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB2912244762540",
+                        "arn": "AB291224397647J",
                         "dof": "21-01-2025",
                         "mof": "ONLINE",
                         "ret_prd": "122024",
@@ -100,34 +91,7 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB291124372279V",
-                        "dof": "20-12-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "112024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290924563885A",
-                        "dof": "20-10-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "092024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290824235382Z",
-                        "dof": "20-09-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "082024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290724344528P",
+                        "arn": "AB290724080179P",
                         "dof": "20-08-2024",
                         "mof": "ONLINE",
                         "ret_prd": "072024",
@@ -136,8 +100,26 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB290624572972K",
-                        "dof": "20-07-2024",
+                        "arn": "AA291124962989E",
+                        "dof": "18-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824910844T",
+                        "dof": "18-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2906240921614",
+                        "dof": "18-07-2024",
                         "mof": "ONLINE",
                         "ret_prd": "062024",
                         "rtntype": "GSTR3B",
@@ -145,17 +127,8 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB2904242525070",
-                        "dof": "20-05-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "042024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA290524694193T",
-                        "dof": "14-06-2024",
+                        "arn": "AA290524947562U",
+                        "dof": "18-06-2024",
                         "mof": "ONLINE",
                         "ret_prd": "052024",
                         "rtntype": "GSTR3B",
@@ -163,52 +136,70 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA291224709602B",
-                        "dof": "13-01-2025",
+                        "arn": "AA290125890937J",
+                        "dof": "18-02-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "122024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR2X",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2911244365728",
-                        "dof": "11-12-2024",
+                        "arn": "AA2901259780912",
+                        "dof": "18-02-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "112024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290824477027R",
-                        "dof": "11-09-2024",
+                        "arn": "AA290424837985J",
+                        "dof": "17-05-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "082024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2907245014563",
-                        "dof": "11-08-2024",
+                        "arn": "AA291024746402E",
+                        "dof": "16-11-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "072024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290624478601W",
-                        "dof": "11-07-2024",
+                        "arn": "AA2909248958926",
+                        "dof": "16-10-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "062024",
-                        "rtntype": "GSTR1",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2905244590518",
+                        "arn": "AA290424740928P",
+                        "dof": "16-05-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "042024",
+                        "rtntype": "GSTR2X",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524751738N",
+                        "dof": "15-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR2X",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290524459747J",
                         "dof": "11-06-2024",
                         "mof": "ONLINE",
                         "ret_prd": "052024",
@@ -217,8 +208,26 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290424417372A",
-                        "dof": "11-05-2024",
+                        "arn": "AA2909244044343",
+                        "dof": "10-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290624352418W",
+                        "dof": "10-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2904243315076",
+                        "dof": "10-05-2024",
                         "mof": "ONLINE",
                         "ret_prd": "042024",
                         "rtntype": "GSTR1",
@@ -226,8 +235,8 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA291024367036A",
-                        "dof": "10-11-2024",
+                        "arn": "AA291024311403R",
+                        "dof": "09-11-2024",
                         "mof": "ONLINE",
                         "ret_prd": "102024",
                         "rtntype": "GSTR1",
@@ -235,38 +244,83 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290924509884K",
-                        "dof": "10-10-2024",
+                        "arn": "AA290724246379N",
+                        "dof": "08-08-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "092024",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290125283477U",
+                        "dof": "08-02-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291224271398V",
+                        "dof": "08-01-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "122024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA291124202420V",
+                        "dof": "07-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290824177687C",
+                        "dof": "06-09-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "082024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA290225184907P",
+                        "dof": "06-03-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "022025",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
                     }
                 ],
                 "Pan_Status": {
-                    "aadhaar_linked": true,
-                    "aadhaar_number": "XXXXXXXX0386",
+                    "aadhaar_linked": null,
+                    "aadhaar_number": "",
                     "address": {
-                        "building_name": "NO 04 MGS COMPLEX",
-                        "city": "Bangalore South",
+                        "building_name": "NO.83",
+                        "city": "BANGALORE",
                         "country": "India",
-                        "locality": "Bangalore Corporation Building S.O",
-                        "pincode": "560002",
+                        "locality": "Magadi Road S.O",
+                        "pincode": "560023",
                         "state": "Karnataka",
-                        "street_name": "BANKI NAWAB STREET"
+                        "street_name": "1ST MAIN ROAD, BINNYPET "
                     },
-                    "dob": "31/12/1998",
+                    "dob": "05/05/1994",
                     "email": "",
-                    "first_name": "ALIASGER",
-                    "fullname": "ALIASGER ANEES UDAIPURWALA",
-                    "gender": "male",
-                    "last_name": "UDAIPURWALA",
-                    "middle_name": "ANEES",
+                    "first_name": "",
+                    "fullname": "KAPASI INC",
+                    "gender": null,
+                    "last_name": "KAPASI INC",
+                    "middle_name": "",
                     "mobile": "",
-                    "pan": "AHZPU5620Q",
+                    "pan": "AAAFI2788K",
                     "pan_status": "Active",
-                    "pan_type": "Individual"
+                    "pan_type": "Firm/Limited Liability Partnership"
                 },
                 "customer_gst_data": {
                     "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
@@ -284,24 +338,25 @@
                     "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
                 },
                 "vendor_gst_data": {
-                    "Address": "NO 04 SHOP NO 17 AND 18 ,  , BANKI NAWAB STREET , Bengaluru Urban , Karnataka , 560002",
-                    "Central tax Jurisdiction": "RANGE-ASD1",
-                    "Central tax Jurisdiction Code": "YV0101",
-                    "Date of Registration": "21/06/2021",
+                    "Address": "NO.83 ,  , 1ST MAIN ROAD, OPP. BALEKAYI MANDI, NEW BINNY LAYOUT , Bengaluru Urban , Karnataka , 560023",
+                    "Central tax Jurisdiction": "RANGE-BWD2",
+                    "Central tax Jurisdiction Code": "YU0202",
+                    "Date of Registration": "01/07/2017",
                     "Duty": "Regular",
-                    "E-Invoice Status": "No",
-                    "Gstin": "29AHZPU5620Q1ZZ",
-                    "Legal Name": "ALIASGER ANEES UDAIPURWALA",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAAFI2788K1ZW",
+                    "Legal Name": "KAPASI INC",
                     "Nature of Business Activity": [
-                        "Retail Business",
-                        "Wholesale Business"
+                        "Wholesale Business",
+                        "Bonded Warehouse",
+                        "Warehouse / Depot"
                     ],
-                    "State Jurisdiction Code": "KA025",
-                    "Trade Name": "ROYAL INDUSTRIAL SUPPLIERS"
+                    "State Jurisdiction Code": "KA019",
+                    "Trade Name": "KAPASI INC"
                 }
             },
             "table_data": {
-                "Table_Check_data": "[{\"item_description\":\"SS304 PAN PHILLIPS M3X0.5X6MM\\nGS05-000278-000-000\",\"item_quantity\":200.0,\"unit\":\"pcs\",\"unit_price\":5.76,\"product_code\":\"73181500\",\"amount\":1152.0,\"qty_unitprice\":1152.0,\"check1\":\"correct\"},{\"item_description\":\"SS304 PAN PHILLIPS M4X0.7X10MM\\nG505-000109-000-000\",\"item_quantity\":200.0,\"unit\":\"pcs\",\"unit_price\":6.21,\"product_code\":\"73181500\",\"amount\":1242.0,\"qty_unitprice\":1242.0,\"check1\":\"correct\"},{\"item_description\":\"SS304 CSK PHILLIPS M4X0.7X6MM\\nG505-000108-000-000\",\"item_quantity\":500.0,\"unit\":\"pcs\",\"unit_price\":4.28,\"product_code\":\"73181500\",\"amount\":2140.0,\"qty_unitprice\":2140.0,\"check1\":\"correct\"},{\"item_description\":\"COC-1255\",\"item_quantity\":1.0,\"unit\":null,\"unit_price\":250.0,\"product_code\":\"49119990\",\"amount\":250.0,\"qty_unitprice\":250.0,\"check1\":\"correct\"}]"
+                "Table_Check_data": "[{\"item_description\":\"Kapasi FEOX-440\\nNON-LOCKING NUT,4-40,SS300,SHT THK 0.039\\\", HOLE 0.\\n172INCH\\nITEMCODE : GS09-000093-000-000\",\"item_quantity\":500.0,\"unit\":\"Nos\",\"unit_price\":26.5,\"product_code\":\"73181600\",\"amount\":13250.0,\"qty_unitprice\":13250.0,\"check1\":\"correct\"}]"
             },
             "tax_check": {
                 "Company_Gst_Valid": {
@@ -331,16 +386,16 @@
                 },
                 "Vendor_Gst_Valid": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AHZPU5620Q1ZZ",
+                    "Invoice_data": "29AAAFI2788K1ZW",
                     "status": "YES"
                 },
                 "Vendor_Gst_mentioned": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AHZPU5620Q1ZZ",
+                    "Invoice_data": "29AAAFI2788K1ZW",
                     "status": "YES"
                 },
                 "Vendor_Pan-Adhar_Linked": {
-                    "Gst_Portal": true,
+                    "Gst_Portal": null,
                     "Invoice_data": "",
                     "status": "Okay"
                 },
@@ -367,75 +422,50 @@
             }
         },
         "Invoice_data": {
-            "AmountDue": 5645.0,
             "Bank_Details": {
-                "Account_holder_name": "RIS",
+                "Account_holder_name": "Kapasi Inc",
                 "Bank_Account_No": null,
-                "Bank_Branch": "SILVER JUBILEE PARK ROAD BRANCH BANGALORE",
-                "Bank_Name": "Kotak Mahindra Bank",
                 "Email": null,
-                "IFSC_Code": "KKBK0008038",
-                "VendorAddress": "None, Nawab Street, S.P. Road Cross, Bengaluru, Karnataka, 560002, India"
+                "VendorAddress": "No.83, 1st Main Road, New Binny Layout,\nOpp.Balekai Mandi, Tank Bund Road,\n(Binny Mill Road)Bangalore-560023.\nKarnataka, Code, None, None, None, None"
             },
-            "BillingAddress": "SURVEY NO. 151, HOODI VILLAGE KR PURAM HOBLI, BENGALURU, Karnataka, 560066, India",
+            "BillingAddress": "No.151, Hoodi Village KR PURAM Hobli, Bangalore, None, 560066, None",
             "BillingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
             "Currency": "INR",
             "CustomerName": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
             "Cutomer Gst No.": "29AAGCG0335D2ZX",
             "Invoice items:": {
                 "item#1": {
-                    "amount": "1152.0",
-                    "item_description": "SS304 PAN PHILLIPS M3X0.5X6MM\nGS05-000278-000-000",
-                    "item_quantity": 200.0,
-                    "product_code": "73181500",
-                    "unit": "pcs",
-                    "unit_price": "5.76"
-                },
-                "item#2": {
-                    "amount": "1242.0",
-                    "item_description": "SS304 PAN PHILLIPS M4X0.7X10MM\nG505-000109-000-000",
-                    "item_quantity": 200.0,
-                    "product_code": "73181500",
-                    "unit": "pcs",
-                    "unit_price": "6.21"
-                },
-                "item#3": {
-                    "amount": "2140.0",
-                    "item_description": "SS304 CSK PHILLIPS M4X0.7X6MM\nG505-000108-000-000",
+                    "amount": "13250.0",
+                    "item_description": "Kapasi FEOX-440\nNON-LOCKING NUT,4-40,SS300,SHT THK 0.039\", HOLE 0.\n172INCH\nITEMCODE : GS09-000093-000-000",
                     "item_quantity": 500.0,
-                    "product_code": "73181500",
-                    "unit": "pcs",
-                    "unit_price": "4.28"
-                },
-                "item#4": {
-                    "amount": "250.0",
-                    "item_description": "COC-1255",
-                    "item_quantity": 1.0,
-                    "product_code": "49119990",
-                    "unit_price": "250.0"
+                    "product_code": "73181600",
+                    "unit": "Nos",
+                    "unit_price": "26.5"
                 }
             },
-            "InvoiceDate": "2025-01-22",
-            "InvoiceId": "RIS-3525",
-            "InvoiceTotal": "5645.00",
-            "PurchaseOrder": "241000530",
-            "ShippingAddress": "SURVEY NO. 151, HOODI VILLAGE KR PURAM HOBLI, BENGALURU, Karnataka, 560066, India",
-            "SubTotal": "4784.00",
+            "InvoiceDate": "2025-02-28",
+            "InvoiceId": "4976/2024-25",
+            "InvoiceTotal": "15636.00",
+            "Payment_Term": "against delivery",
+            "PurchaseOrder": "241000583",
+            "ShippingAddress": "No.151, Hoodi Village KR PURAM Hobli, Bangalore, None, 560066, None",
+            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+            "SubTotal": "13250.00",
             "Tax Items": {
                 "CGST": {
-                    "amount": "430.56",
-                    "rate": "(9%)"
+                    "amount": "1193.00",
+                    "rate": "9%"
                 },
                 "SGST": {
-                    "amount": "430.56",
-                    "rate": "(9%)"
+                    "amount": "1193.00",
+                    "rate": "9%"
                 }
             },
-            "TotalTax": 861.0,
-            "Vendor Gst No.": "29AHZPU5620Q1ZZ",
-            "VendorAddress": "None, Nawab Street, S.P. Road Cross, Bengaluru, Karnataka, 560002, India",
-            "VendorAddressRecipient": "ROYAL INDUSTRIAL SUPPLIERS",
-            "VendorName": "RIS"
+            "TotalTax": 2386.0,
+            "Vendor Gst No.": "29AAAFI2788K1ZW",
+            "VendorAddress": "No.83, 1st Main Road, New Binny Layout,\nOpp.Balekai Mandi, Tank Bund Road,\n(Binny Mill Road)Bangalore-560023.\nKarnataka, Code, None, None, None, None",
+            "VendorAddressRecipient": "Kapasi Inc",
+            "VendorName": "Kapasi Inc"
         },
         "Okay_NotOkay": {
             "status": "Not All Okay",

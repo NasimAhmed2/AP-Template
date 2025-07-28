@@ -8,14 +8,14 @@
                     "status": "YES"
                 },
                 "Customer_Adress": {
-                    "Gst_Portal": "C57 , OMKARA , 2nd Parallel Road , Shivamogga , Karnataka , 577201",
-                    "Invoice_data": "Survey No 151, Hoodi Village,\nKR Puram Hobli, Bangalore-560066, None, None, None, None",
+                    "Gst_Portal": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Invoice_data": "#71, EPIP INDL AREA, HOODY VILLAGE,WHITEFIELD,\nBANGALORE-560066, None, None, None, None",
                     "status": "Not Matching"
                 },
                 "Customer_Name": {
-                    "Gst_Portal": "ALPHA CNC TECH PRIVATE LIMITED",
-                    "Invoice_data": "GLODESI TECHNOLOGIES PVT. LTD.",
-                    "status": "Not Matching"
+                    "Gst_Portal": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
+                    "Invoice_data": "GLODESI TECHNOLOGIES PVT LTD- DR",
+                    "status": "Matching"
                 },
                 "Invoice_Blocked_Credit": {
                     "Gst_Portal": "",
@@ -24,12 +24,12 @@
                 },
                 "Invoice_Date": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "2025-01-31",
+                    "Invoice_data": "2025-05-21",
                     "status": "Okay"
                 },
                 "Invoice_Number": {
                     "Gst_Portal": " ",
-                    "Invoice_data": "ACPL/24-26/113",
+                    "Invoice_data": "RSR2526INV2049",
                     "status": "Okay"
                 },
                 "Invoice_RCM-Services": {
@@ -56,9 +56,9 @@
             "data_from_gst": {
                 "206AB_Compliance": {
                     "fin_year": "2024-25",
-                    "pan": "AAXCA4727E",
-                    "pan_allotment_date": "2022-08-12",
-                    "pan_name": "AXXXA CXC TXXH PXXXXXE LXXXXXD",
+                    "pan": "AAMCR0051M",
+                    "pan_allotment_date": "2022-07-05",
+                    "pan_name": "RXR AXXXXXXN SXXXXXXS PXXXXXE LXXXXXD",
                     "pan_operative_status": "operative",
                     "specified_person": "N"
                 },
@@ -82,25 +82,16 @@
                 ],
                 "Filing Status": [
                     {
-                        "arn": "AB291124158795R",
-                        "dof": "20-12-2024",
+                        "arn": "AC271224594819H",
+                        "dof": "21-01-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "112024",
+                        "ret_prd": "122024",
                         "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB290924453245T",
-                        "dof": "20-10-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "092024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AB290824268067O",
+                        "arn": "AB270824716743V",
                         "dof": "20-09-2024",
                         "mof": "ONLINE",
                         "ret_prd": "082024",
@@ -109,16 +100,34 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB290624556850S",
-                        "dof": "20-07-2024",
+                        "arn": "AB2711246747405",
+                        "dof": "19-12-2024",
                         "mof": "ONLINE",
-                        "ret_prd": "062024",
+                        "ret_prd": "112024",
                         "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB290724048991N",
+                        "arn": "AB271024588200G",
+                        "dof": "19-11-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "102024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AC270924387793B",
+                        "dof": "19-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270724435495U",
                         "dof": "19-08-2024",
                         "mof": "ONLINE",
                         "ret_prd": "072024",
@@ -127,7 +136,43 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290424959186Q",
+                        "arn": "AC270624219972U",
+                        "dof": "19-07-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "062024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270524490585Q",
+                        "dof": "19-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB2702257317733",
+                        "dof": "19-03-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "022025",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270125738250G",
+                        "dof": "19-02-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR3B",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AB270424482777L",
                         "dof": "18-05-2024",
                         "mof": "ONLINE",
                         "ret_prd": "042024",
@@ -136,61 +181,16 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AB291224047352B",
-                        "dof": "18-01-2025",
+                        "arn": "AB270325615540F",
+                        "dof": "15-04-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "122024",
+                        "ret_prd": "032025",
                         "rtntype": "GSTR3B",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290524814379T",
-                        "dof": "17-06-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "052024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA291024777713Y",
-                        "dof": "16-11-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "102024",
-                        "rtntype": "GSTR3B",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA2907245831008",
-                        "dof": "12-08-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "072024",
-                        "rtntype": "GSTR1",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA2905246225155",
-                        "dof": "12-06-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "052024",
-                        "rtntype": "GSTR1",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA291124507868V",
-                        "dof": "11-12-2024",
-                        "mof": "ONLINE",
-                        "ret_prd": "112024",
-                        "rtntype": "GSTR1",
-                        "status": "Filed",
-                        "valid": "Y"
-                    },
-                    {
-                        "arn": "AA2910245313695",
+                        "arn": "AA271024736909W",
                         "dof": "11-11-2024",
                         "mof": "ONLINE",
                         "ret_prd": "102024",
@@ -199,17 +199,44 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290924598886Z",
-                        "dof": "11-10-2024",
+                        "arn": "AB2703250953425",
+                        "dof": "11-04-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "092024",
+                        "ret_prd": "032025",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290824532906P",
-                        "dof": "11-09-2024",
+                        "arn": "AA2702257701095",
+                        "dof": "11-03-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "022025",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2712249392918",
+                        "dof": "11-01-2025",
+                        "mof": "ONLINE",
+                        "ret_prd": "122024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2711247159445",
+                        "dof": "10-12-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "112024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270824593568E",
+                        "dof": "10-09-2024",
                         "mof": "ONLINE",
                         "ret_prd": "082024",
                         "rtntype": "GSTR1",
@@ -217,8 +244,17 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA2906246255605",
-                        "dof": "11-07-2024",
+                        "arn": "AA270724677174U",
+                        "dof": "10-08-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "072024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270624761591Z",
+                        "dof": "10-07-2024",
                         "mof": "ONLINE",
                         "ret_prd": "062024",
                         "rtntype": "GSTR1",
@@ -226,8 +262,17 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA290424325788Q",
-                        "dof": "10-05-2024",
+                        "arn": "AA270924507779J",
+                        "dof": "09-10-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "092024",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA270424533491B",
+                        "dof": "09-05-2024",
                         "mof": "ONLINE",
                         "ret_prd": "042024",
                         "rtntype": "GSTR1",
@@ -235,10 +280,19 @@
                         "valid": "Y"
                     },
                     {
-                        "arn": "AA291224370312F",
-                        "dof": "10-01-2025",
+                        "arn": "AA270125509554B",
+                        "dof": "08-02-2025",
                         "mof": "ONLINE",
-                        "ret_prd": "122024",
+                        "ret_prd": "012025",
+                        "rtntype": "GSTR1",
+                        "status": "Filed",
+                        "valid": "Y"
+                    },
+                    {
+                        "arn": "AA2705243539222",
+                        "dof": "07-06-2024",
+                        "mof": "ONLINE",
+                        "ret_prd": "052024",
                         "rtntype": "GSTR1",
                         "status": "Filed",
                         "valid": "Y"
@@ -248,67 +302,60 @@
                     "aadhaar_linked": null,
                     "aadhaar_number": "",
                     "address": {
-                        "building_name": "c 57 OMKARA",
-                        "city": "Shimoga",
+                        "building_name": "SHOP NO 09 SHAH HEIGHTS",
+                        "city": "Kharghar",
                         "country": "India",
-                        "locality": "Jayanagar Nd B.O",
-                        "pincode": "577201",
-                        "state": "Karnataka",
-                        "street_name": "2ND PARALLEL ROAD NEAR BANDARI GAS GANDHI NAGARA"
+                        "locality": "Kharghar S.O",
+                        "pincode": "410210",
+                        "state": "Maharashtra",
+                        "street_name": "SECTOR 7"
                     },
-                    "dob": "12/08/2022",
+                    "dob": "23/05/2022",
                     "email": "",
                     "first_name": "",
-                    "fullname": "ALPHA CNC TECH PRIVATE LIMITED",
-                    "gender": null,
-                    "last_name": "ALPHA CNC TECH PRIVATE LIMITED",
+                    "fullname": "RSR AVIATION SERVICES PRIVATE LIMITED",
+                    "gender": "",
+                    "last_name": "RSR AVIATION SERVICES PRIVATE LIMITED",
                     "middle_name": "",
                     "mobile": "",
-                    "pan": "AAXCA4727E",
+                    "pan": "AAMCR0051M",
                     "pan_status": "Active",
                     "pan_type": "Company"
                 },
                 "customer_gst_data": {
-                    "Address": "C57 , OMKARA , 2nd Parallel Road , Shivamogga , Karnataka , 577201",
-                    "Central tax Jurisdiction": "SHIVAMOGGA NORTH RANGE",
-                    "Central tax Jurisdiction Code": "YY0701",
-                    "Date of Registration": "06/12/2022",
+                    "Address": "No.71 , EPIP Industrial Area , Road No.3 , Bengaluru Urban , Karnataka , 560066",
+                    "Central tax Jurisdiction": "RANGE-BED7",
+                    "Central tax Jurisdiction Code": "YT0702",
+                    "Date of Registration": "01/07/2017",
                     "Duty": "Regular",
-                    "E-Invoice Status": "No",
-                    "Gstin": "29AAXCA4727E1Z9",
-                    "Legal Name": "ALPHA CNC TECH PRIVATE LIMITED",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "29AAGCG0335D2ZX",
+                    "Legal Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED",
                     "Nature of Business Activity": [
-                        "Export",
-                        "Factory / Manufacturing",
-                        "Works Contract",
-                        "Supplier of Services",
-                        "Wholesale Business"
+                        "Factory / Manufacturing"
                     ],
-                    "State Jurisdiction Code": "KA043",
-                    "Trade Name": "ALPHA CNC TECH PRIVATE LIMITED"
+                    "State Jurisdiction Code": "KA119",
+                    "Trade Name": "GLODESI TECHNOLOGIES PRIVATE LIMITED"
                 },
                 "vendor_gst_data": {
-                    "Address": "C57 , OMKARA , 2nd Parallel Road , Shivamogga , Karnataka , 577201",
-                    "Central tax Jurisdiction": "SHIVAMOGGA NORTH RANGE",
-                    "Central tax Jurisdiction Code": "YY0701",
-                    "Date of Registration": "06/12/2022",
+                    "Address": "UNIT NO.: B-67/68, , Platinum Springs , Plot Number 6, G-20 to G 24 Part A , Raigad , Maharashtra , 410208",
+                    "Central tax Jurisdiction": "RANGE-V",
+                    "Central tax Jurisdiction Code": "VT0605",
+                    "Date of Registration": "15/07/2022",
                     "Duty": "Regular",
-                    "E-Invoice Status": "No",
-                    "Gstin": "29AAXCA4727E1Z9",
-                    "Legal Name": "ALPHA CNC TECH PRIVATE LIMITED",
+                    "E-Invoice Status": "Yes",
+                    "Gstin": "27AAMCR0051M1Z5",
+                    "Legal Name": "RSR AVIATION SERVICES PRIVATE LIMITED",
                     "Nature of Business Activity": [
-                        "Export",
-                        "Factory / Manufacturing",
-                        "Works Contract",
-                        "Supplier of Services",
+                        "Retail Business",
                         "Wholesale Business"
                     ],
-                    "State Jurisdiction Code": "KA043",
-                    "Trade Name": "ALPHA CNC TECH PRIVATE LIMITED"
+                    "State Jurisdiction Code": "MHCG1371",
+                    "Trade Name": "RSR AVIATION SERVICES PRIVATE LIMITED"
                 }
             },
             "table_data": {
-                "Table_Check_data": "[{\"item_description\":\"Battery Plate MCND\\nItem Code: MCND 2001 331 401\",\"item_quantity\":28.0,\"unit\":\"Nos\",\"unit_price\":730.0,\"product_code\":\"76109030\",\"amount\":18980.0,\"qty_unitprice\":20440.0,\"check1\":\"incorrect\"}]"
+                "Table_Check_data": "[{\"item_description\":\"10P4-2NF\\/EC-117S (2 USGL KIT) HIGH\\nSOLID EPOXY PRIMER (BMS 10-11 Type 1,\\nClass A, Grade A, Revision AE (BAC 452 GREEN))\",\"item_quantity\":1.0,\"product_code\":\"32089029\",\"amount\":\"31600.0\"}]"
             },
             "tax_check": {
                 "Company_Gst_Valid": {
@@ -338,12 +385,12 @@
                 },
                 "Vendor_Gst_Valid": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AAXCA4727E1Z9",
+                    "Invoice_data": "27AAMCR0051M1Z5",
                     "status": "YES"
                 },
                 "Vendor_Gst_mentioned": {
                     "Gst_Portal": "",
-                    "Invoice_data": "29AAXCA4727E1Z9",
+                    "Invoice_data": "27AAMCR0051M1Z5",
                     "status": "YES"
                 },
                 "Vendor_Pan-Adhar_Linked": {
@@ -375,57 +422,48 @@
         },
         "Invoice_data": {
             "Bank_Details": {
-                "Account_holder_name": "ALPHA CNC TECH PVT LTD",
+                "Account_holder_name": "RS\n\u00ae\nRSR AVIATION SERVICES PVT. LTD",
                 "Bank_Account_No": null,
                 "Email": null,
-                "VendorAddress": "No 203, 12th main road. 3rd phase peonya industrial area. bangalore 560, None, None, None, None"
+                "VendorAddress": "/68, Platinum\nSprings, Plot Number 6, G-20 to G, Maharashtra, None, 410208, None"
             },
-            "BillingAddress": "Survey No 151, Hoodi Village,\nKR Puram Hobli, Bangalore-560066, None, None, None, None",
-            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PVT. LTD.",
+            "BillingAddress": "#71, EPIP INDL AREA, HOODY VILLAGE,WHITEFIELD,\nBANGALORE-560066, None, None, None, None",
+            "BillingAddressRecipient": "GLODESI TECHNOLOGIES PVT LTD- DR",
             "Currency": "INR",
-            "CustomerName": "GLODESI TECHNOLOGIES PVT. LTD.",
-            "Cutomer Gst No.": "29AAXCA4727E1Z9",
+            "CustomerName": "GLODESI TECHNOLOGIES PVT LTD- DR",
+            "Cutomer Gst No.": "29AAGCG0335D2ZX",
             "Invoice items:": {
                 "item#1": {
-                    "amount": "18980.0",
-                    "item_description": "Battery Plate MCND\nItem Code: MCND 2001 331 401",
-                    "item_quantity": 28.0,
-                    "product_code": "76109030",
-                    "unit": "Nos",
-                    "unit_price": "730.0"
+                    "amount": "31600.0",
+                    "item_description": "10P4-2NF/EC-117S (2 USGL KIT) HIGH\nSOLID EPOXY PRIMER (BMS 10-11 Type 1,\nClass A, Grade A, Revision AE (BAC 452 GREEN))",
+                    "item_quantity": 1.0,
+                    "product_code": "32089029"
                 }
             },
-            "InvoiceDate": "2025-01-31",
-            "InvoiceId": "ACPL/24-26/113",
-            "InvoiceTotal": "22396.00",
-            "PurchaseOrder": "241000512",
-            "ShippingAddress": "Survey No 151, Hoodi Village,\nKR Puram Hobli, Bangalore-560066, None, None, None, None",
-            "ShippingAddressRecipient": "GLODESI TECHNOLOGIES PVT. LTD.",
-            "SubTotal": "18980.00",
+            "InvoiceDate": "2025-05-21",
+            "InvoiceId": "RSR2526INV2049",
+            "InvoiceTotal": "37288.00",
+            "Payment_Term": "30 Days",
+            "PurchaseOrder": "241000451",
+            "SubTotal": 31600.0,
             "Tax Items": {
-                "CGST": {
-                    "amount": "1708.20",
-                    "rate": "9\n9\n%\n%"
-                },
-                "SGST": {
-                    "amount": "1708.20",
-                    "rate": "9\n9\n%\n%"
+                "IGST": {
+                    "amount": "5688.00",
+                    "rate": 0
                 }
             },
-            "TotalTax": "3416.40",
-            "Vendor Gst No.": "29AAXCA4727E1Z9",
-            "VendorAddress": "No 203, 12th main road. 3rd phase peonya industrial area. bangalore 560, None, None, None, None",
-            "VendorAddressRecipient": "ALPHA CNC TECH PVT LTD",
-            "VendorName": "ALPHA CNC TECH PVT LTD"
+            "TotalTax": "5688.00",
+            "Vendor Gst No.": "27AAMCR0051M1Z5",
+            "VendorAddress": "/68, Platinum\nSprings, Plot Number 6, G-20 to G, Maharashtra, None, 410208, None",
+            "VendorAddressRecipient": "RSR AVIATION SERVICES PVT LTD",
+            "VendorName": "RSR AVIATION SERVICES PVT. LTD"
         },
         "Okay_NotOkay": {
             "status": "Not All Okay",
             "message": [
                 "Customer_Adress Not Matched",
-                "Customer_Name Not Matched",
                 "Vendor_Filing_status",
-                "Table_check1 not okay",
-                "Table_Check2 not okay"
+                "Table_check1 not found in table"
             ]
         }
     }

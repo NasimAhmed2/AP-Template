@@ -3,6 +3,7 @@ import os
 from django.conf import settings
 import json
 from rapidfuzz import fuzz, process
+import traceback
 
 def filingstatus(data):
     result = {}
@@ -49,6 +50,7 @@ def Table_data(table,invoice_data):
     Total = invoice_data.get('InvoiceTotal')
     tax = invoice_data.get('TotalTax')
     df = pd.DataFrame(table)
+    print(df)
     check2 = {}
     check3 = {}
     # Columns to check
@@ -56,75 +58,81 @@ def Table_data(table,invoice_data):
 
     # Find the first matching column
     present_columns = [col for col in required_columns if col in df.columns]
+    print('hello')
+    try:
+        if present_columns:
+            first_present_col = present_columns[0]
+            left_of_first = df.columns[df.columns.get_loc(first_present_col) - 1] if df.columns.get_loc(first_present_col) > 0 else None
 
-    if present_columns:
-        first_present_col = present_columns[0]
-        left_of_first = df.columns[df.columns.get_loc(first_present_col) - 1] if df.columns.get_loc(first_present_col) > 0 else None
+            # Compute sums for the present columns
+            sums = {col: df[col].sum() for col in present_columns}
 
-        # Compute sums for the present columns
-        sums = {col: df[col].sum() for col in present_columns}
+            # Create a new row with sums and blanks for other columns
+            new_row = {col: '' for col in df.columns}
+            new_row.update(sums)
+            if left_of_first:
+                new_row[left_of_first] = 'Total->'
 
-        # Create a new row with sums and blanks for other columns
-        new_row = {col: '' for col in df.columns}
-        new_row.update(sums)
-        if left_of_first:
-            new_row[left_of_first] = 'Total->'
-
-        # Append the new row
-        df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
-    calculated_sum_check2 = float(df.at[len(df) - 1, 'qty_unitprice'])
-        # Check specific columns for absolute difference with Total
-    columns_to_check = ['qty_unit+rate_qty_unit', 'qty_unit+2_rate_qty_unit']
-    for col in columns_to_check:
-        if col in df.columns:
-            # Get the calculated sum for this column (last row)
-            calculated_sum = float(df.at[len(df) - 1, col])
-
-            # Compare the absolute difference
-            if abs(calculated_sum - float(Total)) > 1:
-                # Drop the column
-                df.drop(columns=[col], inplace=True)
-            else:
-                check3['OCR Captured Total Amount-->'] = Total
-                check3[f'Calculated Total Amount-->[ Total of {col} column ]'] = calculated_sum
-                check3['Check3'] = 'Okay'
+            # Append the new row
+            df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+        if 'qty_unitprice' in df.columns:
+            calculated_sum_check2 = float(df.at[len(df) - 1, 'qty_unitprice'])
         else:
-            if abs(float(Total)-(calculated_sum_check2+float(tax))) < 1:
-                check3['OCR Captured Total Amount-->'] = Total
-                check3['OCR captured Total Tax'] = tax
-                check3[f'Calculated Total Amount-->[ {tax} + {calculated_sum_check2} ]'] = float(tax)+calculated_sum_check2
-                check3['Check3'] = 'Okay'
+            calculated_sum_check2 = float(df.at[len(df) - 1, 'amount'])
+            # Check specific columns for absolute difference with Total
+        columns_to_check = ['qty_unit+rate_qty_unit', 'qty_unit+2_rate_qty_unit']
+        for col in columns_to_check:
+            if col in df.columns:
+                # Get the calculated sum for this column (last row)
+                calculated_sum = float(df.at[len(df) - 1, col])
+
+                # Compare the absolute difference
+                if abs(calculated_sum - float(Total)) > 1:
+                    # Drop the column
+                    df.drop(columns=[col], inplace=True)
+                else:
+                    check3['OCR Captured Total Amount-->'] = Total
+                    check3[f'Calculated Total Amount-->[ Total of {col} column ]'] = calculated_sum
+                    check3['Check3'] = 'Okay'
             else:
-                check3['OCR Captured Total Amount-->'] = Total
-                check3['OCR captured Total tax'] = tax
-                check3[f'Calculated Total Amount-->[ {tax} {calculated_sum_check2} ]'] = float(tax)+calculated_sum_check2
-                check3['Check3'] = 'Not Okay'
-    calculated_sum_check2 = float(df.at[len(df) - 1, 'qty_unitprice'])
-    if 'qty_unitprice' in df.columns and basic:
-        if abs(calculated_sum_check2 - float(basic)) > 1:
+                if abs(float(Total)-(calculated_sum_check2+float(tax))) < 1:
+                    check3['OCR Captured Total Amount-->'] = Total
+                    check3['OCR captured Total Tax'] = tax
+                    check3[f'Calculated Total Amount-->[ {tax} + {calculated_sum_check2} ]'] = float(tax)+calculated_sum_check2
+                    check3['Check3'] = 'Okay'
+                else:
+                    check3['OCR Captured Total Amount-->'] = Total
+                    check3['OCR captured Total tax'] = tax
+                    check3[f'Calculated Total Amount-->[ {tax} {calculated_sum_check2} ]'] = float(tax)+calculated_sum_check2
+                    check3['Check3'] = 'Not Okay'
+        # calculated_sum_check2 = float(df.at[len(df) - 1, 'qty_unitprice'])
+        if 'qty_unitprice' in df.columns and basic:
+            if abs(calculated_sum_check2 - float(basic)) > 1:
+                check2['OCR Captured Basic Amount-->'] = basic
+                check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = calculated_sum_check2
+                check2['Check2'] = 'Not Okay'
+            else:
+                check2['OCR Captured Basic Amount-->'] = basic
+                check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = calculated_sum_check2
+                check2['Check2'] = 'Okay'
+            
+        elif 'qty_unitprice' not in df.columns and basic:
             check2['OCR Captured Basic Amount-->'] = basic
-            check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = calculated_sum_check2
-            check2['Check2'] = 'Not Okay'
+            check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = 'Not calculated , Either Unit price or quantity is missing in table'
+            check2['Check2'] = 'Not Confirmed, Please check , Either Unit price or quantity is missing in table'
         else:
-            check2['OCR Captured Basic Amount-->'] = basic
+            check2['OCR Captured Basic Amount-->'] = 'Basic amount not captured by OCR'
             check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = calculated_sum_check2
-            check2['Check2'] = 'Okay'
-        
-    elif 'qty_unitprice' not in df.columns and basic:
-        check2['OCR Captured Basic Amount-->'] = basic
-        check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = 'Not calculated , Either Unit price or quantity is missing in table'
-        check2['Check2'] = 'Not Confirmed, Please check , Either Unit price or quantity is missing in table'
-    else:
-        check2['OCR Captured Basic Amount-->'] = 'Basic amount not captured by OCR'
-        check2['Calculated Basic Amount-->[ Total of qty_unitprice column ]'] = calculated_sum_check2
-        check2['Check2'] = 'Not Confirmed, Please check'
+            check2['Check2'] = 'Not Confirmed, Please check'
 
-    # Convert back to a list of dictionaries
-    processed_list_of_dicts = df.to_dict(orient='records')
+        # Convert back to a list of dictionaries
+        processed_list_of_dicts = df.to_dict(orient='records')
 
-
-    # print(processed_list_of_dicts,check2,check3)
-    return processed_list_of_dicts , check2 , check3
+        print('hello')
+        print(processed_list_of_dicts,check2,check3)
+        return processed_list_of_dicts , check2 , check3
+    except Exception as e:
+        print(e)
 
 def InvoiceTable_vs_GrnTable(invoice_data,user_index):
     # print('this---1')
@@ -153,18 +161,22 @@ def InvoiceTable_vs_GrnTable(invoice_data,user_index):
     path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
     # print('this---5')
     try:
-        data = pd.read_csv(path)
+        data = pd.read_csv(path, dtype={'Supplier Ref No': str})
+        # print(data['Supplier Ref No'])
         if invoice_id:
             invoice_id = str(invoice_id).lstrip('0')
+        # print(invoice_id)
         data = data[data['Supplier Ref No'] == invoice_id]
         # print(data)
         if not data.empty:
             # print('this---5')
-            columns = ['Document Number','Supplier Ref No','Item No.', 'Item Description', 'Quantity', 'Price', 'Discount %', 'HSN/SAC', 'Total Before Discount']
+            # print(data.columns)
+            columns = ['Supplier Ref No','Item No.', 'Item Description', 'Quantity', 'Price', 'Discount %', 'HSN/SAC', 'Total Before Discount']
             data = data[columns]
             # print(data)
             # Convert back to a list of dictionaries
             data1 = data.to_dict(orient='records')
+            # print(data1)
             data_ = [200,data1]
         else:
             data_ = [400,'Invoice Id did not match with any record from OPEN GRN , Please Check']
@@ -192,18 +204,23 @@ def Invoicetable_vs_Grntable_compare(invoice_data,user_index):
    
     # path = 'GRN_DATA/Open_GRN_Data.csv'
     path = os.path.join(settings.BASE_DIR, 'GRN_Data', str(user_index), 'Open_GRN_Data.csv')
-    print(path,invoice_id)
+    # print(path,invoice_id)
     try:
-        data = pd.read_csv(path)
+        data = pd.read_csv(path, dtype={'Supplier Ref No': str})
+        # print(data)
+        # print(invoice_id)
+        # print(data['Supplier Ref No'])
         if invoice_id:
             invoice_id = str(invoice_id).lstrip('0')
         data = data[data['Supplier Ref No'] == invoice_id]
+        
+        
         # print(data)
         if not data.empty:
             data_ = data.iloc[0]
             invoice_id_grn = data_['Supplier Ref No']
             supplier_name_grn = data_['Customer/Supplier Name']
-            Currency_Type_grn = data_['Currency Type']
+            Currency_Type_grn = data_.get('Currency Type Header') or data_.get('Currency Type')
             if Currency_Type_grn == 'INR':
                 Total_Paymt_Due_grn = data_['Total Paymt Due']  # Total Paymt Due  Total Paymt Due
             else:
@@ -284,221 +301,407 @@ def Invoicetable_vs_Grntable_compare(invoice_data,user_index):
     return result
 
 def all_okay(api_response):
-    
     result_ = {}
     status = 'All Okay'
     message = []
+    
     try:
-        # Check if the response file exists
         if api_response:
-            
             result = api_response.get("result", {})
-            # # print(result)
-            # acount_check = result['CHECKS']['Account_check']
-            # tax_check = result['CHECKS']['tax_check']
-            # table_check = result['CHECKS']['table_data']['Table_Check_data']
-            # invoice_data =  result['Invoice_data']
-
-            # Safely get data, ensuring the expected types are returned
             acount_check = result.get('CHECKS', {}).get('Account_check', {})
             tax_check = result.get('CHECKS', {}).get('tax_check', {})
             table_check = result.get('CHECKS', {}).get('table_data', {}).get('Table_Check_data', [])
             invoice_data = result.get('Invoice_data', {})
 
-            Complete_Invoice = acount_check['Complete_Invoice']['status']
-            if Complete_Invoice == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Not a Complete_Invoice')
+            # -------- Account Check Validations -------- #
+            fields_account = {
+                'Complete_Invoice': 'Not a Complete_Invoice',
+                'Customer_Adress': 'Customer_Adress Not Matched',
+                'Customer_Name': 'Customer_Name Not Matched',
+                'Invoice_Blocked_Credit': 'Invoice_Blocked_Credit Type',
+                'Invoice_Date': 'Invoice_Date is not captured or not present',
+                'Invoice_Number': 'Invoice_Number Not Captured or not present',
+                'Invoice_RCM-Services': 'Invoice_RCM-Services Type',
+                'Pre_year': 'Invoice is from Previous year',
+                'gstnumber_gstcharged': 'gstnumber_gstcharged Not Okay',
+                'valid_invoice': 'Invoice is Invalid'
+            }
+            expected_account = {
+                'Complete_Invoice': 'YES',
+                'Customer_Adress': 'Matching',
+                'Customer_Name': 'Matching',
+                'Invoice_Blocked_Credit': 'Okay',
+                'Invoice_Date': 'Okay',
+                'Invoice_Number': 'Okay',
+                'Invoice_RCM-Services': 'NO',
+                'Pre_year': 'NO',
+                'gstnumber_gstcharged': 'Okay',
+                'valid_invoice': 'YES'
+            }
 
-            Customer_Adress = acount_check['Customer_Adress']['status']
-            if Customer_Adress == 'Matching':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Customer_Adress Not Matched')
+            for key, fail_msg in fields_account.items():
+                try:
+                    if acount_check[key]['status'] != expected_account[key]:
+                        status = 'Not All Okay'
+                        message.append(fail_msg)
+                except Exception as e:
+                    status = 'Not All Okay'
+                    message.append(f"{key} check failed due to missing or malformed data")
 
-            Customer_Name = acount_check['Customer_Name']['status']
-            if Customer_Name == 'Matching':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Customer_Name Not Matched')
+            # -------- Tax Check Validations -------- #
+            fields_tax = {
+                'Company_Gst_Valid': 'Company_Gst_Valid',
+                'Company_Gst_mentioned': 'Company_Gst_mentioned',
+                'Vendor_206AB': 'Vendor_206AB',
+                'Vendor_Filing_status': 'Vendor_Filing_status',
+                'Vendor_Gst_Active': 'Vendor_Gst not Active',
+                'Vendor_Gst_Valid': 'Vendor_Gst inValid',
+                'Vendor_Gst_mentioned': 'Vendor_Gst not mentioned',
+                'Vendor_Pan-Adhar_Linked': 'Vendor_Pan-Adhar not Linked',
+                'Vendor_Pan_Active': 'Vendor_Pan not Active',
+                'tax_type_on_invoice': 'tax_type_on_invoice'
+            }
+            expected_tax = {
+                'Company_Gst_Valid': 'YES',
+                'Company_Gst_mentioned': 'YES',
+                'Vendor_206AB': 'Okay',
+                'Vendor_Filing_status': 'filled',
+                'Vendor_Gst_Active': 'YES',
+                'Vendor_Gst_Valid': 'YES',
+                'Vendor_Gst_mentioned': 'YES',
+                'Vendor_Pan-Adhar_Linked': 'Okay',
+                'Vendor_Pan_Active': 'Okay',
+                'tax_type_on_invoice': 'Okay'
+            }
 
-            Invoice_Blocked_Credit = acount_check['Invoice_Blocked_Credit']['status']
-            if Invoice_Blocked_Credit == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice_Blocked_Credit Type')
+            for key, fail_msg in fields_tax.items():
+                try:
+                    if tax_check[key]['status'] != expected_tax[key]:
+                        status = 'Not All Okay'
+                        message.append(fail_msg)
+                except Exception as e:
+                    status = 'Not All Okay'
+                    message.append(f"{key} check failed due to missing or malformed data")
 
-            Invoice_Date = acount_check['Invoice_Date']['status']
-            if Invoice_Date == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice_Date is not captured or not present')
-
-            Invoice_Number = acount_check['Invoice_Number']['status']
-            if Invoice_Number == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice_Number Not Captured or not present')
-
-            Invoice_RCM_Services = acount_check['Invoice_RCM-Services']['status']
-            if Invoice_RCM_Services == 'NO':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice_RCM-Services Type')
-
-            Pre_year = acount_check['Pre_year']['status']
-            if Pre_year == 'NO':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice is from Previous year')
-
-            gstnumber_gstcharged = acount_check['gstnumber_gstcharged']['status']
-            if gstnumber_gstcharged == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('gstnumber_gstcharged Not Okay')
-
-            valid_invoice = acount_check['valid_invoice']['status']
-            if valid_invoice == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Invoice is Invalid')
-
-            ##Tax Check validations
-            Company_Gst_Valid = tax_check['Company_Gst_Valid']['status']
-            if Company_Gst_Valid == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Company_Gst_Valid')
-
-            Company_Gst_mentioned = tax_check['Company_Gst_mentioned']['status']
-            if Company_Gst_mentioned == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Company_Gst_mentioned')
-
-            Vendor_206AB = tax_check['Vendor_206AB']['status']
-            if Vendor_206AB == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_206AB')
-            
-            Vendor_Filing_status = tax_check['Vendor_Filing_status']['status']
-            if Vendor_Filing_status == 'filled':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Filing_status')
-
-            Vendor_Gst_Active = tax_check['Vendor_Gst_Active']['status']
-            if Vendor_Gst_Active == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Gst not Active')
-
-            Vendor_Gst_Valid = tax_check['Vendor_Gst_Valid']['status']
-            if Vendor_Gst_Valid == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Gst inValid')
-
-            Vendor_Gst_mentioned = tax_check['Vendor_Gst_mentioned']['status']
-            if Vendor_Gst_mentioned == 'YES':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Gst not mentioned')
-
-            Vendor_Pan_Adhar_Linked = tax_check['Vendor_Pan-Adhar_Linked']['status']
-            if Vendor_Pan_Adhar_Linked == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Pan-Adhar not Linked')
-
-            Vendor_Pan_Active = tax_check['Vendor_Pan_Active']['status']
-            if Vendor_Pan_Active == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('Vendor_Pan not Active')
-            
-            tax_type_on_invoice = tax_check['tax_type_on_invoice']['status']
-            if tax_type_on_invoice == 'Okay':
-                pass
-            else:
-                status = 'Not All Okay'
-                message.append('tax_type_on_invoice')
-
-            ## Table checks
-
-            parsed_data = json.loads(table_check)
-            df = pd.DataFrame(parsed_data)
-            if(df['check1'] == 'correct').all():
-                Table_check1 = 'Okay'
-            else:
-                status = 'Not All Okay'
-                message.append('Table_check1 not okay')
-            
-            basic_amount = invoice_data.get('SubTotal')
-            if basic_amount:
-                if 'qty_unitprice' in df.columns:
-                    calculated_basic = df['qty_unitprice'].sum()
-                    if abs(float(calculated_basic) - float(basic_amount)) < 1:
-                        table_check2 = 'Okay'
+            # -------- Table Check 1 -------- #
+            try:
+                parsed_data = json.loads(table_check)
+                df = pd.DataFrame(parsed_data)
+                
+            except Exception as e:
+                print("Error in Table_check1:", e)
+                traceback.print_exc()
+            try:
+                if 'check1' in df.columns:
+                    if (df['check1'] == 'correct').all():
+                        Table_check1 = 'Okay'
                     else:
                         status = 'Not All Okay'
-                        message.append('Table_Check2 not okay')
-                elif 'amount' in df.columns:
-                    calculated_basic = df['amount'].sum()
-                    if abs(float(calculated_basic) - float(basic_amount)) < 1:
-                        table_check2 = 'Okay'
-                    else:
-                        status = 'Not All Okay'
-                        message.append('Table_Check2 not okay')
+                        message.append('Table_check1 not okay')
                 else:
                     status = 'Not All Okay'
-                    message.append('Table_Check2 not confirmed as amount or rate column in Invoice table')
-            else:
+                    message.append('Table_check1 not found in table')
+            except Exception as e:
                 status = 'Not All Okay'
-                message.append('Table_Check2 not confirmed as Basic amount was not captured by ocr for comprasion')
+                message.append('Table_check1 skipped due to error')
+                print("An error occurred in Table_check1:", str(e))
+                traceback.print_exc()
+
+            # -------- Table Check 2 -------- #
+            try:
+                basic_amount = invoice_data.get('SubTotal')
+                if basic_amount:
+                    if 'qty_unitprice' in df.columns:
+                        try:
+                            calculated_basic = df['qty_unitprice'].astype(float).sum()
+                            if abs(calculated_basic - float(basic_amount)) < 1:
+                                table_check2 = 'Okay'
+                            else:
+                                status = 'Not All Okay'
+                                message.append('Table_Check2 not okay')
+                        except Exception as e:
+                            status = 'Not All Okay'
+                            message.append('Table_Check2 calculation failed for qty_unitprice')
+                    elif 'amount' in df.columns:
+                        try:
+                            calculated_basic = df['amount'].astype(float).sum()
+                            if abs(calculated_basic - float(basic_amount)) < 1:
+                                table_check2 = 'Okay'
+                            else:
+                                status = 'Not All Okay'
+                                message.append('Table_Check2 not okay')
+                        except Exception as e:
+                            status = 'Not All Okay'
+                            message.append('Table_Check2 calculation failed for amount')
+                    else:
+                        status = 'Not All Okay'
+                        message.append('Table_Check2 not confirmed: amount or qty_unitprice missing')
+                else:
+                    status = 'Not All Okay'
+                    message.append('Table_Check2 skipped: SubTotal missing in invoice')
+            except Exception as e:
+                status = 'Not All Okay'
+                message.append('Table_Check2 not performed due to complex table or data error')
+                print("Error in Table_check2:", e)
+                traceback.print_exc()
+
+            # Final result
             result_['status'] = status
             result_['message'] = message
-            # Update the "result" dictionary with the new key-value pair
+
+            # Add to api_response
             if "result" in api_response:
                 api_response["result"]["Okay_NotOkay"] = result_
             else:
-                # Create the "result" key if it doesn't exist
                 api_response["result"] = {"Okay_NotOkay": result_}
-            
-            
-            
-            return result_,api_response
+
+            return result_, api_response
+
         else:
             result_['status'] = "No Response"
-            result_['message'] = ''
-            return result_
+            result_['message'] = 'API response is empty or invalid'
+            return result_, api_response
+
+    except Exception as e:
+        print("An error occurred at top level:", e)
+        traceback.print_exc()
+        result_['status'] = 'Not All Okay'
+        message.append("Top-level error occurred during processing")
+        result_['message'] = message
+        return result_, api_response
+
+# def all_okay(api_response):
+    
+#     result_ = {}
+#     status = 'All Okay'
+#     message = []
+#     try:
+#         # Check if the response file exists
+#         if api_response:
+            
+#             result = api_response.get("result", {})
+#             # # print(result)
+#             # acount_check = result['CHECKS']['Account_check']
+#             # tax_check = result['CHECKS']['tax_check']
+#             # table_check = result['CHECKS']['table_data']['Table_Check_data']
+#             # invoice_data =  result['Invoice_data']
+
+#             # Safely get data, ensuring the expected types are returned
+#             acount_check = result.get('CHECKS', {}).get('Account_check', {})
+#             tax_check = result.get('CHECKS', {}).get('tax_check', {})
+#             table_check = result.get('CHECKS', {}).get('table_data', {}).get('Table_Check_data', [])
+#             invoice_data = result.get('Invoice_data', {})
+
+#             Complete_Invoice = acount_check['Complete_Invoice']['status']
+#             if Complete_Invoice == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Not a Complete_Invoice')
+
+#             Customer_Adress = acount_check['Customer_Adress']['status']
+#             if Customer_Adress == 'Matching':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Customer_Adress Not Matched')
+
+#             Customer_Name = acount_check['Customer_Name']['status']
+#             if Customer_Name == 'Matching':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Customer_Name Not Matched')
+
+#             Invoice_Blocked_Credit = acount_check['Invoice_Blocked_Credit']['status']
+#             if Invoice_Blocked_Credit == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice_Blocked_Credit Type')
+
+#             Invoice_Date = acount_check['Invoice_Date']['status']
+#             if Invoice_Date == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice_Date is not captured or not present')
+
+#             Invoice_Number = acount_check['Invoice_Number']['status']
+#             if Invoice_Number == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice_Number Not Captured or not present')
+
+#             Invoice_RCM_Services = acount_check['Invoice_RCM-Services']['status']
+#             if Invoice_RCM_Services == 'NO':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice_RCM-Services Type')
+
+#             Pre_year = acount_check['Pre_year']['status']
+#             if Pre_year == 'NO':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice is from Previous year')
+
+#             gstnumber_gstcharged = acount_check['gstnumber_gstcharged']['status']
+#             if gstnumber_gstcharged == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('gstnumber_gstcharged Not Okay')
+
+#             valid_invoice = acount_check['valid_invoice']['status']
+#             if valid_invoice == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Invoice is Invalid')
+
+#             ##Tax Check validations
+#             Company_Gst_Valid = tax_check['Company_Gst_Valid']['status']
+#             if Company_Gst_Valid == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Company_Gst_Valid')
+
+#             Company_Gst_mentioned = tax_check['Company_Gst_mentioned']['status']
+#             if Company_Gst_mentioned == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Company_Gst_mentioned')
+
+#             Vendor_206AB = tax_check['Vendor_206AB']['status']
+#             if Vendor_206AB == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_206AB')
+            
+#             Vendor_Filing_status = tax_check['Vendor_Filing_status']['status']
+#             if Vendor_Filing_status == 'filled':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Filing_status')
+
+#             Vendor_Gst_Active = tax_check['Vendor_Gst_Active']['status']
+#             if Vendor_Gst_Active == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Gst not Active')
+
+#             Vendor_Gst_Valid = tax_check['Vendor_Gst_Valid']['status']
+#             if Vendor_Gst_Valid == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Gst inValid')
+
+#             Vendor_Gst_mentioned = tax_check['Vendor_Gst_mentioned']['status']
+#             if Vendor_Gst_mentioned == 'YES':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Gst not mentioned')
+
+#             Vendor_Pan_Adhar_Linked = tax_check['Vendor_Pan-Adhar_Linked']['status']
+#             if Vendor_Pan_Adhar_Linked == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Pan-Adhar not Linked')
+
+#             Vendor_Pan_Active = tax_check['Vendor_Pan_Active']['status']
+#             if Vendor_Pan_Active == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('Vendor_Pan not Active')
+            
+#             tax_type_on_invoice = tax_check['tax_type_on_invoice']['status']
+#             if tax_type_on_invoice == 'Okay':
+#                 pass
+#             else:
+#                 status = 'Not All Okay'
+#                 message.append('tax_type_on_invoice')
+
+#             ## Table checks
+
+#             parsed_data = json.loads(table_check)
+#             df = pd.DataFrame(parsed_data)
+#             try:
+#                 if(df['check1'] == 'correct').all():
+#                     Table_check1 = 'Okay'
+#                 else:
+#                     status = 'Not All Okay'
+#                     message.append('Table_check1 not okay')
+#             except Exception as e:
+#                 status = 'Not All Okay'
+#                 message.append('Table_check1 not performed as table structure is complex')
+#                 print("An error occurred:", str(e))
+#                 traceback.print_exc()  # This prints the exact line and call stack
+            
+#             basic_amount = invoice_data.get('SubTotal')
+#             try:
+#                 if basic_amount:
+                    
+#                         if 'qty_unitprice' in df.columns:
+#                             calculated_basic = df['qty_unitprice'].sum()
+#                             if abs(float(calculated_basic) - float(basic_amount)) < 1:
+#                                 table_check2 = 'Okay'
+#                             else:
+#                                 status = 'Not All Okay'
+#                                 message.append('Table_Check2 not okay')
+#                         elif 'amount' in df.columns:
+#                             calculated_basic = df['amount'].sum()
+#                             if abs(float(calculated_basic) - float(basic_amount)) < 1:
+#                                 table_check2 = 'Okay'
+#                             else:
+#                                 status = 'Not All Okay'
+#                                 message.append('Table_Check2 not okay')
+#                         else:
+#                             status = 'Not All Okay'
+#                             message.append('Table_Check2 not confirmed as amount or rate column in Invoice table')
+                    
+#                 else:
+#                     status = 'Not All Okay'
+#                     message.append('Table_Check2 not confirmed as Basic amount was not captured by ocr for comprasion')
+#             except Exception as e:
+#                 status = 'Not All Okay'
+#                 message.append('Table_check2 not performed as table structure is complex')
+#                 print("An error occurred:", str(e))
+#                 traceback.print_exc()  # This prints the exact line and call stack
+#             result_['status'] = status
+#             result_['message'] = message
+#             # Update the "result" dictionary with the new key-value pair
+#             if "result" in api_response:
+#                 api_response["result"]["Okay_NotOkay"] = result_
+#             else:
+#                 # Create the "result" key if it doesn't exist
+#                 api_response["result"] = {"Okay_NotOkay": result_}
+            
+            
+            
+#             return result_,api_response
+#         else:
+#             result_['status'] = "No Response"
+#             result_['message'] = ''
+#             return result_
 
             
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        # print('No Response ',api_response)
+#     except Exception as e:
+#         print("An error occurred:", str(e))
+#         traceback.print_exc()  # This prints the exact line and call stack
+#         print(f"An error occurred: {e}")
+#         # print('No Response ',api_response)
     
     
 

@@ -9,7 +9,7 @@ import io
 import time
 from datetime import date
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 import requests
 import json
 import shutil
@@ -24,6 +24,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import InvoiceDetail
+import threading
+
+
+
+
+ 
 
 
 # Create your views here.
@@ -164,6 +170,7 @@ def export_templates(request):
         except Exception as e:
             return JsonResponse({"message": f"Error: {str(e)}"}, status=500)
     return JsonResponse({"message": "Invalid request method"}, status=400)
+import traceback
 
 @login_required
 def show_templates(request, message=[]):
@@ -191,6 +198,9 @@ def show_templates(request, message=[]):
             'sheet_2_html': sheet_2_html
         })
     except Exception as e:
+        
+        print("An error occurred:", str(e))
+        traceback.print_exc()
         # Handle exceptions
         message =[f"Error: {str(e)}"]
         return render(request, 'save_template.html', {
@@ -227,7 +237,41 @@ def save_template(request):
             message = [f"Error: {str(e)}"]
             return show_templates(request, message)
 
+def delete_rows(request):
+    if request.method == "POST":
+        try:
+            selected_files = json.loads(request.POST.get("selected_files", "[]"))
+            user = request.user
+            user_index = request.session.get("user_id")
 
+            # Fetch invoices matching selected file names
+            invoices = InvoiceDetail.objects.filter(file_name__in=selected_files, user=user)
+
+            if not invoices.exists():
+                return JsonResponse({"status": "error", "message": "No matching invoices found."})
+
+            # Delete associated PDF files
+            for invoice in invoices:
+                pdf_path = invoice.path  # Assuming `path` stores the file location
+                pdf_name = invoice.file_name
+                if pdf_path and os.path.exists(pdf_path):
+                    os.remove(pdf_path)  # Delete the file
+                # response_dir = os.path.join(settings.MEDIA_ROOT, "responses", user_index)
+                response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index))
+                response_file = os.path.join(response_dir, f"{pdf_name}.json")
+                # print(response_file)
+                if response_file and os.path.exists(response_file):
+                    os.remove(response_file)  # Delete the file
+
+            # Delete the invoice records
+            deleted_count, _ = invoices.delete()
+
+            return JsonResponse({"status": "success", "message": f"{deleted_count} invoices deleted successfully."})
+
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": f"Error: {str(e)}"})
+
+    return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
     
 @login_required
 def show_grn(request):
@@ -696,99 +740,211 @@ def invoice_display(request):
     return render(request, 'invoice_display.html', context)
 
 
+
+def process_invoice(invoice_path, unique_name, user, user_index, timestamp):
+    """ Function to process each invoice asynchronously """
+    try:
+        url = "https://ocrblueconsulting.azurewebsites.net/process-invoice-withchecks-updated"
+        user_id = "BC_User1"
+        password = "1234@India"
+        files = {'pdf_file': open(invoice_path, 'rb')}
+        data = {'user_id': user_id, 'password': password, 'App': 'WFS'}
+
+        response = requests.post(url, files=files, data=data)
+        files['pdf_file'].close()  # Close file after request
+
+        if response.status_code == 200:
+            
+            api_response = response.json()
+            try:
+                all_okay_,api_response_ = all_okay(api_response)
+                # Save API response in a JSON file
+                okay_notokay = all_okay_['status']
+                okay_message = all_okay_['message']
+                # print(okay_message)
+                okay_message_ = ''
+                if not okay_message: 
+                    pass
+                else:
+                    for mess in okay_message:
+                        # print(mess)
+                        okay_message_ = okay_message_ + ' ' + mess
+            
+                response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index))
+                os.makedirs(response_dir, exist_ok=True)  # Ensure directory exists
+
+                response_file = os.path.join(response_dir, f"{unique_name}.json")
+                with open(response_file, 'w') as f:
+                    json.dump(api_response, f, indent=4)
+
+            except Exception as e:
+                print("An error occurred at top level:", e)
+
+            # Save invoice details to DB
+            save_invoice_detail(
+                user=user,
+                file_name=unique_name,
+                upload_date=timestamp,
+                path=invoice_path,
+                okay_status=okay_notokay,
+                okay_message=okay_message,
+                status='waiting'
+            )
+        else:
+            print(f"Error processing {unique_name}: {response.status_code} - {response.text}")
+    
+    except Exception as e:
+        print(f"Exception: {str(e)}")
 @login_required
 def upload_invoice(request):
-    context = {"message": ""}
-    url = "https://ocrblueconsulting.azurewebsites.net/process-invoice-withchecks-updated"
-    user_id = "BC_User1"
-    password = "1234@India"
-    
-    user = request.user  # Get the logged-in user
-    user_index = request.session.get("user_id")
-    # print(user_index)
-    # Define user-specific directories
-    # Define user-specific directories
-    invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices", str(user_index),)
-    response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index),)
-
-    # Ensure the directories exist
-    os.makedirs(invoice_dir, exist_ok=True)
-    os.makedirs(response_dir, exist_ok=True)
-    
-    
-    # print('hello--1')
+    """ Upload invoices and process them in the background using threading """
     if request.method == 'POST' and request.FILES.getlist('files'):
+        
+        
+        user = request.user  # Get the logged-in user
+        user_index = request.session.get("user_id")
+
+        invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices", str(user_index))
+        os.makedirs(invoice_dir, exist_ok=True)
+
         uploaded_files = request.FILES.getlist('files')
-        responses = []
-        # print(uploaded_files)
+
         for uploaded_file in uploaded_files:
-            time.sleep(0.5)
-            try:
-                # print('hello--2')
-                # Generate a unique name with timestamp
-                timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            unique_name = f"{timestamp}_{uploaded_file.name}"
+            invoice_path = os.path.join(invoice_dir, unique_name)
+
+            with default_storage.open(invoice_path, 'wb+') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+
+            # **Start a new thread for processing**
+            threading.Thread(target=process_invoice, args=(invoice_path, unique_name, user, user_index, timestamp)).start()
+
+        # Redirect immediately to avoid waiting
+        
+        return redirect('show_invoices')
+
+    return render(request, 'upload_invoice.html', )
+
+# def fetch_invoices(request):
+#     user_index = request.session.get("user_id")
+#     last_invoice_time = request.GET.get("last_invoice_time")  # Get timestamp from AJAX
+
+#     # Convert timestamp to datetime object
+#     if last_invoice_time:
+#         last_invoice_time = parse_datetime(last_invoice_time)
+
+#     # Fetch only new invoices
+#     invoices = InvoiceDetail.objects.filter(user=request.user)
+#     if last_invoice_time:
+#         invoices = invoices.filter(upload_date__gt=last_invoice_time)
+
+#     invoice_data = [
+#         {
+#             "file_name": invoice.file_name,
+#             "upload_date": invoice.upload_date.strftime("%Y-%m-%d %H:%M:%S"),  # Format datetime
+#             "okay_status": invoice.status,
+#             "okay_message": invoice.response_message,
+#         }
+#         for invoice in invoices
+#     ]
+
+#     return JsonResponse({"new_invoices": invoice_data})
+
+# @login_required
+# def upload_invoice(request):
+#     context = {"message": ""}
+#     url = "https://ocrblueconsulting.azurewebsites.net/process-invoice-withchecks-updated"
+#     user_id = "BC_User1"
+#     password = "1234@India"
+    
+#     user = request.user  # Get the logged-in user
+#     user_index = request.session.get("user_id")
+#     # print(user_index)
+#     # Define user-specific directories
+#     # Define user-specific directories
+#     invoice_dir = os.path.join(settings.MEDIA_ROOT, "invoices", str(user_index),)
+#     response_dir = os.path.join(settings.MEDIA_ROOT, "responses", str(user_index),)
+
+#     # Ensure the directories exist
+#     os.makedirs(invoice_dir, exist_ok=True)
+#     os.makedirs(response_dir, exist_ok=True)
+    
+    
+#     # print('hello--1')
+#     if request.method == 'POST' and request.FILES.getlist('files'):
+#         uploaded_files = request.FILES.getlist('files')
+#         responses = []
+#         # print(uploaded_files)
+#         for uploaded_file in uploaded_files:
+#             time.sleep(0.5)
+#             try:
+#                 # print('hello--2')
+#                 # Generate a unique name with timestamp
+#                 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
                 
-                unique_name = f"{timestamp}_{uploaded_file.name}"
-                # print(current_date_)
-                invoice_path = os.path.join(invoice_dir, unique_name)
-                # print(invoice_path)
-                with default_storage.open(invoice_path, 'wb+') as destination:
-                    for chunk in uploaded_file.chunks():
-                        destination.write(chunk)
+#                 unique_name = f"{timestamp}_{uploaded_file.name}"
+#                 # print(current_date_)
+#                 invoice_path = os.path.join(invoice_dir, unique_name)
+#                 # print(invoice_path)
+#                 with default_storage.open(invoice_path, 'wb+') as destination:
+#                     for chunk in uploaded_file.chunks():
+#                         destination.write(chunk)
 
-                # Prepare the API request
-                files = {'pdf_file': open(invoice_path, 'rb')}
-                data = {'user_id': user_id, 'password': password, 'App': 'WFS'}
+#                 # Prepare the API request
+#                 files = {'pdf_file': open(invoice_path, 'rb')}
+#                 data = {'user_id': user_id, 'password': password, 'App': 'WFS'}
 
-                # Make the API request
-                response = requests.post(url, files=files, data=data)
-                files['pdf_file'].close()  # Close file after request
-                # print(response)
-                if response.status_code == 200:
-                    api_response = response.json()
-                    # print(api_response)
-                    all_okay_,api_response_ = all_okay(api_response)
-                    # Save API response in a JSON file
-                    okay_notokay = all_okay_['status']
-                    okay_message = all_okay_['message']
-                    # print(okay_message)
-                    okay_message_ = ''
-                    if not okay_message: 
-                        pass
-                    else:
-                        for mess in okay_message:
-                            # print(mess)
-                            okay_message_ = okay_message_ + ' ' + mess
+#                 # Make the API request
+#                 response = requests.post(url, files=files, data=data)
+#                 files['pdf_file'].close()  # Close file after request
+#                 print(response)
+#                 if response.status_code == 200:
+#                     api_response = response.json()
+#                     print(api_response)
+#                     all_okay_,api_response_ = all_okay(api_response)
+#                     # Save API response in a JSON file
+#                     okay_notokay = all_okay_['status']
+#                     okay_message = all_okay_['message']
+#                     # print(okay_message)
+#                     okay_message_ = ''
+#                     if not okay_message: 
+#                         pass
+#                     else:
+#                         for mess in okay_message:
+#                             # print(mess)
+#                             okay_message_ = okay_message_ + ' ' + mess
 
-                    uploaded_file_name = os.path.join(response_dir, f"{timestamp}_{uploaded_file.name}.json")
-                    response_file = os.path.join(response_dir, uploaded_file_name)
+#                     uploaded_file_name = os.path.join(response_dir, f"{timestamp}_{uploaded_file.name}.json")
+#                     response_file = os.path.join(response_dir, uploaded_file_name)
                     
-                    with open(response_file, 'w') as f:
-                        json.dump(api_response_, f, indent=4)
+#                     with open(response_file, 'w') as f:
+#                         json.dump(api_response_, f, indent=4)
                     
-                    # print("Calling the function to ensure table and update the database...")
-                    # Save or update the database entry
-                    save_invoice_detail(
-                        user=user,
-                        file_name=unique_name,
-                        upload_date=timestamp,
-                        path=invoice_path,
-                        okay_status=okay_notokay,
-                        okay_message=okay_message,
-                        status='waiting'
-                    )
-                    print("Function call finished.")
-                    responses.append(f"Processed {uploaded_file.name} successfully.")
-                else:
-                    print("Function call gave errror")
-                    responses.append(f"Error for {uploaded_file.name}: {response.status_code} - {response.text}")
+#                     # print("Calling the function to ensure table and update the database...")
+#                     # Save or update the database entry
+#                     save_invoice_detail(
+#                         user=user,
+#                         file_name=unique_name,
+#                         upload_date=timestamp,
+#                         path=invoice_path,
+#                         okay_status=okay_notokay,
+#                         okay_message=okay_message,
+#                         status='waiting'
+#                     )
+#                     print("Function call finished.")
+#                     responses.append(f"Processed {uploaded_file.name} successfully.")
+#                 else:
+#                     print("Function call gave errror")
+#                     responses.append(f"Error for {uploaded_file.name}: {response.status_code} - {response.text}")
             
-            except Exception as e:
-                responses.append(f"Error for {uploaded_file.name}: {str(e)}")
+#             except Exception as e:
+#                 responses.append(f"Error for {uploaded_file.name}: {str(e)}")
 
-        context['message'] = "\n".join(responses)
-        return redirect('show_invoices')  # Redirect to the new page
-    return render(request, 'upload_invoice.html', context)
+#         context['message'] = "\n".join(responses)
+#         return redirect('show_invoices')  # Redirect to the new page
+#     return render(request, 'upload_invoice.html', context)
 
     
 @login_required
@@ -815,7 +971,7 @@ def update_status(request):
 
                 # Save the changes
                 invoice.save()
-                print('hello')
+                # print('hello')
                 
                 response = {
                     "message": f"Status updated for {invoice_name}",
@@ -948,10 +1104,20 @@ def upload_opengrn(request):
             if df.empty:
                 context["message"] = "No data in Open GRN report."
             else:
+                # Function to safely convert datetime columns
+                def format_date_column(df, column_name):
+                    if not pd.api.types.is_datetime64_any_dtype(df[column_name]):
+                        df[column_name] = pd.to_datetime(df[column_name], errors='coerce')  # Convert if not datetime
+                    df[column_name] = df[column_name].dt.strftime('%Y-%m-%d')  # Format
+
+                # Apply function to relevant columns
+                for col in ['Posting Date', 'Due Date', 'Document Date']:
+                    if col in df.columns:  # Ensure column exists
+                        format_date_column(df, col)
                
-                df['Posting Date'] = df['Posting Date'].dt.strftime('%Y-%m-%d')
-                df['Due Date'] = df['Due Date'].dt.strftime('%Y-%m-%d')
-                df['Document Date'] = df['Document Date'].dt.strftime('%Y-%m-%d')
+                # df['Posting Date'] = df['Posting Date'].dt.strftime('%Y-%m-%d')
+                # df['Due Date'] = df['Due Date'].dt.strftime('%Y-%m-%d')
+                # df['Document Date'] = df['Document Date'].dt.strftime('%Y-%m-%d')
                 context["data"] = df.values.tolist()
                 context["columns"] = df.columns.tolist()
                 # Store DataFrame values and columns in the session
